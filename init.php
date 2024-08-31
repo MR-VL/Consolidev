@@ -4,9 +4,10 @@ require_once 'database.php';
 putenv("DB_HOST=localhost");
 putenv("DB_USER=root");
 putenv("DB_PASSWORD=");
-putenv("DB_NAME=gproject");
+putenv("DB_NAME=groupproject");
 
-$database = new Database(
+
+$database= new Database(
     getenv('DB_HOST'),
     getenv('DB_NAME'),
     getenv('DB_USER'),
@@ -14,7 +15,8 @@ $database = new Database(
 );
 
 try {
-    $connection = $database->getConnection();
+    $connect = $database->getConnection();
+    echo"<h1>Database connected</h1>";
 }
 catch (PDOException $e) {
     die("Database connection failed.");
