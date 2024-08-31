@@ -29,8 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<h1>Registration failed. Please try again later...</h1>";
         }
     }
-}else{
-    echo "<h1>All fields are required.</h1>";
 }
 ?>
 <!DOCTYPE html>

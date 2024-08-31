@@ -16,9 +16,10 @@ $database= new Database(
 
 try {
     $connect = $database->getConnection();
-    echo"<h1>Database connected</h1>";
+
 }
 catch (PDOException $e) {
+    echo "<h1>FATAL ERROR: Unable to connect to database</h1>";
     die("Database connection failed.");
 }
 
