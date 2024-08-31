@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-
+       require("init.php");
 
     ?>
     
