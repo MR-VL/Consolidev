@@ -36,7 +36,7 @@ Download the file
 Do not worry about the SQLDUMP file or the pics folder
 
 ### Your folder should look something like this.<br>
-We may have more files in the future, this is just documentation
+We may have more files in the future, this is just documentation<br>
 ![img.png](pics/img3.png)
 
 # Upload everything else and create pull request
