@@ -42,6 +42,7 @@ https://github.com/MR-VL/Calender/blob/340b49729e1f36c0c85bdab846c8c90b568945e3/
 
 # TroubleShooting
 #### See the troubleshooting readme..
+https://github.com/MR-VL/Calender/blob/21bb69519b1e63745a0dd26bda0921077a299696/Troubleshooting.md<br>
 If you run into any issues and you find a successful fix to the problem please list it on there and what to do to resolve the issue. 
 So if any of us run into the same issue we can save time instead of having to research it ourselves. 
 ### Seriously if you find and issue and solution to it PUT IT IN THERE
