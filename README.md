@@ -30,7 +30,7 @@ Don't worry about the pics directory and the .md files these are here for docume
 ### It should now work, and you should be able to see it from WAMP
 
 # See Installing database schema file:
-https://github.com/MR-VL/Calender/blob/340b49729e1f36c0c85bdab846c8c90b568945e3/Troubleshooting.md
+https://github.com/MR-VL/Calender/blob/340b49729e1f36c0c85bdab846c8c90b568945e3/SQLDUMP.md
 
 ## Write code and make sure it works before submitting PR
 
