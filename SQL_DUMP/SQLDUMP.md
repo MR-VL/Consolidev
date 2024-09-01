@@ -12,7 +12,7 @@ click on PhpMyAdmin
 
 ### Login credentials:<br>
 username = root
-<br> LEAVE PASSWORD FIELD BLANK
+<br> LEAVE PASSWORD FIELD BLANK<br>
 ![img_1.png](pics/img_1.png)
 
 
