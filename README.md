@@ -74,6 +74,7 @@ Well congratulations the 2 of yall are in charge of CSS for the whole project !!
 
 From there you go to your GitHub repository, and it will ask you if you want to 
 contribute, click yes or whatever it wants. 
+![img5.png](pics/img5.png)
 
 ```markdown
 Create a pull request.
@@ -81,3 +82,17 @@ Create a pull request.
 
 It should automatically populate everything and I will merge them myself or give 
 feedback as to why it wasn't merged.
+
+
+# Sync Fork with Main
+### Go to GitHub.com and your repository
+
+## Click on sync fork and update branch
+![img6.png](pics/img5.png)
+
+## Go to your IDE or command prompt 
+```bash
+git pull origin main
+```
+
+### Your local computer fork should now be synced with the MAIN branch from GitHub
