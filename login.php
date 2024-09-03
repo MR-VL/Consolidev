@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo 'Query failed: ' . $e->getMessage();
+            echo "<h1>Query failed: " . $e->getMessage() . "</h1>";
             ob_end_flush();
             exit();
         }
