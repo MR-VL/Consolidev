@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = $connect->prepare($sql);
 
-        $stmt -> bindParam(':Fname', $_POST["Fname"]);
-        $stmt -> bindParam(':Lname', $_POST["Lname"]);
-        $stmt -> bindParam(':username', $_POST["username"]);
+        $stmt -> bindParam(':Fname', $Fname);
+        $stmt -> bindParam(':Lname', $Lname);
+        $stmt -> bindParam(':username', $username);
         $stmt -> bindParam(':password', $passwordHash);
         if($stmt ->execute()) {
             echo "<h1>Thank you for registering!</h1>";
