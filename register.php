@@ -10,13 +10,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
 
     if(!empty($Fname) && !empty($Lname) && !empty($username) && !empty($password)) {
+        $passwordHash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
         global $connect;
         $sql = "INSERT INTO user (Fname, Lname, username, password)
                 VALUES(:Fname, :Lname, :username, :password)";
 
         $stmt = $connect->prepare($sql);
 
-        $passwordHash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
 
 
         $stmt -> bindParam(':Fname', $_POST["Fname"]);
@@ -39,20 +41,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </head>
 <body>
-    <form action="register.php" method="post">
+    <form action="register.php" method="POST">
 
 
         <label for="Fname">First name</label>
-        <input type ="text" id="Fname" name="Fname" required><br><br>
+        <input type ="text" id="Fname" name="Fname" placeholder="First Name" required><br><br>
 
         <label for="Lname">Last name</label>
-        <input type ="text" id="Lname" name="Lname" required><br><br>
+        <input type ="text" id="Lname" name="Lname" placeholder="Last Name" required><br><br>
 
         <label for="username">Username</label>
-        <input type ="text" id="username" name="username" required><br><br>
+        <input type ="text" id="username" name="username" placeholder="Username" required><br><br>
 
         <label for="password">Password</label>
-        <input type ="password" id="password" name="password" required><br><br>
+        <input type ="password" id="password" name="password" placeholder="Password" required><br><br>
 
         <input type="submit" value="Register">
     </form>
