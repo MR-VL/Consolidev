@@ -4,23 +4,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
 
+    if(!empty($username) && !empty($password)){
 
+        $sql = "SELECT password FROM user WHERE username = :username";
+        global $connect;
 
-    $sql = "SELECT password FROM user WHERE username = :username";
-    global $connect;
-    $stmt = $connect -> prepare($sql);
+        try {
+            $stmt = $connect->prepare($sql);
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Query failed: ' . $e->getMessage();
+            ob_end_flush();
+            exit();
+        }
 
-
-    $stmt -> bindParam(':username', $username);
-    $stmt -> execute();
-
-    $user = $stmt -> fetch(PDO::FETCH_ASSOC);
-
-    if($user && password_verify($password, $user['password'])){
-        echo "<h1>Successfully logged in</h1>";
+        if ($user) {
+            if(password_verify($password, $user['password'])){
+                header('Location: main.php');
+                exit();
+            }
+            else{
+                echo "<h1>Wrong password!</h1><br>";
+            }
+        } else {
+            echo "<h1>User not found.</h1><br>";
+        }
+        ob_end_flush();
     }
-
-
 
 }
 ?>

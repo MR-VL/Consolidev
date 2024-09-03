@@ -10,16 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
 
     if(!empty($Fname) && !empty($Lname) && !empty($username) && !empty($password)) {
-        $passwordHash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         global $connect;
         $sql = "INSERT INTO user (Fname, Lname, username, password)
                 VALUES(:Fname, :Lname, :username, :password)";
 
         $stmt = $connect->prepare($sql);
-
-
-
 
         $stmt -> bindParam(':Fname', $_POST["Fname"]);
         $stmt -> bindParam(':Lname', $_POST["Lname"]);
