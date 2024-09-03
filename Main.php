@@ -10,6 +10,6 @@
 
 
     ?>
-    
+    <h1> LOGGED IN SUCCESS</h1>
 </body>
 </html>

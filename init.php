@@ -15,6 +15,7 @@ $database= new Database(
 );
 
 try {
+    global $connect;
     $connect = $database->getConnection();
 
 }
