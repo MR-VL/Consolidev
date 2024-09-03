@@ -62,6 +62,8 @@ Well congratulations the 2 of yall are in charge of CSS for the whole project !!
 
 
 # To push changes. 
+
+# Note !! If you are having to force push stuff then you are making an error somewhere or not properly handling a merge conflict... 
 ## If you already know how to do this then do it the way you know
 ## there are multiple ways to do this step!
 
