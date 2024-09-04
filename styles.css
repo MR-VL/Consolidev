@@ -1,0 +1,64 @@
+body {
+    margin:0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.form {
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 1vh;
+    padding: 2.5vh;
+    width: 40vw;
+    box-shadow: 0 1vh 1vh rgba(0, 0, 0, 0.1);
+}
+
+.group {
+    margin-bottom: 1.0vh;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5vh;
+    font-weight: bold;
+    color: #00008B
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.80vh;
+    margin-top: 0.25vh;
+    margin-bottom: 1vh;
+    box-sizing: border-box;
+    border: 0.2vh solid #ccc;
+    border-radius: 0.5vh;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 1vh;
+    border-radius: 0.5vh;
+    border: none;
+    background-color:  #00008B;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #ADD8E6;
+}
+
+.btn{
+    background-color: lightblue;
+    width: 20%;
+    margin-top: 1vh;
+}
+
