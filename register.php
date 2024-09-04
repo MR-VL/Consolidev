@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <label for="Fname">First name</label>
-        <input type ="text" id="Fname" name="Fname" placeholder="First Name" text="First Name" required><br><br>
+        <input type ="text" id="Fname" name="Fname" placeholder="First Name" required><br><br>
 
         <label for="Lname">Last name</label>
         <input type ="text" id="Lname" name="Lname" placeholder="Last Name" required><br><br>
