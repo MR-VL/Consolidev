@@ -1,10 +1,10 @@
 <?php
 require_once "init.php";
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
 
-    if(!empty($username) && !empty($password)){
+    if (!empty($username) && !empty($password)) {
 
         $sql = "SELECT password FROM user WHERE username = :username";
         global $connect;
@@ -21,11 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
         if ($user) {
-            if(password_verify($password, $user['password'])){
+            if (password_verify($password, $user['password'])) {
                 header('Location: main.php');
                 exit();
-            }
-            else{
+            } else {
                 echo "<h1>Wrong password!</h1><br>";
             }
         } else {
@@ -42,18 +41,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<form action="login.php" method="POST">
-    <label for="username">Username</label>
-    <input type ="text" id="username" name="username" placeholder="Username" required><br><br>
 
-    <label for="password">Password</label>
-    <input type ="password" id="password" name="password" placeholder="Password" required><br><br>
+<div class="form">
+    <form action="login.php" method="POST">
+        <div class="group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username" required><br><br>
+        </div>
 
-    <input type="submit" value="Login">
-</form>
+        <div class="group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+        </div>
+
+        <input type="submit" value="Login">
+    </form>
+    <a href="register.php">
+        <button class="btn">Sign Up</button>
+    </a>
+
+</div>
+
+
+
 </body>
 </html>
