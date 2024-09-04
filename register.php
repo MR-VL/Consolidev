@@ -12,10 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $valid = true;
 
-    if($Fname > 20 || $Lname > 20 || $username > 20 || $password > 20){
+    if(strlen($Fname) > 20 || strlen($Lname) > 20 || strlen($username) > 20 || strlen($password) > 20) {
         $valid = false;
         echo '<script>alert("Error: Maximum size for field input is 20 characters")</script>';
-
     }
 
 
@@ -47,15 +46,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="form">
     <form action="register.php" method="POST">
-        <p>Maximum input size: 20 characters</p>
+        <label>Maximum input size: 20 characters</label>
 
 
         <label for="Fname">First name</label>
-        <input type ="text" id="Fname" name="Fname" placeholder="First Name" required><br><br>
+        <input type ="text" id="Fname" name="Fname" placeholder="First Name" text="First Name" required><br><br>
 
         <label for="Lname">Last name</label>
         <input type ="text" id="Lname" name="Lname" placeholder="Last Name" required><br><br>
@@ -68,6 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Register">
     </form>
+
+
+        <a href="login.php">
+            <button class="btn" >Login</button>
+        </a>
+
+
+</div>
+
 
 </body>
 </html>
