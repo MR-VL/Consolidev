@@ -1,5 +1,5 @@
 # Installation
-
+### Remember to keep your fork synced with mines and create pull requests with stuff you added.. This repo is the head repo and this ensures we are not working on the same thing twice or more
 Fork this repository to your own GitHub and set visibility to private!!
 
 Install git onto your own computer
