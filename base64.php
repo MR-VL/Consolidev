@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         global $connect;
 
         $sql = "INSERT INTO base64 (username, type, original, opposite)
-                VALUES(:username, :type, :filtered, :input)";
+                VALUES(:username, :type, :input, :filtered)";
 
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":type", $type);
         $stmt->bindParam(":filtered", $filtered);
-        $stmt->bindParam(":input", $filtered);
+        $stmt->bindParam(":input", $input);
 
 
         $stmt->execute();
