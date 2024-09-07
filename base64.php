@@ -60,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <div class="container">
+
     <div class="form">
         <form action="base64.php" method="post">
             <label for="base64">Enter a value and choose to encode or decode Base 64</label>
@@ -79,7 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 
-    <div class="form">
+    <div class="form" style="word-wrap: break-word">
+
+       <a href="history.php">
+           <button class="btn">View History</button>
+       </a>
         <?php
             if(!empty($display)){
                 echo $display;
