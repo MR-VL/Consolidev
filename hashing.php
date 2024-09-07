@@ -10,7 +10,7 @@ if(!isset($_SESSION['username'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>NAME | Hashing</title>
+    <title>Consolidev | Hashing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 </head>
