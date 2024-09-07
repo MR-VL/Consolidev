@@ -61,4 +61,7 @@ input[type="submit"]:hover {
     width: 20%;
     margin-top: 1vh;
 }
-
+.txtbox{
+    width: 40vw;
+    height: 40vh;
+}
