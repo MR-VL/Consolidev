@@ -1,28 +1,47 @@
 <?php
+include 'init.php';
 session_start();
 if(!isset($_SESSION['username'])) {
     header('Location: login.php');
 }
-$input = filter_input(INPUT_POST, "base64", FILTER_SANITIZE_SPECIAL_CHARS);
+$username = $_SESSION['username'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $input = filter_input(INPUT_POST, "base64", FILTER_SANITIZE_SPECIAL_CHARS);
 
-$type = $_POST["ans"];
+    if(!empty($input)) {
+        $type = $_POST["ans"];
 
-if($type == "encode"){
-    $type = 1;
-}
-else{
-    $type = 2;
-}
+        if ($type == "encode") {
+            $filtered = base64_encode($input);
+            $display = "<div style='color: #00008B'><h2>Encoded Base 64:</h2><br> <h2>$filtered</h2></div>";
+        } else {
+            $filtered = base64_decode($input);
+            $display = "<div style='color: #00008B'><h2>Decoded Base 64:</h2><br> <h2>$filtered</h2><br>";
+        }
 
-if($type == 1){
-    $filtered = base64_encode($input);
-    $display = "<div style='color: #00008B'><h2>Encoded Base 64:</h2><br> <h2>$filtered</h2></div>";
-}
-else{
-    $filtered = base64_decode($input);
-    $display = "<div style='color: #00008B'><h2>Decoded Base 64:</h2><br> <h2>$filtered</h2><br>";
-}
 
+
+        global $connect;
+
+        $sql = "INSERT INTO base64 (username, type, original, opposite)
+                VALUES(:username, :type, :filtered, :input)";
+
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(":username", $username);
+        $stmt->bindParam(":type", $type);
+        $stmt->bindParam(":filtered", $filtered);
+        $stmt->bindParam(":input", $filtered);
+
+
+        $stmt->execute();
+
+    }
+
+    else{
+        $display = "<div style='color: #00008B'><h2>Fatal Error.. Please retry</h2></div>";
+    }
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
