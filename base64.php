@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>NAME | Base 64</title>
+    <title>Consolidev | Base 64</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="form" style="word-wrap: break-word">
 
-       <a href="history.php">
+       <a href="base64history.php">
            <button class="btn">View History</button>
        </a>
         <?php
