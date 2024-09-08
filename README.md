@@ -22,7 +22,7 @@ CD to the WAMP www directory
 Change 'USERNAME' to your GitHub username
 
 ```bash
-    git clone https://github.com/USERNAME/Calender.git
+    git clone https://github.com/USERNAME/Consolidev.git
 ```
 
 Don't worry about the pics directory and the .md files these are here for documentation!!!!
@@ -30,7 +30,7 @@ Don't worry about the pics directory and the .md files these are here for docume
 ### It should now work, and you should be able to see it from WAMP
 
 # See Installing database schema file:
-https://github.com/MR-VL/Calender/blob/bed371c27ec4dbb9c7d12df41d1fd490d4c0f164/SQL_DUMP/SQLDUMP.md
+https://github.com/MR-VL/Consolidev/blob/bed371c27ec4dbb9c7d12df41d1fd490d4c0f164/SQL_DUMP/SQLDUMP.md
 
 ## Write code and make sure it works before submitting PR
 
@@ -42,7 +42,7 @@ https://github.com/MR-VL/Calender/blob/bed371c27ec4dbb9c7d12df41d1fd490d4c0f164/
 
 # TroubleShooting
 #### See the troubleshooting readme..
-https://github.com/MR-VL/Calender/blob/21bb69519b1e63745a0dd26bda0921077a299696/Troubleshooting.md<br>
+https://github.com/MR-VL/Consolidev/blob/21bb69519b1e63745a0dd26bda0921077a299696/Troubleshooting.md<br>
 If you run into any issues and you find a successful fix to the problem please list it on there and what to do to resolve the issue. 
 So if any of us run into the same issue we can save time instead of having to research it ourselves. 
 ### Seriously if you find and issue and solution to it PUT IT IN THERE
