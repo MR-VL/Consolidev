@@ -1,5 +1,5 @@
 <?php
-include 'init.php';
+require_once 'init.php';
 session_start();
 if(!isset($_SESSION['username'])) {
     header('Location: login.php');
