@@ -12,11 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $type = $_POST["ans"];
 
         if ($type == "encode") {
-            $filtered = base64_encode($input);
-            $display = "<div style='color: #00008B'><h2>Encoded Base 64:</h2><br> <h2>$filtered</h2></div>";
+            $opposite = base64_encode($input);
+            $display = "<div style='color: #00008B'><h2>Encoded Base 64:</h2><br> <h2>$opposite</h2></div>";
         } else {
-            $filtered = base64_decode($input);
-            $display = "<div style='color: #00008B'><h2>Decoded Base 64:</h2><br> <h2>$filtered</h2><br>";
+            $opposite = base64_decode($input);
+            $display = "<div style='color: #00008B'><h2>Decoded Base 64:</h2><br> <h2>$opposite</h2><br>";
         }
 
 
@@ -24,12 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         global $connect;
 
         $sql = "INSERT INTO base64 (username, type, original, opposite)
-                VALUES(:username, :type, :input, :filtered)";
+                VALUES(:username, :type, :input, :opposite)";
 
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":type", $type);
-        $stmt->bindParam(":filtered", $filtered);
+        $stmt->bindParam(":opposite", $opposite);
         $stmt->bindParam(":input", $input);
 
 

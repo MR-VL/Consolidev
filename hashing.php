@@ -11,6 +11,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($input)) {
         $type = $_POST["ans"];
+        if ($type == "md2"){
+           $opposite =  hash("md2", $input);
+        }
+        else if ($type == "md4"){
+            $opposite =  hash("md4", $input);
+        }
+        else if ($type == "md5"){
+            $opposite =  hash("md5", $input);
+        }
+        else if ($type == "sha1"){
+            $opposite =  hash("sha1", $input);
+        }
+        else if ($type == "sha256"){
+            $opposite =  hash("sha256", $input);
+        }
+        else if ($type == "sha512"){
+            $opposite =  hash("sha512", $input);
+        }
+        else if ($type == "ripemd128"){
+            $opposite =  hash("ripemd128", $input);
+        }
+        else if ($type == "ripemd256"){
+            $opposite =  hash("ripemd256", $input);
+        }
+        else if ($type == "whirlpool"){
+            $opposite =  hash("whirlpool", $input);
+        }
+        else if ($type == "snefru"){
+            $opposite =  hash("snefru", $input);
+        }
+        else if ($type == "crc32"){
+            $opposite =  hash("crc32", $input);
+        }
+        else{
+            $opposite =  hash("adler32", $input);
+        }
+
 
 
 //PUT LOGIC HERE FOR HASHING
@@ -18,13 +55,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         global $connect;
         $sql = "INSERT INTO hashing (username, algo, original, opposite)
-        VALUES(:username, :algo, :input, :filtered)";
+        VALUES(:username, :algo, :input, :opposite)";
 
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':algo', $type);
         $stmt->bindParam(':input', $input);
-        $stmt->bindParam(':filtered', $filtered);
+        $stmt->bindParam(':opposite', $opposite);
 
         $stmt->execute();
     } else {
