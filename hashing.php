@@ -5,7 +5,32 @@ if(!isset($_SESSION['username'])){
     header('Location: login.php');
 }
 
+$username = $_SESSION['username'];
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $input = filter_input(INPUT_POST, "hash", FILTER_SANITIZE_SPECIAL_CHARS);
 
+    if (!empty($input)) {
+        $type = $_POST["ans"];
+
+
+//PUT LOGIC HERE FOR HASHING
+
+
+        global $connect;
+        $sql = "INSERT INTO hashing (username, algo, original, opposite)
+        VALUES(:username, :algo, :input, :filtered)";
+
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':algo', $type);
+        $stmt->bindParam(':input', $input);
+        $stmt->bindParam(':filtered', $filtered);
+
+        $stmt->execute();
+    } else {
+        $display = "<div style='color: #00008B'><h2>Fatal Error.. Please retry</h2></div>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
