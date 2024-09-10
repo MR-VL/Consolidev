@@ -31,11 +31,15 @@ try{
 
 </head>
 <body>
-<div class="form" style="word-wrap: break-word">
+<div class="form" style="word-wrap: break-word; margin-top:50vh;">
 
-    <a href="hashing.php">
-        <button class="btn">Go back</button><br>
-    </a>
+    <div style="display: inline-flex; width: 100%">
+        <h2 style="max-width: 40%">Your Queries</h2>
+        <a href="hashing.php">
+            <button class="btn">Go back</button><br>
+        </a>
+    </div>
+
     <table border="1" style="width: 100%; text-align: center; border-collapse: collapse;">
         <tr>
             <th style="padding: 10px;">Type</th>
@@ -44,7 +48,7 @@ try{
         </tr>
         <?php
         foreach ($userHistory as $row){
-            echo "<tr><td style='padding: 10px;'>{$row['type']}</td><td style='padding: 10px;'>{$row['original']}</td><td style='padding: 10px;'>{$row['opposite']}</td></tr>";
+            echo "<tr><td style='padding: 10px;'>{$row['algo']}</td><td style='padding: 10px;'>{$row['original']}</td><td style='padding: 10px;max-width: 20vw; word-wrap: break-word'>{$row['opposite']}</td></tr>";
         }
         ?>
     </table>
