@@ -13,12 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($type == "encode") {
             $opposite = base64_encode($input);
-            $display = "<div style='color: #00008B'><h2>Encoded Base 64:</h2><br> <h2>$opposite</h2></div>";
         } else {
             $opposite = base64_decode($input);
-            $display = "<div style='color: #00008B'><h2>Decoded Base 64:</h2><br> <h2>$opposite</h2><br>";
-        }
 
+        }
+        $display = "<div style='color: #00008B'><h2>Decoded Base 64:</h2><br> <h2>$opposite</h2><br>";
 
 
         global $connect;

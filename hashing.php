@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $opposite =  hash("adler32", $input);
         }
 
-
+        $display = "<div style='color: #00008B'><h2>Hash:</h2><br> <h2>$opposite</h2></div>";
 
 //PUT LOGIC HERE FOR HASHING
 
@@ -170,7 +170,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="form" style="word-wrap: break-word">
 
         <a href="hashingHistory.php">
-            <button class="btn">View History</button>
+            <button class="btn" style="width:auto">View History</button>
         </a>
         <?php
         if(!empty($display)){
