@@ -35,6 +35,7 @@ https://github.com/MR-VL/Consolidev/blob/bed371c27ec4dbb9c7d12df41d1fd490d4c0f16
 ## Write code and make sure it works before submitting PR
 
 # Please keep an eye on the Issues tab on GitHub!!!
+![img7.png](pics/issues.png)
 ### if you have issue you are more than welcome to open an issue, and assign someone to it or not.... <br> But please do try and use the issues tab it makes it easier to manage everything going on..
 ### If I missed something while typing this you can add it yourself by doing a pull request or just create an issue and tell me what you want and ill do it!
 
@@ -48,15 +49,6 @@ So if any of us run into the same issue we can save time instead of having to re
 ### Seriously if you find and issue and solution to it PUT IT IN THERE
 
 
-# RESPONSIBILITIES 
-
-## "We ArE GiRlS, OfC It HaS tO lOoK pReTtY"
-```markdown
-Well congratulations the 2 of yall are in charge of CSS for the whole project !!!
-```
-### But seriously you all really are in charge of styling, I really don't give a shit if this site ends up being neon pink or the color of milfy's coochie.
-#### I will create an issue describing which page and the rest is up to you all.
-![img2.png](pics/img2.png)
 
 
 
