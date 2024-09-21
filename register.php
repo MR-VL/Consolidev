@@ -31,12 +31,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt -> bindParam(':Lname', $Lname);
         $stmt -> bindParam(':username', $username);
         $stmt -> bindParam(':password', $passwordHash);
-        if($stmt ->execute()) {
-            echo "<h1>Thank you for registering!</h1>";
-            ob_end_flush();
-        }else{
-            echo "<h1>Registration failed. Please try again later...</h1>";
-            ob_end_flush();
+
+        try {
+            if($stmt ->execute()) {
+                echo "<h1>Thank you for registering!</h1>";
+                ob_end_flush();
+            }else {
+                echo "<h1>Registration failed. Please try again later...</h1>";
+                ob_end_flush();
+            }
+        }catch (PDOException $e) {
+            if($e->getCode() == 23000) {
+                echo "<h1>Username Already Exists<br>Please try again.</h1>";
+            }else{
+                echo "<h1>{$e->getTraceAsString()}</h1>";
+            }
         }
     }
 }
@@ -49,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="form">
+<div class="form" style="margin-left: 5px">
     <form action="register.php" method="POST">
         <label>Maximum input size: 20 characters</label>
 
@@ -70,9 +79,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
 
-        <a href="login.php">
-            <button class="btn" >Login</button>
-        </a>
+    <a href="login.php">
+        <button class="btn" >Login</button>
+    </a>
 
 
 </div>
