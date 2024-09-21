@@ -4,7 +4,7 @@ require_once 'database.php';
 putenv("DB_HOST=localhost");
 putenv("DB_USER=root");
 putenv("DB_PASSWORD=");
-putenv("DB_NAME=groupproject");
+putenv("DB_NAME=consolidev");
 
 
 $database= new Database(

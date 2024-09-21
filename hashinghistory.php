@@ -48,7 +48,7 @@ try{
         </tr>
         <?php
         foreach ($userHistory as $row){
-            echo "<tr><td style='padding: 10px;'>{$row['algo']}</td><td style='padding: 10px;'>{$row['original']}</td><td style='padding: 10px;max-width: 20vw; word-wrap: break-word'>{$row['opposite']}</td></tr>";
+            echo "<tr><td style='padding: 10px;'>{$row['algorithm']}</td><td style='padding: 10px;'>{$row['original']}</td><td style='padding: 10px;max-width: 20vw; word-wrap: break-word'>{$row['opposite']}</td></tr>";
         }
         ?>
     </table>

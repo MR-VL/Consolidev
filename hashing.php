@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         global $connect;
-        $sql = "INSERT INTO hashing (username, algo, original, opposite)
+        $sql = "INSERT INTO hashing (username, algorithm, original, opposite)
         VALUES(:username, :algo, :input, :opposite)";
 
         $stmt = $connect->prepare($sql);
