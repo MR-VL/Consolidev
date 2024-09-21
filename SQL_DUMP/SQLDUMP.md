@@ -28,6 +28,8 @@ Once logged in Click on Import tab and upload the SQL file you want
 ##  Just submit your pull request as normal
 
 # Exporting steps:
+## Click on the main Database in the left corner of phpmyadmin
+# You should only have 1 sql file exported
 ### Both the export method and format should be left to QUICK and SQL
 
 Download the file
