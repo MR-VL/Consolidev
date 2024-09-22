@@ -28,8 +28,19 @@ if(!isset($_SESSION['username'])){
 <div class="container">
 
     <div class="form">
-        <form action="hashing.php" method="post">
+        <form action="jwtHistory.php" method="post">
+            <div style="display: inline-flex; margin-top: 3vh">
 
+                <input type="radio" id="encode" name="ans" value="encode" required>
+                <label for="encode">Encode</label>
+
+
+                <input type="radio" id="decode" name="ans" value="decode" style="margin-left: 5vw" required>
+                <label for="decode">Decode</label>
+            </div>
+            <label for="input"></label>
+            <input style="height: 20vh" type="text" id="input" name="input" placeholder="Type here" required><br><br>
+            <input type="submit" value="Submit">
 
 
         </form>
@@ -38,9 +49,11 @@ if(!isset($_SESSION['username'])){
 
     <div class="form" style="word-wrap: break-word">
 
-        <a href="hashingHistory.php">
+        <a href="jwtHistory.php">
             <button class="btn" style="width:auto">View History</button>
         </a>
+
+
         <?php
         if(!empty($display)){
             echo $display;
