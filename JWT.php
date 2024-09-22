@@ -1,9 +1,33 @@
 <?php
-require_once "init.php";
-session_start();
-if(!isset($_SESSION['username'])){
-    header('Location: login.php');
-}
+    require_once "init.php";
+    session_start();
+    if(!isset($_SESSION['username'])){
+        header('Location: login.php');
+    }
+
+    $username = $_SESSION['username'];
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $input = filter_input(INPUT_POST, "input", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if(!empty($input)){
+            $type = $_POST["ans"];
+            if($type == "encode"){
+
+            }
+            else{
+
+            }
+
+        }
+        $display = "<div style='color: #00008B'><h2>Output:</h2><br> <h2>$opposite</h2></div>";
+
+        global $connect;
+
+
+
+    }else{
+        $display = "<div style='color: #00008B><h2>Fatal Error.. Please rerty</h2></div>";
+    }
 
 
 ?>
