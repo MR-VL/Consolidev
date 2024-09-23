@@ -78,11 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
 
     <div class="form">
+jwtencode
         <form action="JWT.php" method="post">
             <h1 style="color: #00008B">Decode JWT tokens</h1>
             <label for="input"></label>
             <input style="height: 20vh" type="text" id="input" name="input" placeholder="Enter JWT token" required><br><br>
             <input type="submit" value="Decode">
+
         </form>
     </div>
 
