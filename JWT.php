@@ -28,7 +28,7 @@ if(!isset($_SESSION['username'])){
 <div class="container">
 
     <div class="form">
-        <form action="hashing.php" method="post">
+        <form action="jwtHistory.php" method="post">
 
 
 
