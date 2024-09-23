@@ -33,6 +33,7 @@
 <body>
 <div class="form" style="word-wrap: break-word">
 
+
     <a href="JWT.php">
         <button class="btn">Go back</button><br>
     </a>
@@ -43,7 +44,7 @@
         </tr>
         <?php
         foreach ($userHistory as $row){
-            echo "<tr><td style='padding: 10px;'>{$row['original']}</td><td style='padding: 10px;'>{$row['opposite']}</td></tr>";
+            echo "<tr><td style='padding: 10px;'>{$row['encoded']}</td><td style='padding: 10px;'>{$row['decoded']}</td></tr>";
         }
         ?>
     </table>
