@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 21, 2024 at 11:56 PM
+-- Generation Time: Sep 23, 2024 at 12:48 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -110,11 +110,25 @@ DROP TABLE IF EXISTS `jwt`;
 CREATE TABLE IF NOT EXISTS `jwt` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `original` text NOT NULL,
-  `encoded` text NOT NULL,
+  `encoded` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `decoded` json NOT NULL,
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `jwt`
+--
+
+INSERT INTO `jwt` (`TransactionID`, `username`, `encoded`, `decoded`) VALUES
+(11, 'test', 'eyJhbGciOiJIUzI1NiIsInppcCI6IkdaSVAifQ.eJxtjk0OgjAQhe8yaxALAsJVjIsCA1ahbToFNcS7OxAxMXE53_uZNwONFZQgm0FpCMCbG-rQPy0usK6RKFwZa7pqoRRpnCaZKLJDAIqIXZGRo7_E0WbrnBktC6dP6ZlbZRcq7dFp2UM5s0Vqv32xkuhuXMNR60yr-gUOZlJIjCZ0pIxmJHZ7vkdaWgb8bn4FgA-7DUvydZj0v0uvXnGgyOoqyQvRHrMU40T8rXsDw0VUkw.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"error\": \"Decoding Error: JSON decoding error: Syntax error\"}'),
+(12, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
+(13, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
+(14, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
+(15, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
+(16, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
+(17, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
+(18, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}');
 
 -- --------------------------------------------------------
 
