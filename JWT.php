@@ -1,37 +1,68 @@
 <?php
-    require_once "init.php";
-    session_start();
-    if(!isset($_SESSION['username'])){
-        header('Location: login.php');
-    }
+require_once "init.php";
+session_start();
+if(!isset($_SESSION['username'])){
+    header('Location: login.php');
+    exit();
+}
 
-    $username = $_SESSION['username'];
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $input = filter_input(INPUT_POST, "input", FILTER_SANITIZE_SPECIAL_CHARS);
+$username = $_SESSION['username'];
+$display = "";
 
-        if(!empty($input)){
-            $type = $_POST["ans"];
-            if($type == "encode"){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $input = filter_input(INPUT_POST, "input", FILTER_SANITIZE_SPECIAL_CHARS);
 
+    if(!empty($input)){
+        $type = $_POST["ans"];
+        if($type == "encode"){
+
+        } else {
+
+            try {
+                $parts = explode('.', $input);
+                if (count($parts) !== 3) {
+                    throw new Exception("Invalid JWT structure.");
+                }
+
+                $payload = $parts[1];
+                $payload = str_replace(['-', '_'], ['+', '/'], $payload);
+                $decoded = base64_decode($payload);
+
+                if ($decoded === false) {
+                    throw new Exception("Base64 decoding failed.");
+                }
+
+
+                $opposite = json_decode($decoded, false);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    throw new Exception("JSON decoding error: " . json_last_error_msg());
+                }
+
+
+                $opposite = json_encode($opposite);
+
+            } catch (Exception $e) {
+                $opposite = json_encode(["error" => "Decoding Error: " . $e->getMessage()]);
             }
-            else{
-
-            }
-
         }
-        $display = "<div style='color: #00008B'><h2>Output:</h2><br> <h2>$opposite</h2></div>";
+
+        $display = "<div style='color: #00008B'><h2>Opposite:</h2><br> <h2>" . nl2br(htmlspecialchars($opposite)) . "</h2></div>";
+
 
         global $connect;
+        $sql = "INSERT INTO jwt (username, original, opposite) 
+                VALUES (:username, :input, :opposite)";
 
-
-
-    }else{
-        $display = "<div style='color: #00008B><h2>Fatal Error.. Please rerty</h2></div>";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':input', $input);
+        $stmt->bindParam(':opposite', $opposite);
+        $stmt->execute();
+    } else {
+        $display = "<div style='color: #00008B'><h2>Fatal Error.. Please retry</h2></div>";
     }
-
-
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,12 +83,10 @@
 <div class="container">
 
     <div class="form">
-        <form action="jwtHistory.php" method="post">
+        <form action="JWT.php" method="post">
             <div style="display: inline-flex; margin-top: 3vh">
-
                 <input type="radio" id="encode" name="ans" value="encode" required>
                 <label for="encode">Encode</label>
-
 
                 <input type="radio" id="decode" name="ans" value="decode" style="margin-left: 5vw" required>
                 <label for="decode">Decode</label>
@@ -65,18 +94,13 @@
             <label for="input"></label>
             <input style="height: 20vh" type="text" id="input" name="input" placeholder="Type here" required><br><br>
             <input type="submit" value="Submit">
-
-
         </form>
     </div>
 
-
     <div class="form" style="word-wrap: break-word">
-
         <a href="jwtHistory.php">
             <button class="btn" style="width:auto">View History</button>
         </a>
-
 
         <?php
         if(!empty($display)){
@@ -86,3 +110,4 @@
     </div>
 </div>
 </body>
+</html>
