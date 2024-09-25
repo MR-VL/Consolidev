@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 25, 2024 at 11:27 PM
+-- Generation Time: Sep 25, 2024 at 11:48 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -56,6 +56,21 @@ INSERT INTO `base64` (`TransactionID`, `username`, `type`, `original`, `opposite
 
 DROP TABLE IF EXISTS `duplicatefinder`;
 CREATE TABLE IF NOT EXISTS `duplicatefinder` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `Username` (`Username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `duplicateremover`
+--
+
+DROP TABLE IF EXISTS `duplicateremover`;
+CREATE TABLE IF NOT EXISTS `duplicateremover` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
   `Date` date NOT NULL,
@@ -144,6 +159,21 @@ INSERT INTO `jwt` (`TransactionID`, `username`, `encoded`, `decoded`) VALUES
 (16, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
 (17, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
 (18, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timestampconverter`
+--
+
+DROP TABLE IF EXISTS `timestampconverter`;
+CREATE TABLE IF NOT EXISTS `timestampconverter` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `Username` (`Username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
