@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 25, 2024 at 11:27 PM
+-- Generation Time: Sep 25, 2024 at 11:30 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -51,14 +51,30 @@ INSERT INTO `base64` (`TransactionID`, `username`, `type`, `original`, `opposite
 -- --------------------------------------------------------
 
 --
--- Table structure for table `duplicatefinder`
+-- Table structure for table `caseconverter`
 --
 
-DROP TABLE IF EXISTS `duplicatefinder`;
-CREATE TABLE IF NOT EXISTS `duplicatefinder` (
+DROP TABLE IF EXISTS `caseconverter`;
+CREATE TABLE IF NOT EXISTS `caseconverter` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
   `Date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `Username` (`Username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `differencechecker`
+--
+
+DROP TABLE IF EXISTS `differencechecker`;
+CREATE TABLE IF NOT EXISTS `differencechecker` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Date` date NOT NULL,
+  `DifferencesFound` int DEFAULT NULL,
   PRIMARY KEY (`TransactionID`),
   KEY `Username` (`Username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -144,6 +160,21 @@ INSERT INTO `jwt` (`TransactionID`, `username`, `encoded`, `decoded`) VALUES
 (16, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
 (17, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}'),
 (18, 'test', 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInRva2VuLXR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJuYmYiOjE1MjUzNjE5NjQsImlzcyI6Ii9vYXV0aDIvdG9rZW4iLCJncm91cHMiOlsiYWRtaW4iXSwidGFnLWludGVybmFsIjp7ImdyYW50LXR5cGUiOiJwYXNzd29yZCIsInByb2ZpbGUiOiJtb3ZpZXMiLCJ2ZXJzaW9uIjoiMS4wIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJleHAiOjE1MjUzNjM3NjQsImlhdCI6MTUyNTM2MTk2NCwianRpIjoiOTZjYjM3OTFmODY1ZTIzMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.zOEUjH6Q3PtYI16WgpF7xM1jlHDM8gbD9mRNgYxOKgI', '{\"exp\": 1525363764, \"iat\": 1525361964, \"iss\": \"/oauth2/token\", \"jti\": \"96cb3791f865e231\", \"nbf\": 1525361964, \"sub\": \"admin\", \"groups\": [\"admin\"], \"username\": \"admin\", \"token-type\": \"access-token\", \"tag-internal\": {\"profile\": \"movies\", \"version\": \"1.0\", \"username\": \"admin\", \"grant-type\": \"password\"}}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paragraphtoone`
+--
+
+DROP TABLE IF EXISTS `paragraphtoone`;
+CREATE TABLE IF NOT EXISTS `paragraphtoone` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `Username` (`Username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
