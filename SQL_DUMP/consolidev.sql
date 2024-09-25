@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 23, 2024 at 12:48 AM
+-- Generation Time: Sep 25, 2024 at 11:27 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -47,6 +47,21 @@ INSERT INTO `base64` (`TransactionID`, `username`, `type`, `original`, `opposite
 (2, 'test', 'decode', 'aGVsbG8=', 'hello'),
 (3, 'test', 'encode', 'testing', 'dGVzdGluZw=='),
 (4, 'test', 'decode', 'dGVzdGluZyBoZWxsb29vbz8/', 'testing helloooo??');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `duplicatefinder`
+--
+
+DROP TABLE IF EXISTS `duplicatefinder`;
+CREATE TABLE IF NOT EXISTS `duplicatefinder` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `Username` (`Username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
