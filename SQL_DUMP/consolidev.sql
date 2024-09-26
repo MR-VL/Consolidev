@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
+
 -- Generation Time: Sep 25, 2024 at 11:48 PM
+
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -51,11 +53,11 @@ INSERT INTO `base64` (`TransactionID`, `username`, `type`, `original`, `opposite
 -- --------------------------------------------------------
 
 --
--- Table structure for table `duplicatefinder`
+-- Table structure for table `caseconverter`
 --
 
-DROP TABLE IF EXISTS `duplicatefinder`;
-CREATE TABLE IF NOT EXISTS `duplicatefinder` (
+DROP TABLE IF EXISTS `caseconverter`;
+CREATE TABLE IF NOT EXISTS `caseconverter` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
   `Date` date NOT NULL,
@@ -66,6 +68,17 @@ CREATE TABLE IF NOT EXISTS `duplicatefinder` (
 -- --------------------------------------------------------
 
 --
+
+-- Table structure for table `differencechecker`
+--
+
+DROP TABLE IF EXISTS `differencechecker`;
+CREATE TABLE IF NOT EXISTS `differencechecker` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Date` date NOT NULL,
+  `DifferencesFound` int DEFAULT NULL,
+
 -- Table structure for table `duplicateremover`
 --
 
@@ -74,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `duplicateremover` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
   `Date` date NOT NULL,
+
   PRIMARY KEY (`TransactionID`),
   KEY `Username` (`Username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -163,11 +177,19 @@ INSERT INTO `jwt` (`TransactionID`, `username`, `encoded`, `decoded`) VALUES
 -- --------------------------------------------------------
 
 --
+
+-- Table structure for table `paragraphtoone`
+--
+
+DROP TABLE IF EXISTS `paragraphtoone`;
+CREATE TABLE IF NOT EXISTS `paragraphtoone` (
+
 -- Table structure for table `timestampconverter`
 --
 
 DROP TABLE IF EXISTS `timestampconverter`;
 CREATE TABLE IF NOT EXISTS `timestampconverter` (
+
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
   `Date` date NOT NULL,
