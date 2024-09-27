@@ -104,7 +104,9 @@ CREATE TABLE IF NOT EXISTS `differencechecker` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `date` date NOT NULL,
-  `differencesFound` int DEFAULT NULL
+  `differencesFound` int DEFAULT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `username` (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
