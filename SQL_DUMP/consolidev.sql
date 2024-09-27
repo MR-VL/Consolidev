@@ -208,12 +208,17 @@ INSERT INTO `jwt` (`TransactionID`, `username`, `encoded`, `decoded`) VALUES
 -- --------------------------------------------------------
 
 --
-
 -- Table structure for table `paragraphtoone`
 --
-
 DROP TABLE IF EXISTS `paragraphtoone`;
 CREATE TABLE IF NOT EXISTS `paragraphtoone` (
+    `TransactionID` int NOT NULL AUTO_INCREMENT,
+    `Username` varchar(20) NOT NULL,
+    `Date` date NOT NULL,
+    PRIMARY KEY (`TransactionID`),
+    KEY `Username` (`Username`)
+    ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- --------------------------------------------------------
 
 -- Table structure for table `timestampconverter`
 --
