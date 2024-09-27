@@ -3,9 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
-
--- Generation Time: Sep 25, 2024 at 11:48 PM
-
+-- Generation Time: Sep 27, 2024 at 05:05 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -22,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `consolidev`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `api_requests`
+--
+
+DROP TABLE IF EXISTS `api_requests`;
+CREATE TABLE IF NOT EXISTS `api_requests` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `method` enum('GET','POST','PUT','DELETE') NOT NULL,
+  `data` text,
+  PRIMARY KEY (`TransactionID`),
+  KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `api_requests`
+--
+
+INSERT INTO `api_requests` (`TransactionID`, `username`, `url`, `method`, `data`) VALUES
+(1, '', 'https://catfact.ninja/fact', 'GET', ''),
+(2, '', 'https://pixe.la/v1/users', 'POST', '{\"token\":\"thisissecret\", \"username\":\"a-know\", \"agreeTermsOfService\":\"yes\", \"notMinor\":\"yes\", \"thanksCode\":\"ThisIsThanksCode\"}'),
+(3, '', 'https://pixe.la/v1/users', 'POST', '{\"token\":\"thisissecret\", \"username\":\"a-know\", \"agreeTermsOfService\":\"yes\", \"notMinor\":\"yes\", \"thanksCode\":\"ThisIsThanksCode\"}'),
+(4, '', 'https://pixe.la/v1/users', 'POST', '{\"token\":\"thisissecret\", \"username\":\"a-know\", \"agreeTermsOfService\":\"yes\", \"notMinor\":\"yes\", \"thanksCode\":\"ThisIsThanksCode\"}');
 
 -- --------------------------------------------------------
 
@@ -48,7 +73,9 @@ INSERT INTO `base64` (`TransactionID`, `username`, `type`, `original`, `opposite
 (1, 'test', 'encode', 'abcd', 'YWJjZA=='),
 (2, 'test', 'decode', 'aGVsbG8=', 'hello'),
 (3, 'test', 'encode', 'testing', 'dGVzdGluZw=='),
-(4, 'test', 'decode', 'dGVzdGluZyBoZWxsb29vbz8/', 'testing helloooo??');
+(4, 'test', 'decode', 'dGVzdGluZyBoZWxsb29vbz8/', 'testing helloooo??'),
+(5, 'farguswee', 'encode', 'oh my god', 'b2ggbXkgZ29k'),
+(6, 'farguswee', 'encode', 'YOO WHAT THE HECK!', 'WU9PIFdIQVQgVEhFIEhFQ0sh');
 
 -- --------------------------------------------------------
 
@@ -88,7 +115,6 @@ CREATE TABLE IF NOT EXISTS `duplicateremover` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `date` date NOT NULL,
-
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -190,7 +216,6 @@ CREATE TABLE IF NOT EXISTS `paragraphtoone` (
 
 DROP TABLE IF EXISTS `timestampconverter`;
 CREATE TABLE IF NOT EXISTS `timestampconverter` (
-
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
   `Date` date NOT NULL,
@@ -218,6 +243,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`username`, `Fname`, `Lname`, `password`) VALUES
+('farguswee', 'fargus', 'weehaw', '$2y$10$Od7f3qffHSSNa8vKfmMKjOFmg8FltjMXeIUSDHLR3ZfcLluj.su1C'),
 ('test', 'Test', 'Test', '$2y$10$l.LJQnOcdpdH50X2hTYUu.c2QjMKqmZbZw461VYr6sHw0/RLLNQGC');
 
 --
