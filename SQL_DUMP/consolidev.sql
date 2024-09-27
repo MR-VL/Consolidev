@@ -59,10 +59,10 @@ INSERT INTO `base64` (`TransactionID`, `username`, `type`, `original`, `opposite
 DROP TABLE IF EXISTS `caseconverter`;
 CREATE TABLE IF NOT EXISTS `caseconverter` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL,
-  `Date` date NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`TransactionID`),
-  KEY `Username` (`Username`)
+  KEY `username` (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -72,12 +72,13 @@ CREATE TABLE IF NOT EXISTS `caseconverter` (
 -- Table structure for table `differencechecker`
 --
 
-DROP TABLE IF EXISTS `differencechecker`;
-CREATE TABLE IF NOT EXISTS `differencechecker` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL,
-  `Date` date NOT NULL,
-  `DifferencesFound` int DEFAULT NULL,
+-- DROP TABLE IF EXISTS `differencechecker`;
+-- CREATE TABLE IF NOT EXISTS `differencechecker` (
+--   `TransactionID` int NOT NULL AUTO_INCREMENT,
+--   `username` varchar(20) NOT NULL,
+--   `date` date NOT NULL,
+--   `differencesFound` int DEFAULT NULL
+-- ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Table structure for table `duplicateremover`
 --
@@ -85,11 +86,11 @@ CREATE TABLE IF NOT EXISTS `differencechecker` (
 DROP TABLE IF EXISTS `duplicateremover`;
 CREATE TABLE IF NOT EXISTS `duplicateremover` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL,
-  `Date` date NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `date` date NOT NULL,
 
   PRIMARY KEY (`TransactionID`),
-  KEY `Username` (`Username`)
+  KEY `username` (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
