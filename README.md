@@ -1,3 +1,6 @@
+#### Please see Base64.php and Base64History.php for comments explaining the code
+Warning, You should not be having to mess with Database.php or init.php you simple just include the init.php and it should take care of the rest of the database connection by itself.
+
 # Installation
 ### Remember to keep your fork synced with mines and create pull requests with stuff you added.. This repo is the head repo and this ensures we are not working on the same thing twice or more
 Fork this repository to your own GitHub and set visibility to private!!
