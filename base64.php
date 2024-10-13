@@ -69,8 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //SQL code for insertion CHANG TO YOUR CODE,
         //The INSERT INTO STUFF is the DATABASE variables
         // the VALUES are declared below using stmt!
-        $sql = "INSERT INTO base64 (username, type, original, opposite)
-                VALUES(:username, :type, :input, :opposite)";
+        $sql = "INSERT INTO base64 (username, type, original, opposite, date)
+                VALUES(:username, :type, :input, :opposite, CURRENT_TIMESTAMP)";
 
 
         //Just copy this line as is, prepares sql
