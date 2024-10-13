@@ -44,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert into database
         global $connect;
-        $sql = "INSERT INTO jwt (username, encoded, decoded) VALUES (:username, :input, :opposite)";
+        $sql = "INSERT INTO jwt (username, encoded, decoded, date) 
+        VALUES (:username, :input, :opposite, CURRENT_TIMESTAMP)";
 
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':username', $username);

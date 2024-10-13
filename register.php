@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         global $connect;
         $sql = "INSERT INTO user (Fname, Lname, username, password, DateJoined)
-                VALUES(:Fname, :Lname, :username, :password, CURRENT_DATE)";
+                VALUES(:Fname, :Lname, :username, :password, CURRENT_TIMESTAMP)";
 
         $stmt = $connect->prepare($sql);
 
