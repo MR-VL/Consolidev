@@ -21,9 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!empty($Fname) && !empty($Lname) && !empty($username) && !empty($password) && $valid) {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
+
         global $connect;
-        $sql = "INSERT INTO user (Fname, Lname, username, password)
-                VALUES(:Fname, :Lname, :username, :password)";
+        $sql = "INSERT INTO user (Fname, Lname, username, password, DateJoined)
+                VALUES(:Fname, :Lname, :username, :password, CURRENT_DATE)";
 
         $stmt = $connect->prepare($sql);
 
