@@ -3,9 +3,42 @@ require_once "init.php";
 session_start();
 if(!isset($_SESSION['username'])){
     header('Location: login.php');
+    exit();
 }
 
+$username = $_SESSION['username'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $input = filter_input(INPUT_POST, "input", FILTER_SANITIZE_STRING);
+    $output = "";
+    $valid = false;
+    $errorCount = 0;
+    $errors = array();
+    if(!empty($input)){
 
+        try {
+            //put validation parts here
+            $input;
+        }
+        catch(Exception $e) {
+            $output = $e->getMessage();
+        }
+    }
+
+    global $connect;
+    $sql = "INSERT INTO json(username, input, errorCount, errors, date)
+    VALUES (:username, :input, :errorCount, :errors, :CURRENT_TIMESTAMP)";
+
+    $stmt = $connect->prepare($sql);
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':input', $input);
+    $stmt->bindParam(':opposite', $opposite);
+    $stmt->bindParam(':errorCount', $errorCount);
+    $stmt->bindParam(':errors', $errors);
+    $stmt->execute();
+
+} else {
+    $display = "<div style='color: #00008B'><h2>Fatal Error.. Please retry</h2></div>";
+}
 ?>
 
 
