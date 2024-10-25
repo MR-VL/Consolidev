@@ -5,7 +5,7 @@ require_once 'init.php';
 session_start();
 
 if(!isset($_SESSION['username'])) {
-	header('Location: loginn.php');
+	header('Location: login.php');
 	exit();
 }
 	
