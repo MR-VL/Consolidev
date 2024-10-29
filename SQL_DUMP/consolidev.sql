@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 27, 2024 at 05:22 PM
+-- Generation Time: Oct 29, 2024 at 05:08 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -91,11 +91,11 @@ CREATE TABLE IF NOT EXISTS `differencechecker` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `duplicateremover`
+-- Table structure for table `duplicatefinder`
 --
 
-DROP TABLE IF EXISTS `duplicateremover`;
-CREATE TABLE IF NOT EXISTS `duplicateremover` (
+DROP TABLE IF EXISTS `duplicatefinder`;
+CREATE TABLE IF NOT EXISTS `duplicatefinder` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `date` date NOT NULL,
@@ -138,6 +138,21 @@ CREATE TABLE IF NOT EXISTS `json` (
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jsontocsv`
+--
+
+DROP TABLE IF EXISTS `jsontocsv`;
+CREATE TABLE IF NOT EXISTS `jsontocsv` (
+                                           `TransactionID` int NOT NULL AUTO_INCREMENT,
+                                           `username` varchar(20) NOT NULL,
+    `date` date NOT NULL,
+    PRIMARY KEY (`TransactionID`),
+    KEY `username` (`username`)
+    ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
