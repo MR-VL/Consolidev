@@ -53,8 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 $stmt->execute();
-            }
-            catch(PDOException $e){
+            } catch (PDOException $e) {
                 $display = "Error: " . $e->getMessage();
             }
 

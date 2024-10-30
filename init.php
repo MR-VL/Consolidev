@@ -7,7 +7,7 @@ putenv("DB_PASSWORD=");
 putenv("DB_NAME=consolidev");
 
 
-$database= new Database(
+$database = new Database(
     getenv('DB_HOST'),
     getenv('DB_NAME'),
     getenv('DB_USER'),
@@ -18,8 +18,7 @@ try {
     global $connect;
     $connect = $database->getConnection();
 
-}
-catch (PDOException $e) {
+} catch (PDOException $e) {
     echo "<h1>FATAL ERROR: Unable to connect to database</h1>";
     die("Database connection failed.");
 }

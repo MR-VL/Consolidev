@@ -1,58 +1,47 @@
 <?php
 require_once 'init.php';
 session_start();
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
     header('Location: login.php');
 }
 
 $username = $_SESSION['username'];
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input = filter_input(INPUT_POST, "hash", FILTER_SANITIZE_SPECIAL_CHARS);
 
     if (!empty($input)) {
         $type = $_POST["ans"];
-        if ($type == "md2"){
-           $opposite =  hash("md2", $input);
-        }
-        else if ($type == "md4"){
-            $opposite =  hash("md4", $input);
-        }
-        else if ($type == "md5"){
-            $opposite =  hash("md5", $input);
-        }
-        else if ($type == "sha1"){
-            $opposite =  hash("sha1", $input);
-        }
-        else if ($type == "sha256"){
-            $opposite =  hash("sha256", $input);
-        }
-        else if ($type == "sha512"){
-            $opposite =  hash("sha512", $input);
-        }
-        else if ($type == "ripemd128"){
-            $opposite =  hash("ripemd128", $input);
-        }
-        else if ($type == "ripemd256"){
-            $opposite =  hash("ripemd256", $input);
-        }
-        else if ($type == "whirlpool"){
-            $opposite =  hash("whirlpool", $input);
-        }
-        else if ($type == "snefru"){
-            $opposite =  hash("snefru", $input);
-        }
-        else if ($type == "crc32"){
-            $opposite =  hash("crc32", $input);
-        }
-        else{
-            $opposite =  hash("adler32", $input);
+        if ($type == "md2") {
+            $opposite = hash("md2", $input);
+        } else if ($type == "md4") {
+            $opposite = hash("md4", $input);
+        } else if ($type == "md5") {
+            $opposite = hash("md5", $input);
+        } else if ($type == "sha1") {
+            $opposite = hash("sha1", $input);
+        } else if ($type == "sha256") {
+            $opposite = hash("sha256", $input);
+        } else if ($type == "sha512") {
+            $opposite = hash("sha512", $input);
+        } else if ($type == "ripemd128") {
+            $opposite = hash("ripemd128", $input);
+        } else if ($type == "ripemd256") {
+            $opposite = hash("ripemd256", $input);
+        } else if ($type == "whirlpool") {
+            $opposite = hash("whirlpool", $input);
+        } else if ($type == "snefru") {
+            $opposite = hash("snefru", $input);
+        } else if ($type == "crc32") {
+            $opposite = hash("crc32", $input);
+        } else {
+            $opposite = hash("adler32", $input);
         }
 
         $display = "<div style='color: #00008B'><h2>Hash:</h2><br> <h2>$opposite</h2></div>";
 
 //PUT LOGIC HERE FOR HASHING
 
-        try{
+        try {
             global $connect;
             $sql = "INSERT INTO hashing (username, algorithm, original, opposite, date)
             VALUES(:username, :algo, :input, :opposite, current_timestamp)";
@@ -64,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':opposite', $opposite);
 
             $stmt->execute();
-        }catch (exception $e) {
+        } catch (exception $e) {
             $display = "Error: " . $e->getMessage();
 
         }
@@ -79,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <title>Consolidev | Hashing</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="styles.css">
     <style>
         .container {
@@ -165,7 +154,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
 
-
             <input style="height: 20vh" type="text" id="hash" name="hash" placeholder="Type here" required><br><br>
             <input type="submit" value="Hash">
         </form>
@@ -178,7 +166,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <button class="btn" style="width:auto">View History</button>
         </a>
         <?php
-        if(!empty($display)){
+        if (!empty($display)) {
             echo $display;
         }
         ?>

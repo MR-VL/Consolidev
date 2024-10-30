@@ -28,7 +28,8 @@ namespace DiffMatchPatch;
  * @author Neil Fraser <fraser@google.com>
  * @author Daniil Skrobov <yetanotherape@gmail.com>
  */
-class Matcher {
+class Matcher
+{
 
     /**
      * @var float At what point is no match declared (0.0 = perfection, 1.0 = very loose).
@@ -107,18 +108,18 @@ class Matcher {
     }
 
 
-
     /**
      * Locate the best instance of 'pattern' in 'text' near 'loc'.
      *
-     * @param string $text    The text to search.
+     * @param string $text The text to search.
      * @param string $pattern The pattern to search for.
-     * @param int    $loc     The location to search around.
+     * @param int $loc The location to search around.
      *
-     * @throws \InvalidArgumentException If null inout.
      * @return int Best match index or -1.
+     * @throws \InvalidArgumentException If null inout.
      */
-    public function main($text, $pattern, $loc = 0){
+    public function main($text, $pattern, $loc = 0)
+    {
         // Check for null inputs.
         if (!isset($text, $pattern)) {
             throw new \InvalidArgumentException("Null inputs.");
@@ -136,7 +137,7 @@ class Matcher {
             return $loc;
         } else {
             // Do a fuzzy compare.
-            return  $this->bitap($text, $pattern, $loc);
+            return $this->bitap($text, $pattern, $loc);
         }
     }
 
@@ -144,12 +145,12 @@ class Matcher {
      * Locate the best instance of 'pattern' in 'text' near 'loc' using the
      * Bitap algorithm.
      *
-     * @param string $text    The text to search.
+     * @param string $text The text to search.
      * @param string $pattern The pattern to search for.
-     * @param int    $loc     The location to search around.
+     * @param int $loc The location to search around.
      *
-     * @throws \RangeException If pattern longer than number of bits in int.
      * @return int Best match index or -1.
+     * @throws \RangeException If pattern longer than number of bits in int.
      */
     public function bitap($text, $pattern, $loc)
     {
@@ -171,7 +172,7 @@ class Matcher {
         if ($bestLoc !== false) {
             $scoreThreshold = min($this->bitapScore(0, $bestLoc, $patternLen, $loc), $scoreThreshold);
             // What about in the other direction? (speedup)
-            $bestLoc = mb_strrpos($text,$pattern, $loc + $patternLen);
+            $bestLoc = mb_strrpos($text, $pattern, $loc + $patternLen);
             if ($bestLoc !== false) {
                 $scoreThreshold = min($this->bitapScore(0, $bestLoc, $patternLen, $loc), $scoreThreshold);
             }
@@ -251,10 +252,10 @@ class Matcher {
      * Compute and return the score for a match with e errors and x location.
      * Accesses loc and pattern through being a closure.
      *
-     * @param int    $errors            Number of errors in match.
-     * @param int    $matchLoc          Location of match.
-     * @param int    $patternLen        Length of pattern to search.
-     * @param int    $searchLoc         The location to search around.
+     * @param int $errors Number of errors in match.
+     * @param int $matchLoc Location of match.
+     * @param int $patternLen Length of pattern to search.
+     * @param int $searchLoc The location to search around.
      * TODO refactor param usage.
      *
      * @return float Overall score for match (0.0 = good, 1.0 = bad).
@@ -267,7 +268,7 @@ class Matcher {
             // Dodge divide by zero error.
             return $proximity ? 1.0 : $accuracy;
         }
-        return $accuracy + ($proximity/$this->getDistance());
+        return $accuracy + ($proximity / $this->getDistance());
     }
 
     /**

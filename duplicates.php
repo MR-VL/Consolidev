@@ -24,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $output = "";
 
     // Function to process input based on the delimiter type
-    function processInput($input, $delimiter) {
+    function processInput($input, $delimiter)
+    {
         if ($delimiter === ',') {
             return array_map('trim', explode(',', strtolower($input))); // Split by comma and trim spaces
         } else {
@@ -93,8 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(":username", $username);
         $stmt->execute();
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         $output = $e->getMessage();
     }
 
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title> ConsoliDev | Duplicates </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css"/>
     <style>
         /* Basic styling for the two columns */
         .container {
@@ -115,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: auto;
             gap: 20px;
         }
+
         .leftHalf, .rightHalf {
             width: 50%; /* Split the width equally */
         }
@@ -128,7 +129,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1 style="text-align:center;">Duplicate Finder</h1>
         <form action="duplicates.php" method="post">
             <label for="finderInput">Enter a string to find duplicates:</label><br>
-            <textarea id="finderInput" name="finderInput" rows="5" cols="50" required placeholder="Enter text or items separated by your chosen delimiter"></textarea><br /><br>
+            <textarea id="finderInput" name="finderInput" rows="5" cols="50" required
+                      placeholder="Enter text or items separated by your chosen delimiter"></textarea><br/><br>
 
             <label>Delimiter:</label>
             <input type="radio" name="delimiter" value="character" checked> Character
@@ -150,7 +152,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1 style="text-align:center;">Duplicate Remover</h1>
         <form action="duplicates.php" method="post">
             <label for="removerInput">Enter a string to remove duplicates:</label><br>
-            <textarea id="removerInput" name="removerInput" rows="5" cols="50" required placeholder="Enter text or items separated by your chosen delimiter"></textarea><br /><br>
+            <textarea id="removerInput" name="removerInput" rows="5" cols="50" required
+                      placeholder="Enter text or items separated by your chosen delimiter"></textarea><br/><br>
 
             <label>Delimiter:</label>
             <input type="radio" name="delimiter" value="character" checked> Character
