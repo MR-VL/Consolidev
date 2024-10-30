@@ -30,17 +30,17 @@ namespace DiffMatchPatch;
  * compatibility reason only.
  *
  * @property float Diff_Timeout          Number of seconds to map a diff before giving up (0 for infinity).
- * @property int   Diff_EditCost         Cost of an empty edit operation in terms of edit characters.
+ * @property int Diff_EditCost         Cost of an empty edit operation in terms of edit characters.
  * @property float Match_Threshold       At what point is no match declared (0.0 = perfection, 1.0 = very loose).
- * @property int   Match_Distance        How far to search for a match (0 = exact location, 1000+ = broad match).
+ * @property int Match_Distance        How far to search for a match (0 = exact location, 1000+ = broad match).
  *                                       A match this many characters away from the expected location will add
  *                                       1.0 to the score (0.0 is a perfect match).
- * @property int   Match_MaxBits         The number of bits in an int.
+ * @property int Match_MaxBits         The number of bits in an int.
  * @property float Patch_DeleteThreshold When deleting a large block of text (over ~64 characters), how close do
  *                                       the contents have to be to match the expected contents. (0.0 = perfection,
  *                                       1.0 = very loose).  Note that Match_Threshold controls how closely the
  *                                       end points of a delete need to match.
- * @property int   Patch_Margin          Chunk size for context length.
+ * @property int Patch_Margin          Chunk size for context length.
  *
  * @package DiffMatchPatch
  * @author Neil Fraser <fraser@google.com>
@@ -59,7 +59,7 @@ class DiffMatchPatch
      */
     const DIFF_DELETE = Diff::DELETE;
     const DIFF_INSERT = Diff::INSERT;
-    const DIFF_EQUAL  = Diff::EQUAL;
+    const DIFF_EQUAL = Diff::EQUAL;
 
     /**
      * @var Diff
@@ -79,12 +79,12 @@ class DiffMatchPatch
      *
      * @param string $name Property name.
      *
-     * @throws \UnexpectedValueException If property unknown.
      * @return float
+     * @throws \UnexpectedValueException If property unknown.
      */
     public function __get($name)
     {
-        switch ($name){
+        switch ($name) {
             case 'Diff_Timeout':
                 $result = $this->diff->getTimeout();
                 break;
@@ -116,15 +116,15 @@ class DiffMatchPatch
     /**
      * Proxy setting properties to real objects.
      *
-     * @param string $name  Property name.
-     * @param mixed  $value Property value.
+     * @param string $name Property name.
+     * @param mixed $value Property value.
      *
-     * @throws \UnexpectedValueException If property unknown.
      * @return float
+     * @throws \UnexpectedValueException If property unknown.
      */
     public function __set($name, $value)
     {
-        switch ($name){
+        switch ($name) {
             case 'Diff_Timeout':
                 $this->diff->setTimeout($value);
                 break;
@@ -162,14 +162,14 @@ class DiffMatchPatch
      * Find the differences between two texts.  Simplifies the problem by
      * stripping any common prefix or suffix off the texts before diffing.
      *
-     * @param string $text1      Old string to be diffed.
-     * @param string $text2      New string to be diffed.
-     * @param bool   $checklines Optional speedup flag.  If present and false, then don't run
+     * @param string $text1 Old string to be diffed.
+     * @param string $text2 New string to be diffed.
+     * @param bool $checklines Optional speedup flag.  If present and false, then don't run
      *                           a line-level diff first to identify the changed areas.
      *                           Defaults to true, which does a faster, slightly less optimal diff.
      *
-     * @throws \InvalidArgumentException If texts is null.
      * @return array Array of changes.
+     * @throws \InvalidArgumentException If texts is null.
      */
     public function diff_main($text1, $text2, $checklines = true)
     {
@@ -231,12 +231,12 @@ class DiffMatchPatch
     /**
      * Locate the best instance of 'pattern' in 'text' near 'loc'.
      *
-     * @param string $text    The text to search.
+     * @param string $text The text to search.
      * @param string $pattern The pattern to search for.
-     * @param int    $loc     The location to search around.
+     * @param int $loc The location to search around.
      *
-     * @throws \InvalidArgumentException If null inout.
      * @return int Best match index or -1.
+     * @throws \InvalidArgumentException If null inout.
      */
     public function match_main($text, $pattern, $loc = 0)
     {
@@ -257,13 +257,13 @@ class DiffMatchPatch
      * Method 4 (deprecated, use method 3):
      *     a = text1, b = text2, c = diffs
      *
-     * @param string|array      $a text1 (methods 1,3,4) or Array of diff arrays for text1 to text2 (method 2).
+     * @param string|array $a text1 (methods 1,3,4) or Array of diff arrays for text1 to text2 (method 2).
      * @param string|array|null $b text2 (methods 1,4) or Array of diff arrays for text1 to text2 (method 3)
      *                             or null (method 2).
-     * @param array|null        $c Array of diff arrays for text1 to text2 (method 4) or null (methods 1,2,3).
+     * @param array|null $c Array of diff arrays for text1 to text2 (method 4) or null (methods 1,2,3).
      *
-     * @throws \InvalidArgumentException If unknown call format.
      * @return PatchObject[] Array of PatchObjects.
+     * @throws \InvalidArgumentException If unknown call format.
      */
     public function patch_make($a, $b = null, $c = null)
     {
@@ -287,13 +287,13 @@ class DiffMatchPatch
      *
      * @param string $text Text representation of patches.
      *
-     * @throws \InvalidArgumentException If invalid input.
-     * @throws \UnexpectedValueException If text has bad syntax.
      * @return PatchObject[] Array of PatchObjects.
+     * @throws \UnexpectedValueException If text has bad syntax.
+     * @throws \InvalidArgumentException If invalid input.
      */
     public function patch_fromText($text)
     {
-       return $this->patch->fromText($text);
+        return $this->patch->fromText($text);
     }
 
     /**
@@ -301,7 +301,7 @@ class DiffMatchPatch
      * as a list of true/false values indicating which patches were applied.
      *
      * @param PatchObject[] $patches Array of PatchObjects.
-     * @param string        $text    Old text.
+     * @param string $text Old text.
      *
      * @return array Two element Array, containing the new text and an array of boolean values.
      */

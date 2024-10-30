@@ -116,17 +116,17 @@ class Patch
     }
 
 
-
     /**
      * Parse a textual representation of patches and return a list of patch objects.
      *
      * @param string $patchText Text representation of patches.
      *
-     * @throws \InvalidArgumentException If invalid input.
-     * @throws \UnexpectedValueException If text has bad syntax.
      * @return PatchObject[] Array of PatchObjects.
+     * @throws \UnexpectedValueException If text has bad syntax.
+     * @throws \InvalidArgumentException If invalid input.
      */
-    public function fromText($patchText){
+    public function fromText($patchText)
+    {
         $patches = array();
         if (!$patchText) {
             return $patches;
@@ -191,7 +191,7 @@ class Patch
                         break;
                     default:
                         // WTF?
-                        throw new \UnexpectedValueException("Invalid patch mode: " .  $sign . PHP_EOL . $text);
+                        throw new \UnexpectedValueException("Invalid patch mode: " . $sign . PHP_EOL . $text);
                 }
                 array_shift($lines);
             }
@@ -221,7 +221,7 @@ class Patch
      * Increase the context until it is unique, but don't let the pattern expand beyond Match->maxBits.
      *
      * @param PatchObject $patch The patch to grow.
-     * @param string      $text Source text.
+     * @param string $text Source text.
      */
     public function addContext(PatchObject $patch, $text)
     {
@@ -283,13 +283,13 @@ class Patch
      * Method 4 (deprecated, use method 3):
      *     a = text1, b = text2, c = diffs
      *
-     * @param string|array      $a text1 (methods 1,3,4) or Array of diff arrays for text1 to text2 (method 2).
+     * @param string|array $a text1 (methods 1,3,4) or Array of diff arrays for text1 to text2 (method 2).
      * @param string|array|null $b text2 (methods 1,4) or Array of diff arrays for text1 to text2 (method 3)
      *                             or null (method 2).
-     * @param array|null        $c Array of diff arrays for text1 to text2 (method 4) or null (methods 1,2,3).
+     * @param array|null $c Array of diff arrays for text1 to text2 (method 4) or null (methods 1,2,3).
      *
-     * @throws \InvalidArgumentException If unknown call format.
      * @return PatchObject[] Array of PatchObjects.
+     * @throws \InvalidArgumentException If unknown call format.
      */
     public function make($a, $b = null, $c = null)
     {
@@ -556,7 +556,7 @@ class Patch
             $patch->setStart2($patch->getStart2() - $paddingLength);
             $patch->setLength1($patch->getLength1() + $paddingLength);
             $patch->setLength2($patch->getLength2() + $paddingLength);
-        } elseif($paddingLength > mb_strlen($firstChange[1])) {
+        } elseif ($paddingLength > mb_strlen($firstChange[1])) {
             // Grow first equality.
             $extraLength = $paddingLength - mb_strlen($firstChange[1]);
             $firstChange[1] = mb_substr($nullPadding, mb_strlen($firstChange[1])) . $firstChange[1];
@@ -577,7 +577,7 @@ class Patch
             array_push($diffs, array(Diff::EQUAL, $nullPadding));
             $patch->setLength1($patch->getLength1() + $paddingLength);
             $patch->setLength2($patch->getLength2() + $paddingLength);
-        } elseif($paddingLength > mb_strlen($lastChange[1])) {
+        } elseif ($paddingLength > mb_strlen($lastChange[1])) {
             // Grow last equality.
             $extraLength = $paddingLength - mb_strlen($lastChange[1]);
             $lastChange[1] .= mb_substr($nullPadding, 0, $extraLength);
@@ -595,7 +595,7 @@ class Patch
      * as a list of true/false values indicating which patches were applied.
      *
      * @param PatchObject[] $patches Array of PatchObjects.
-     * @param string        $text    Old text.
+     * @param string $text Old text.
      *
      * @return array Two element Array, containing the new text and an array of boolean values.
      */
@@ -727,7 +727,7 @@ class Patch
      *
      * @return PatchObject[] Array of PatchObjects.
      */
-    protected  function deepCopy($patches)
+    protected function deepCopy($patches)
     {
         $patchesCopy = array();
         foreach ($patches as $patch) {

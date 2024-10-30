@@ -12,13 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $valid = true;
 
-    if(strlen($Fname) > 20 || strlen($Lname) > 20 || strlen($username) > 20 || strlen($password) > 20) {
+    if (strlen($Fname) > 20 || strlen($Lname) > 20 || strlen($username) > 20 || strlen($password) > 20) {
         $valid = false;
         echo '<script>alert("Error: Maximum size for field input is 20 characters")</script>';
     }
 
 
-    if(!empty($Fname) && !empty($Lname) && !empty($username) && !empty($password) && $valid) {
+    if (!empty($Fname) && !empty($Lname) && !empty($username) && !empty($password) && $valid) {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
 
@@ -28,23 +28,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = $connect->prepare($sql);
 
-        $stmt -> bindParam(':Fname', $Fname);
-        $stmt -> bindParam(':Lname', $Lname);
-        $stmt -> bindParam(':username', $username);
-        $stmt -> bindParam(':password', $passwordHash);
+        $stmt->bindParam(':Fname', $Fname);
+        $stmt->bindParam(':Lname', $Lname);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $passwordHash);
 
         try {
-            if($stmt ->execute()) {
+            if ($stmt->execute()) {
                 echo "<h1>Thank you for registering!</h1>";
                 ob_end_flush();
-            }else {
+            } else {
                 echo "<h1>Registration failed. Please try again later...</h1>";
                 ob_end_flush();
             }
-        }catch (PDOException $e) {
-            if($e->getCode() == 23000) {
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) {
                 echo "<h1>Username Already Exists<br>Please try again.</h1>";
-            }else{
+            } else {
                 echo "<h1>{$e->getTraceAsString()}</h1>";
             }
         }
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <title>Consolidev | Register</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -65,23 +65,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <label for="Fname">First name</label>
-        <input type ="text" id="Fname" name="Fname" placeholder="First Name" required><br><br>
+        <input type="text" id="Fname" name="Fname" placeholder="First Name" required><br><br>
 
         <label for="Lname">Last name</label>
-        <input type ="text" id="Lname" name="Lname" placeholder="Last Name" required><br><br>
+        <input type="text" id="Lname" name="Lname" placeholder="Last Name" required><br><br>
 
         <label for="username">Username</label>
-        <input type ="text" id="username" name="username" placeholder="Username" required><br><br>
+        <input type="text" id="username" name="username" placeholder="Username" required><br><br>
 
         <label for="password">Password</label>
-        <input type ="password" id="password" name="password" placeholder="Password" required><br><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
 
         <input type="submit" value="Register">
     </form>
 
 
     <a href="login.php">
-        <button class="btn" >Login</button>
+        <button class="btn">Login</button>
     </a>
 
 

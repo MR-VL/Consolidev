@@ -1,7 +1,7 @@
 <?php
 require_once "init.php";
 session_start();
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit();
 }
@@ -13,28 +13,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valid = false;
     $errorCount = 0;
     $errors = array();
-    if(!empty($input)){
+    if (!empty($input)) {
 
         try {
             //put validation parts here
             $input;
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             $output = $e->getMessage();
         }
     }
 
-    global $connect;
-    $sql = "INSERT INTO json(username, input, errorCount, errors, date)
+    try {
+        global $connect;
+        $sql = "INSERT INTO json(username, input, errorCount, errors, date)
     VALUES (:username, :input, :errorCount, :errors, :CURRENT_TIMESTAMP)";
 
-    $stmt = $connect->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':input', $input);
-    $stmt->bindParam(':opposite', $opposite);
-    $stmt->bindParam(':errorCount', $errorCount);
-    $stmt->bindParam(':errors', $errors);
-    $stmt->execute();
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':input', $input);
+        $stmt->bindParam(':opposite', $opposite);
+        $stmt->bindParam(':errorCount', $errorCount);
+        $stmt->bindParam(':errors', $errors);
+        $stmt->execute();
+
+    } catch (exception $e) {
+        $display = "Error: " . $e->getMessage();
+
+    }
 
 } else {
     $display = "<div style='color: #00008B'><h2>Fatal Error.. Please retry</h2></div>";
@@ -46,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <title>Consolidev | JSON</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="styles.css">
     <style>
         .container {
@@ -55,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             gap: 20px;
             max-width: 80vw;
         }
+
         textarea {
             width: 100%;
             height: 50vh;
@@ -76,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="form" style="word-wrap: break-word">
         <?php
-        if(!empty($display)){
+        if (!empty($display)) {
             echo $display;
         }
         ?>

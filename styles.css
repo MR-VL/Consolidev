@@ -1,5 +1,5 @@
 body {
-    margin:0;
+    margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -44,7 +44,7 @@ input[type="submit"] {
     padding: 1vh;
     border-radius: 0.5vh;
     border: none;
-    background-color:  #00008B;
+    background-color: #00008B;
     font-weight: bold;
     font-size: 1.2rem;
     text-align: center;
@@ -56,12 +56,13 @@ input[type="submit"]:hover {
     background-color: #ADD8E6;
 }
 
-.btn{
+.btn {
     background-color: lightblue;
     width: 20%;
     margin-top: 1vh;
 }
-.txtbox{
+
+.txtbox {
     width: 40vw;
     height: 40vh;
 }
