@@ -86,12 +86,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $output .= "<p>$result</p>";
     }
 
-    // Log the action in the database
-    global $connect;
-    $sql = "INSERT INTO duplicatefinder (username, date) VALUES(:username, CURRENT_TIMESTAMP)";
-    $stmt = $connect->prepare($sql);
-    $stmt->bindParam(":username", $username);
-    $stmt->execute();
+    try {
+        // Log the action in the database
+        global $connect;
+        $sql = "INSERT INTO duplicatefinder (username, date) VALUES(:username, CURRENT_TIMESTAMP)";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+    }
+    catch (PDOException $e) {
+        $output = $e->getMessage();
+    }
+
 }
 ?>
 

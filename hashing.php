@@ -52,18 +52,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //PUT LOGIC HERE FOR HASHING
 
+        try{
+            global $connect;
+            $sql = "INSERT INTO hashing (username, algorithm, original, opposite, date)
+            VALUES(:username, :algo, :input, :opposite, current_timestamp)";
 
-        global $connect;
-        $sql = "INSERT INTO hashing (username, algorithm, original, opposite, date)
-        VALUES(:username, :algo, :input, :opposite, current_timestamp)";
+            $stmt = $connect->prepare($sql);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':algo', $type);
+            $stmt->bindParam(':input', $input);
+            $stmt->bindParam(':opposite', $opposite);
 
-        $stmt = $connect->prepare($sql);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':algo', $type);
-        $stmt->bindParam(':input', $input);
-        $stmt->bindParam(':opposite', $opposite);
+            $stmt->execute();
+        }catch (exception $e) {
+            $display = "Error: " . $e->getMessage();
 
-        $stmt->execute();
+        }
+
     } else {
         $display = "<div style='color: #00008B'><h2>Fatal Error.. Please retry</h2></div>";
     }

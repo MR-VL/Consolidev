@@ -42,16 +42,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Display result
         $display = "<div style='color: #00008B'><h2>Opposite:</h2><br> <h2>" . nl2br(htmlspecialchars($opposite)) . "</h2></div>";
 
-        // Insert into database
-        global $connect;
-        $sql = "INSERT INTO jwt (username, encoded, decoded, date) 
+        try {
+            // Insert into database
+            global $connect;
+            $sql = "INSERT INTO jwt (username, encoded, decoded, date) 
         VALUES (:username, :input, :opposite, CURRENT_TIMESTAMP)";
 
-        $stmt = $connect->prepare($sql);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':input', $input);
-        $stmt->bindParam(':opposite', $opposite);
-        $stmt->execute();
+            $stmt = $connect->prepare($sql);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':input', $input);
+            $stmt->bindParam(':opposite', $opposite);
+            $stmt->execute();
+        } catch (exception $e) {
+            $display = "Error: " . $e->getMessage();
+
+        }
+
 
     } else {
         $display = "<div style='color: #00008B'><h2>Fatal Error.. Please retry</h2></div>";
@@ -64,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <title>Consolidev | JWT</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="styles.css">
     <style>
         .container {
@@ -82,7 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="JWT.php" method="post">
             <h1 style="color: #00008B">Decode JWT tokens</h1>
             <label for="input"></label>
-            <input style="height: 20vh" type="text" id="input" name="input" placeholder="Enter JWT token" required><br><br>
+            <input style="height: 20vh" type="text" id="input" name="input" placeholder="Enter JWT token"
+                   required><br><br>
             <input type="submit" value="Decode">
 
         </form>
@@ -94,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </a>
 
         <?php
-        if(!empty($display)){
+        if (!empty($display)) {
             echo $display;
         }
         ?>

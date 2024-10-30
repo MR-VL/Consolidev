@@ -41,17 +41,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
 
-            // Database interaction
-            global $connect;
+            try{
+                // Database interaction
+                global $connect;
 
-            $sql = "INSERT INTO caseconverter (username,date)
+                $sql = "INSERT INTO caseconverter (username,date)
                 VALUES(:username, CURRENT_TIMESTAMP)";
 
-            $stmt = $connect->prepare($sql);
-            $stmt->bindParam(":username", $username);
+                $stmt = $connect->prepare($sql);
+                $stmt->bindParam(":username", $username);
 
 
-            $stmt->execute();
+                $stmt->execute();
+            }
+            catch(PDOException $e){
+                $display = "Error: " . $e->getMessage();
+            }
+
         }else {
             $newStr = "Please select a case option.";
         }
