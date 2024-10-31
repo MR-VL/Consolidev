@@ -41,7 +41,7 @@ class Diff
      */
     const DELETE = -1;
     const INSERT = 1;
-    const EQUAL  = 0;
+    const EQUAL = 0;
 
     /**
      * Number of characters at which line mode speedup is employed.
@@ -153,7 +153,6 @@ class Diff
     }
 
 
-
     /**
      * @param \DiffMatchPatch\DiffToolkit $toolkit
      *
@@ -165,8 +164,6 @@ class Diff
 
         return $this;
     }
-
-
 
 
     /**
@@ -479,8 +476,8 @@ class Diff
                     $insertPointer = array_pop($equalities);
                     // Duplicate record.
                     array_splice($diffs, $insertPointer, 0, array(array(
-                       self::DELETE,
-                       $lastequality,
+                        self::DELETE,
+                        $lastequality,
                     )));
                     // Change second copy to insert.
                     $diffs[$insertPointer + 1][0] = self::INSERT;
@@ -574,7 +571,8 @@ class Diff
      *
      * @return $this
      */
-    public function cleanupEfficiency() {
+    public function cleanupEfficiency()
+    {
         $diffs = $this->getChanges();
 
         $changes = false;
@@ -760,7 +758,8 @@ class Diff
      *
      * @return string Delta text.
      */
-    public function toDelta() {
+    public function toDelta()
+    {
         $diffs = $this->getChanges();
 
         $text = array();
@@ -769,7 +768,7 @@ class Diff
             $data = $change[1];
 
             if ($op == self::INSERT) {
-                $text[] = '+'. Utils::escapeString($data);
+                $text[] = '+' . Utils::escapeString($data);
             } elseif ($op == self::DELETE) {
                 $text[] = '-' . mb_strlen($data);
             } else {
@@ -787,8 +786,8 @@ class Diff
      * @param string $text1 Source string for the diff.
      * @param string $delta Delta text.
      *
-     * @throws \InvalidArgumentException If invalid input. TODO create exception class
      * @return $this.
+     * @throws \InvalidArgumentException If invalid input. TODO create exception class
      */
     public function fromDelta($text1, $delta)
     {
@@ -819,7 +818,7 @@ class Diff
                     } elseif ($param < 0) {
                         throw new \InvalidArgumentException('Negative number in delta: ' . $param);
                     } else {
-                        $n = (int) $param;
+                        $n = (int)$param;
                     }
                     $text = mb_substr($text1, $pointer, $n);
                     $pointer += $n;
@@ -927,23 +926,23 @@ class Diff
      * Find the differences between two texts.  Simplifies the problem by
      * stripping any common prefix or suffix off the texts before diffing.
      *
-     * @param string $text1      Old string to be diffed.
-     * @param string $text2      New string to be diffed.
-     * @param bool   $checklines Optional speedup flag.  If present and false, then don't run
+     * @param string $text1 Old string to be diffed.
+     * @param string $text2 New string to be diffed.
+     * @param bool $checklines Optional speedup flag.  If present and false, then don't run
      *                           a line-level diff first to identify the changed areas.
      *                           Defaults to true, which does a faster, slightly less optimal diff.
-     * @param int    $deadline   Optional time when the diff should be complete by.  Used internally for recursive calls.
+     * @param int $deadline Optional time when the diff should be complete by.  Used internally for recursive calls.
      *                           Users should set $this->timeout instead.
      *
-     * @throws \InvalidArgumentException If texts is null. TODO create exception class
      * @return self
+     * @throws \InvalidArgumentException If texts is null. TODO create exception class
      */
     public function main($text1, $text2, $checklines = true, $deadline = null)
     {
         // Set a deadline by which time the diff must be complete.
         if (!isset($deadline)) {
             if ($this->getTimeout() <= 0) {
-                $deadline  = PHP_INT_MAX;
+                $deadline = PHP_INT_MAX;
             } else {
                 $deadline = microtime(1) + $this->getTimeout();
             }
@@ -1038,12 +1037,12 @@ class Diff
      * Find the differences between two texts.  Assumes that the texts do not
      * have any common prefix or suffix.
      *
-     * @param string $text1         Old string to be diffed.
-     * @param string $text2         New string to be diffed.
-     * @param bool   $checklines    Speedup flag.  If false, then don't run a line-level diff
+     * @param string $text1 Old string to be diffed.
+     * @param string $text2 New string to be diffed.
+     * @param bool $checklines Speedup flag.  If false, then don't run a line-level diff
      *                              first to identify the changed areas.
      *                              If true, then run a faster, slightly less optimal diff.
-     * @param int    $deadline      Time when the diff should be complete by.
+     * @param int $deadline Time when the diff should be complete by.
      *
      * @return array Array of changes.
      */
@@ -1122,8 +1121,8 @@ class Diff
         }
 
         if ($checklines
-          && mb_strlen($text1) > Diff::LINEMODE_THRESOLD
-          && mb_strlen($text2) > Diff::LINEMODE_THRESOLD) {
+            && mb_strlen($text1) > Diff::LINEMODE_THRESOLD
+            && mb_strlen($text2) > Diff::LINEMODE_THRESOLD) {
             return $this->lineMode($text1, $text2, $deadline);
         }
 
@@ -1134,9 +1133,9 @@ class Diff
      * Do a quick line-level diff on both strings, then rediff the parts for greater accuracy.
      * This speedup can produce non-minimal diffs.
      *
-     * @param string $text1    Old string to be diffed.
-     * @param string $text2    New string to be diffed.
-     * @param int    $deadline Time when the diff should be complete by.
+     * @param string $text1 Old string to be diffed.
+     * @param string $text2 New string to be diffed.
+     * @param int $deadline Time when the diff should be complete by.
      *
      * @return array Array of changes.
      */
@@ -1173,7 +1172,7 @@ class Diff
                     $textDelete .= $diffs[$pointer][1];
                     break;
                 case self::INSERT:
-                $countInsert++;
+                    $countInsert++;
                     $textInsert .= $diffs[$pointer][1];
                     break;
                 case self::EQUAL:
@@ -1205,9 +1204,9 @@ class Diff
      * and return the recursively constructed diff.
      * See Myers 1986 paper: An O(ND) Difference Algorithm and Its Variations.
      *
-     * @param string $text1    Old string to be diffed.
-     * @param string $text2    New string to be diffed.
-     * @param int    $deadline Time at which to bail if not yet complete.
+     * @param string $text1 Old string to be diffed.
+     * @param string $text2 New string to be diffed.
+     * @param int $deadline Time at which to bail if not yet complete.
      *
      * @return array Array of diff arrays.
      */
@@ -1311,19 +1310,19 @@ class Diff
         // Diff took too long and hit the deadline or
         // number of diffs equals number of characters, no commonality at all.
         return array(
-          array(self::DELETE, $text1),
-          array(self::INSERT, $text2),
+            array(self::DELETE, $text1),
+            array(self::INSERT, $text2),
         );
     }
 
     /**
      * Given the location of the 'middle snake', split the diff in two parts and recurse.
      *
-     * @param string $text1    Old string to be diffed.
-     * @param string $text2    New string to be diffed.
-     * @param int    $x        Index of split point in text1.
-     * @param int    $y        Index of split point in text2.
-     * @param int    $deadline Time at which to bail if not yet complete.
+     * @param string $text1 Old string to be diffed.
+     * @param string $text2 New string to be diffed.
+     * @param int $x Index of split point in text1.
+     * @param int $y Index of split point in text2.
+     * @param int $deadline Time at which to bail if not yet complete.
      *
      * @return array Array of diff arrays.
      */

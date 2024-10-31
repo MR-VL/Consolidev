@@ -28,7 +28,8 @@ namespace DiffMatchPatch;
  * @author Neil Fraser <fraser@google.com>
  * @author Daniil Skrobov <yetanotherape@gmail.com>
  */
-class DiffToolkit {
+class DiffToolkit
+{
     /**
      * Determine the common prefix of two strings.
      *
@@ -209,9 +210,9 @@ class DiffToolkit {
      * Does a substring of shorttext exist within longtext such that the substring
      * is at least half the length of longtext?
      *
-     * @param string $longtext  Longer string.
+     * @param string $longtext Longer string.
      * @param string $shorttext Shorter string.
-     * @param int    $i         Start index of quarter length substring within longtext.
+     * @param int $i Start index of quarter length substring within longtext.
      *
      * @return null|array Five element array, containing the prefix of longtext, the suffix of longtext,
      * the prefix of shorttext, the suffix of shorttext and the common middle.  Or null if there was no match.
@@ -277,8 +278,8 @@ class DiffToolkit {
      * Modifies $lineArray and $lineHash. TODO try to fix it!
      *
      * @param string $text String to encode.
-     * @param array  $lineArray
-     * @param array  $lineHash
+     * @param array $lineArray
+     * @param array $lineHash
      *
      * @return string Encoded string.
      */

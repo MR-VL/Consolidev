@@ -1,19 +1,23 @@
 <?php
-class Database {
+
+class Database
+{
     private $host;
     private $db_name;
     private $username;
     private $password;
     public $conn;
 
-    public function __construct($host, $db_name, $username, $password) {
+    public function __construct($host, $db_name, $username, $password)
+    {
         $this->host = $host;
         $this->db_name = $db_name;
         $this->username = $username;
         $this->password = $password;
     }
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
 
         try {
