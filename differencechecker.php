@@ -12,11 +12,11 @@ if (!isset($_SESSION['username'])) {
 
 $username = $_SESSION['username'];
 /*--------------------------------------------------------------------------*/
-require_once 'C:\wamp64\www\Consolidev\DiffMatchPatch.php';
-require_once 'C:\wamp64\www\Consolidev\DiffToolkit.php';
-require_once 'C:\wamp64\www\Consolidev\Diff.php';
-require_once 'C:\wamp64\www\Consolidev\Matcher.php';
-require_once 'C:\wamp64\www\Consolidev\Patch.php';
+require_once 'DiffMatchPatch.php';
+require_once 'DiffToolkit.php';
+require_once 'Diff.php';
+require_once 'Matcher.php';
+require_once 'Patch.php';
 
 use DiffMatchPatch\DiffMatchPatch;
 
