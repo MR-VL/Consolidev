@@ -1,68 +1,151 @@
+/* Global style sheet */
+
+/* Fonts */
+@import url('https://fonts.cdnfonts.com/css/tt-chocolates');
+@import url('https://fonts.googleapis.com/css?family=DM+Sans');
+@import url('https://fonts.googleapis.com/css?family=DM+Mono');
+
+/* Base Typography */
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'TT Chocolates', sans-serif;
+	color: #393536;
+}
+
+p, .sub-heading {
+	font-family: 'DM Sans', sans-serif;
+	color: #393536;
+}
+
+code, pre {
+	font-family: 'DM Mono', monospace;
+	color: #393536;
+}
+
+/* Colors and Logo */
+:root {
+	--color-black: #393536;
+	--color-blue: #38b6ff;
+	--color-white: #ffffff;
+	--color-gold: #c7aa17;
+	--logo-with-text: url('consoliDev logo no bg.png');
+	--logo-no-text: url('consoliDev logo no text.png');
+}
+
+/* Base Layout */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
+	background-color: var(--color-white);
+	font-family: 'DM Sans', sans-serif;
+	color: var(--color-black);
 }
 
-.form {
-    box-sizing: border-box;
-    background-color: #ffffff;
-    border-radius: 1vh;
-    padding: 2.5vh;
-    width: 40vw;
-    box-shadow: 0 1vh 1vh rgba(0, 0, 0, 0.1);
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1rem;
 }
 
-.group {
-    margin-bottom: 1.0vh;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5vh;
-    font-weight: bold;
-    color: #00008B
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 0.80vh;
-    margin-top: 0.25vh;
-    margin-bottom: 1vh;
-    box-sizing: border-box;
-    border: 0.2vh solid #ccc;
-    border-radius: 0.5vh;
-}
-
-input[type="submit"] {
-    width: 100%;
-    padding: 1vh;
-    border-radius: 0.5vh;
-    border: none;
-    background-color: #00008B;
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #ADD8E6;
-}
-
+/* Buttons */
 .btn {
-    background-color: lightblue;
-    width: 20%;
-    margin-top: 1vh;
+	font-family: 'DM Sans', sans-serif;
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3 ease;
 }
 
-.txtbox {
-    width: 40vw;
-    height: 40vh;
+.btn:hover {
+	background-color: var(--color-gold);
+}
+
+/* Links */
+a {
+	color: var(--color-blue);
+	text-decoration: none;
+}
+
+
+a:hover {
+	color: var(--color-gold);
+}
+
+/* Images */
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+.logo-with-text {
+	background-image: var(--logo-with-text);
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 500px;
+	height: 500px;
+}
+
+.logo-no-text {
+	background-image: var(--logo-no-text);
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 193px;
+	height: 193px;
+}
+
+/* Favorites Bar Styling */
+.top-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--color-blue);
+	padding: 0.5rem 1rem;
+	height: 60px;
+	width: 100%;
+	color: var(--color-white);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.top-bar .favorites-links {
+	display: flex;
+	gap: 1rem;
+}
+
+.top-bar .favorites-links a {
+	color: var(--color-white);
+	text-decoration: none;
+	font-family: 'DM Sans', sans-serif;
+	transition: color 0.3 ease;
+}
+
+.top-bar .favorites-links a:hover {
+	color: var(--color-gold);
+
+}
+
+.top-bar .nav-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	backgroun-color: var(--color-white);
+	cursor: pointer;
+}
+
+.top-bar .nav-logo img {
+	width:24px;
+	height: auto;	
 }
