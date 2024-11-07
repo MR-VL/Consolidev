@@ -57,34 +57,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="register.css">
 </head>
+
 <body>
-<div class="form" style="margin-left: 5px">
-    <form action="register.php" method="POST">
-        <label>Maximum input size: 20 characters</label>
+
+<div class="register-container">
+	<div class="register-logo">
+		<img src="consoliDev logo no bg.png" alt="consoliDev logo">
+	</div>
+	
+	
+    <form action="register.php" method="POST" class="registration-form">
+        <label class="field-label">Maximum input size: 20 characters</label>
 
 
-        <label for="Fname">First name</label>
-        <input type="text" id="Fname" name="Fname" placeholder="First Name" required><br><br>
+        <label for="Fname" class="field-label">First name</label>
+        <input type="text" id="Fname" name="Fname" placeholder="First Name" required>
 
-        <label for="Lname">Last name</label>
-        <input type="text" id="Lname" name="Lname" placeholder="Last Name" required><br><br>
+        <label for="Lname" class="field-label">Last name</label>
+        <input type="text" id="Lname" name="Lname" placeholder="Last Name" required>
 
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Username" required><br><br>
+        <label for="username" class="field-label">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username" required>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+        <label for="password" class="field-label">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
 
-        <input type="submit" value="Register">
+		<label class="terms-checkbox">
+			<input type="checkbox" required>I agree to the Terms of Service
+		</label>
+		
+        <input type="submit" value="Register" class="register-btn">
     </form>
 
 
-    <a href="login.php">
-        <button class="btn">Login</button>
-    </a>
-
-
+	<div class="login-link">
+		<p>already have an account?</p>
+		<a href="login.php"><button class="btn">Login</button></a>
+	</div>
 </div>
 
 
