@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 29, 2024 at 05:08 PM
+-- Generation Time: Nov 07, 2024 at 11:54 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -91,17 +91,33 @@ CREATE TABLE IF NOT EXISTS `differencechecker` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `duplicatefinder`
+-- Table structure for table `duplicateremover`
 --
 
-DROP TABLE IF EXISTS `duplicatefinder`;
-CREATE TABLE IF NOT EXISTS `duplicatefinder` (
+DROP TABLE IF EXISTS `duplicateremover`;
+CREATE TABLE IF NOT EXISTS `duplicateremover` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favorites`
+--
+
+DROP TABLE IF EXISTS `favorites`;
+CREATE TABLE IF NOT EXISTS `favorites` (
+  `tool_ID` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `isFavorite` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`tool_ID`),
+  KEY `username` (`username`),
+  KEY `tool_ID` (`tool_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -142,21 +158,6 @@ CREATE TABLE IF NOT EXISTS `json` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jsontocsv`
---
-
-DROP TABLE IF EXISTS `jsontocsv`;
-CREATE TABLE IF NOT EXISTS `jsontocsv` (
-                                           `TransactionID` int NOT NULL AUTO_INCREMENT,
-                                           `username` varchar(20) NOT NULL,
-    `date` date NOT NULL,
-    PRIMARY KEY (`TransactionID`),
-    KEY `username` (`username`)
-    ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `jwt`
 --
 
@@ -184,7 +185,14 @@ CREATE TABLE IF NOT EXISTS `paragraphtoone` (
   `Date` date NOT NULL,
   PRIMARY KEY (`TransactionID`),
   KEY `Username` (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `paragraphtoone`
+--
+
+INSERT INTO `paragraphtoone` (`TransactionID`, `Username`, `Date`) VALUES
+(1, 'weeyee', '2024-11-07');
 
 -- --------------------------------------------------------
 
@@ -204,6 +212,20 @@ CREATE TABLE IF NOT EXISTS `timestampconverter` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tools`
+--
+
+DROP TABLE IF EXISTS `tools`;
+CREATE TABLE IF NOT EXISTS `tools` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `toolname` varchar(40) NOT NULL,
+  `toolurl` varchar(40) NOT NULL,
+  PRIMARY KEY (`TransactionID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -216,6 +238,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `DateJoined` date NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `Fname`, `Lname`, `password`, `DateJoined`) VALUES
+('sarahann', 'sarah', 'ann', '$2y$10$aRM4tehfh4Q.gDoPsYsrv.Y2/CXtCwzU0l2U9j9PyDLVOVUqylOeC', '2024-10-21'),
+('weeyee', 'wee', 'yee', '$2y$10$ev6HCpg66bJm0BVGXOFPQOvip6UnTXs5B4v4ePPyobWe/WqOr7Rui', '2024-11-07');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
