@@ -45,23 +45,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="login.css">
 </head>
 <body>
 
-<div class="form">
-    <form action="login.php" method="POST">
-        <div class="group">
-            <label for="username">Username</label>
+<div class="registration-form">
+	<img src="consoliDev logo no bg.png" alt="consoliDev logo" class"logo">
+	
+    <form action="login.php" method="POST" class="login-form">
+        <div class="field-group">
+            <label for="username" class="field-label">Username</label>
             <input type="text" id="username" name="username" placeholder="Username" required><br><br>
         </div>
 
-        <div class="group">
-            <label for="password">Password</label>
+        <div class="field-group">
+            <label for="password" class="field-label">Password</label>
             <input type="password" id="password" name="password" placeholder="Password" required><br><br>
         </div>
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" class="submit-btn">
     </form>
+	
     <a href="register.php">
         <button class="btn">Sign Up</button>
     </a>
