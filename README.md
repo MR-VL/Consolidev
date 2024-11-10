@@ -70,7 +70,7 @@ Click on the star icon next to any tool to add it to your favorites.<br>- Access
  <br>
  
  ## License
- <br>This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+ <br>This project is licensed under the AGPL 3.0 License. See the [LICENSE](LICENSE) file for details.
  <br>
  
  ## Acknowledgments 
