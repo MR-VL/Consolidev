@@ -41,7 +41,7 @@ A web browser<br>- An active internet connection
 ### Sign Up 
 Visit [Consolidev Website](https://github.com/MR-VL/Consolidev) <br>   - Click on \"Sign Up\" and fill in your details.
 
-Please see [Install Locally](https://github.com/MR-VL/Consolidev/blob/main/INSTALLATION.md) guide for information on how to install and run locally
+Please see [Install Locally](https://github.com/MR-VL/Consolidev/blob/main/Docs/INSTALLATION.md) guide for information on how to install and run locally
 
 ## Usage
 
@@ -79,4 +79,5 @@ Click on the star icon next to any tool to add it to your favorites.<br>- Access
  
  <br>---Feel free to explore, contribute, and simplify your developer workload with Consolidev!
 
-
+## Troubleshooting
+Please see the [Troubleshooting Guide](https://github.com/MR-VL/Consolidev/blob/main/Docs/Troubleshooting.md)
