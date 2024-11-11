@@ -19,7 +19,9 @@
  * limitations under the License.
  */
 
-namespace DiffMatchPatch;
+namespace DiffMatchPatch\Libraries;
+
+use DiffMatchPatch\Utils;
 
 /**
  * This toolkit contains functions for working with texts.
