@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | Difference Checker</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, intitial-scale=1"/>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
     <style>
         body {
             margin: 0;

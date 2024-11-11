@@ -44,13 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Consolidev | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
 
 <div class="registration-form">
-	<img src="consoliDev logo no bg.png" alt="consoliDev logo" class"logo">
+	<img src="pics/consoliDev logo no bg.png" alt="consoliDev logo" class"logo">
 	
     <form action="login.php" method="POST" class="login-form">
         <div class="field-group">

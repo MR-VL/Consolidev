@@ -27,8 +27,8 @@ code, pre {
 	--color-blue: #38b6ff;
 	--color-white: #ffffff;
 	--color-gold: #c7aa17;
-	--logo-with-text: url('consoliDev logo no bg.png');
-	--logo-no-text: url('consoliDev logo no text.png');
+	--logo-with-text: url('../pics/consoliDev logo no bg.png');
+	--logo-no-text: url('../pics/consoliDev logo no text.png');
 }
 
 /* Base Layout */
