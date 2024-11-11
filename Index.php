@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consolidev | Home</title>
 	<link rel="stylesheet" href="CSS/styles.css">
-	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="CSS/index.css">
 	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
