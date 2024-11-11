@@ -12,13 +12,13 @@ if (!isset($_SESSION['username'])) {
 
 $username = $_SESSION['username'];
 /*--------------------------------------------------------------------------*/
-require_once 'DiffMatchPatch.php';
-require_once 'DiffToolkit.php';
-require_once 'Diff.php';
-require_once 'Matcher.php';
-require_once 'Patch.php';
+require_once 'Libraries/DiffMatchPatch.php';
+require_once 'Libraries/DiffToolkit.php';
+require_once 'Libraries/Diff.php';
+require_once 'Libraries/Matcher.php';
+require_once 'Libraries/Patch.php';
 
-use DiffMatchPatch\DiffMatchPatch;
+use DiffMatchPatch\Libraries\DiffMatchPatch;
 
 $text1 = '';
 $text2 = '';
