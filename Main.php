@@ -16,8 +16,8 @@ if (!isset($_SESSION['username'])) {
 <head>
     <title>Consolidev | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="Main.css">
+	<link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/Main.css">
 	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -25,7 +25,7 @@ if (!isset($_SESSION['username'])) {
 <div class="landing-container">
 	<!--Sidebar with logo and links-->
 	<aside class="sidebar">
-		<img src="consoliDev logo no bg.png" alt="consoliDev Logo" class="logo">
+		<img src="pics/consoliDev logo no bg.png" alt="consoliDev Logo" class="logo">
 		<ul class="sidebar-links">
 			<li><a href="manageFavorites.php">Manage Favorites</a></li>
 			<li><a href="profile.php">Manage Profile</a></li>

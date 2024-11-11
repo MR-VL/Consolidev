@@ -56,15 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Consolidev | Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/register.css">
 </head>
 
 <body>
 
 <div class="register-container">
 	<div class="register-logo">
-		<img src="consoliDev logo no bg.png" alt="consoliDev logo">
+		<img src="pics/consoliDev logo no bg.png" alt="consoliDev logo">
 	</div>
 	
 	
