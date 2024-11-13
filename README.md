@@ -12,6 +12,7 @@ Access a wide array of essential developer tools including:
  - Hashing Tools<br>
  - JWT Decode<br>
  - Paragraph to One Line Converter<br>
+ - Markdown to HTML Convertor<br>
  - Case Converter<br>
  - Duplicate Finder<br>
  - Difference Checker<br>
