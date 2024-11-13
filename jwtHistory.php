@@ -27,7 +27,7 @@ try {
 <head>
     <title>Consolidev | JWT History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
 
 </head>
 <body>

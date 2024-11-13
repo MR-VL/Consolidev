@@ -19,7 +19,9 @@
  * limitations under the License.
  */
 
-namespace DiffMatchPatch;
+namespace DiffMatchPatch\Libraries;
+
+use DiffMatchPatch\PatchObject;
 
 /**
  * Functions for diff, match and patch.

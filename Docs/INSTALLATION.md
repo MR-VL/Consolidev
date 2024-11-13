@@ -23,7 +23,7 @@ CD to the WAMP www directory
 
 ```
 
-![img.png](pics/img.png)
+![img.png](../pics/img.png)
 
 #### Install the GitHub repo
 
@@ -45,7 +45,7 @@ https://github.com/MR-VL/Consolidev/blob/bed371c27ec4dbb9c7d12df41d1fd490d4c0f16
 
 # Please keep an eye on the Issues tab on GitHub!!!
 
-![img7.png](pics/issues.png)
+![img7.png](../pics/issues.png)
 
 ### if you have issue you are more than welcome to open an issue, and assign someone to it or not.... <br> But please do try and use the issues tab it makes it easier to manage everything going on..
 
@@ -80,7 +80,7 @@ So if any of us run into the same issue we can save time instead of having to re
 
 From there you go to your GitHub repository, and it will ask you if you want to
 contribute, click yes or whatever it wants.
-![img5.png](pics/img5.png)
+![img5.png](../pics/img5.png)
 
 ```markdown
 Create a pull request.
@@ -95,7 +95,7 @@ feedback as to why it wasn't merged.
 
 ## Click on sync fork and update branch
 
-![img6.png](pics/img5.png)
+![img6.png](../pics/img5.png)
 
 ## Go to your IDE or command prompt
 
