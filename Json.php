@@ -48,40 +48,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | JSON</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
-    <style>
-        .container {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            max-width: 80vw;
-        }
-
-        textarea {
-            width: 100%;
-            height: 50vh;
-            word-wrap: break-word;
-        }
-    </style>
+	<link rel="stylesheet" href="CSS/Json.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
 
-    <div class="form">
+<?php include('header.php'); ?>
+
+<main class="main-container">
+
+    <div class="form-container">
         <form action="Json.php" method="POST">
-            <h1 style="color: #00008B">Validate Json</h1>
-            <label for="input"></label>
+            <i class="fa-solid fa-code title-icon"></i>
+			<h1 class="page-title">Validate Json</h1>
+			
+            <label for="input" class="input-label">Enter JSON:</label>
             <textarea id="input" name="input" placeholder="Enter JSON" required></textarea><br><br>
-            <input type="submit" value="Validate">
+            <input type="submit" value="Validate" class="submit-btn">
         </form>
     </div>
 
-    <div class="form" style="word-wrap: break-word">
+    <div class="form-display">
         <?php
         if (!empty($display)) {
             echo $display;
         }
         ?>
     </div>
-</div>
+</main>
+
+<footer>
+	<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>

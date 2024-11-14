@@ -23,7 +23,8 @@ if (!isset($_SESSION['username'])) {
 <body>
 
 <div class="landing-container">
-    <!--Sidebar with logo and links-->
+
+ 
     <aside class="sidebar">
         <img src="pics/consoliDev logo no bg.png" alt="consoliDev Logo" class="logo">
         <ul class="sidebar-links">
@@ -32,11 +33,11 @@ if (!isset($_SESSION['username'])) {
         </ul>
     </aside>
 
-    <!-- Main welcome section -->
+  
     <div class="welcome-section">
         <h1 class="welcome-title">Welcome back, <?php echo htmlspecialchars($username ?? 'User'); ?>!</h1>
 
-        <!-- Tool cards section-->
+       
         <div class="tool-cards">
             <a href="base64.php" class="tool-card">
                 <i class="fa-solid fa-unlock-keyhole"></i>
@@ -75,6 +76,7 @@ if (!isset($_SESSION['username'])) {
             </a>
         </div>
     </div>
+
 </div>
 
 </body>

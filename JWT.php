@@ -72,32 +72,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | JWT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
-    <style>
-        .container {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            max-width: 80vw;
-        }
-    </style>
+	<link rel="stylesheet" href="CSS/JWT.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
 
-    <div class="form">
+<?php include('header.php'); ?>
+
+
+<main class="main-container">
+
+    <div class="form-container">
         <form action="JWT.php" method="post">
-            <h1 style="color: #00008B">Decode JWT tokens</h1>
-            <label for="input"></label>
-            <input style="height: 20vh" type="text" id="input" name="input" placeholder="Enter JWT token"
-                   required><br><br>
-            <input type="submit" value="Decode">
+			<i class="fa-solid fa-key title-icon"></i>
+            <h1 class-"page-title">Decode JWT tokens</h1>
+            <label for="input" class="input-label">Enter JWT token:</label>
+            <input type="text" id="input" name="input" placeholder="Enter JWT token"
+                   required class="input-field"><br><br>
+            <input type="submit" value="Decode" class="submit-btn">
 
         </form>
     </div>
 
-    <div class="form" style="word-wrap: break-word">
+    <div class="form-display">
         <a href="jwtHistory.php">
-            <button class="btn" style="width:auto">View History</button>
+            <button class="btn history-btn">View History</button>
         </a>
 
         <?php
@@ -106,6 +105,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
     </div>
-</div>
+</main>
+
+<footer>
+	<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>

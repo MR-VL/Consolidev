@@ -108,41 +108,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | Base 64</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
-    <style>
-        .container {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            max-width: 80vw;
-        }
-    </style>
+	<link rel="stylesheet" href="CSS/base64.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
+<?php include('header.php'); ?>
+
 <!-- For not you might want to use my classes as a general template, but Lilly and Katelyn yall are in charge of styling
 There is also a styles.css file with more styles that are general throughout most of the pages I have done-->
+<main class="content-wrapper">
+<div class="title-container">
+	<i class="fa-solid fa-unlock-keyhole title-icon"></i>
+	
+	<h1 class="page-title">Base 64 Encoder/Decoder</h1>
+<div>
+
 <div class="container">
 
-    <div class="form">
+    <!-- Form for Base64 encoding/decoding -->
+	<div class="form">
         <form action="base64.php" method="post">
             <label for="base64">Enter a value and choose to encode or decode Base 64</label>
             <br>
-            <div style="display: inline-flex">
+            <div class="radio-group">
                 <input type="radio" id="encode" name="ans" value="encode" required>
                 <label for="encode">Encode</label>
             </div>
             <br>
-            <div style="display: inline-flex; margin-top: 3vh">
+            <div class="radio-group">
                 <input type="radio" id="decode" name="ans" value="decode" required>
                 <label for="decode">Decode</label>
             </div>
-            <input style="height: 20vh" type="text" id="base64" name="base64" placeholder="Type here" required><br><br>
+            <input type="text" id="base64" name="base64" placeholder="Type here" required><br><br>
             <input type="submit" value="Convert">
         </form>
     </div>
 
-
-    <div class="form" style="word-wrap: break-word">
+	
+	<!-- Section for displaying the result and view history button -->
+    <div class="form result">
 
         <a href="base64history.php">
             <button class="btn">View History</button>
@@ -157,5 +162,9 @@ There is also a styles.css file with more styles that are general throughout mos
         ?>
     </div>
 </div>
+</main>
+<footer>
+    <p>&copy; <span id="2024"></span> consoliDev. All rights Reserved.</p>
+</footer>
 </body>
 </html>
