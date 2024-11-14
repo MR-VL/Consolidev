@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 
 //store their username to be used later
 $username = $_SESSION['username'];
-require_once 'Parsedown.php'; // Make sure this path is correct
+require_once 'Libraries/Parsedown.php'; // Make sure this path is correct
 $parsedown = new Parsedown();
 
 // Initialize variables
