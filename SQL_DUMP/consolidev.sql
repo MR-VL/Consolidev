@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 29, 2024 at 05:08 PM
+-- Generation Time: Nov 14, 2024 at 11:19 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -106,6 +106,29 @@ CREATE TABLE IF NOT EXISTS `duplicatefinder` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `favorites`
+--
+
+DROP TABLE IF EXISTS `favorites`;
+CREATE TABLE IF NOT EXISTS `favorites` (
+  `username` varchar(20) NOT NULL,
+  `Base64` tinyint(1) NOT NULL,
+  `CaseConverter` tinyint(1) NOT NULL,
+  `DifferenceChecker` tinyint(1) NOT NULL,
+  `DuplicateChecker` tinyint(1) NOT NULL,
+  `Hashing` tinyint(1) NOT NULL,
+  `JSONValidator` tinyint(1) NOT NULL,
+  `JWTDecoder` tinyint(1) NOT NULL,
+  `MarkdownToHtmlConverter` tinyint(1) NOT NULL,
+  `ParagraphtoOneLineConverter` tinyint(1) NOT NULL,
+  `TimeStampConverter` tinyint(1) NOT NULL,
+  PRIMARY KEY (`username`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hashing`
 --
 
@@ -132,9 +155,9 @@ CREATE TABLE IF NOT EXISTS `json` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `date` date NOT NULL,
-  `Input` text NOT NULL,
+  `Input` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `errorCount` int NOT NULL,
-  `errors` text NOT NULL,
+  `errors` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -147,12 +170,12 @@ CREATE TABLE IF NOT EXISTS `json` (
 
 DROP TABLE IF EXISTS `jsontocsv`;
 CREATE TABLE IF NOT EXISTS `jsontocsv` (
-                                           `TransactionID` int NOT NULL AUTO_INCREMENT,
-                                           `username` varchar(20) NOT NULL,
-    `date` date NOT NULL,
-    PRIMARY KEY (`TransactionID`),
-    KEY `username` (`username`)
-    ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -167,6 +190,23 @@ CREATE TABLE IF NOT EXISTS `jwt` (
   `date` date NOT NULL,
   `encoded` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `decoded` json NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `markdowntohtml`
+--
+
+DROP TABLE IF EXISTS `markdowntohtml`;
+CREATE TABLE IF NOT EXISTS `markdowntohtml` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `markdown` text NOT NULL,
+  `html` text NOT NULL,
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
