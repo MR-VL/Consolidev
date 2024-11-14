@@ -35,32 +35,47 @@ try {
     <title>Consolidev | Base 64 History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/base64history.css">
 
 </head>
 <body>
-<div class="form" style="word-wrap: break-word">
+<?php include 'header.php'; ?>
 
-    <!--This is the HTML it needs a lot of styling due to being so zoomed in for some reason.... -->
+<div class="history-container">
+
     <a href="base64.php">
         <button class="btn">Go back</button>
         <br>
     </a>
-    <table border="1" style="width: 100%; text-align: center; border-collapse: collapse;">
-        <tr>
-            <th style="padding: 10px;">Type</th>
-            <th style="padding: 10px;">Original</th>
-            <th style="padding: 10px;">Opposite</th>
-        </tr>
-        <?php
-        //iterate through the userhistory and display each line in a table format, you can basically just copy it as it and only chage the variable in
-        //$row['CHANGEME'] to whatever your tables column names are, you should ommit the username because it will be the same for the user and is unneccessary
-        foreach ($userHistory as $row) {
-            echo "<tr><td style='padding: 10px;'>{$row['type']}</td><td style='padding: 10px;'>{$row['original']}</td><td style='padding: 10px;'>{$row['opposite']}</td></tr>";
-        }
-        ?>
+    <table class="history-table">
+		<thead>
+			<tr>
+				<th>Type</th>
+				<th>Original</th>
+				<th>Opposite</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if (!empty($userHistory)) : ?>
+				<?php foreach ($userHistory as $row): ?>
+					<tr>
+						<td><?= htmlspecialchars($row['type']) ?></td>
+						<td><?= htmlspecialchars($row['original']) ?></td>
+						<td><?= htmlspecialchars($row['opposite']) ?></td>
+					</tr>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="3">No history entries found.</td>
+				</tr>
+			<?php endif; ?>	
+		</tbody>
     </table>
-
-
 </div>
+
+<footer>
+	<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>

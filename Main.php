@@ -77,6 +77,5 @@ if (!isset($_SESSION['username'])) {
 	</div>
 </div>
 
-<script src="header.js"></script>
 </body>
 </html>
