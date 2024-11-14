@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1 style="text-align:center;">Duplicate Finder</h1>
         <form action="duplicates.php" method="post">
             <label for="finderInput">Enter a string to find duplicates:</label><br>
-            <textarea id="finderInput" name="finderInput" rows="5" cols="50" required
+            <textarea style="resize:none;" id="finderInput" name="finderInput" rows="5" cols="50" required
                       placeholder="Enter text or items separated by your chosen delimiter"></textarea><br/><br>
             <label style="padding-right:5px;">Delimiter:</label>
             <input type="radio" name="delimiter" value="character" checked> Character
@@ -149,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1 style="text-align:center;">Duplicate Remover</h1>
         <form action="duplicates.php" method="post">
             <label for="removerInput">Enter a string to remove duplicates:</label><br>
-            <textarea id="removerInput" name="removerInput" rows="5" cols="50" required
+            <textarea style="resize:none;" id="removerInput" name="removerInput" rows="5" cols="50" required
                       placeholder="Enter text or items separated by your chosen delimiter"></textarea><br/><br>
             <label style="padding-right:5px;">Delimiter:</label>
             <input type="radio" name="delimiter" value="character" checked> Character
