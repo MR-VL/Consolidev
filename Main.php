@@ -1,144 +1,81 @@
 <?php
 require_once "init.php";
 session_start();
+include 'header.php';
+
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
+} else {
+    $username = $_SESSION['username'];
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>   
     <title>Consolidev | Home</title>
-    
-    <!-- icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- CSS -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            color: #333;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            display: inline-block;
-            margin: 10px 0;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        .star {
-            cursor: pointer;
-            color: gray; /* default to empty star color */
-            margin-left: 10px;
-            font-size: 20px;
-        }
-
-        .star.checked {
-            color: gold; /* filled star color */
-        }
-
-        /* spacing between links and stars */
-        .tools-list {
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        .tools-list a {
-            display: inline-block;
-            margin: 10px 15px;
-            text-decoration: none;
-        }
-    </style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/Main.css">
+    <script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<h1>Welcome back!</h1>
+<div class="landing-container">
+    <!--Sidebar with logo and links-->
+    <aside class="sidebar">
+        <img src="pics/consoliDev logo no bg.png" alt="consoliDev Logo" class="logo">
+        <ul class="sidebar-links">
+            <li><a href="manageFavorites.php">Manage Favorites</a></li>
+            <li><a href="profile.php">Manage Profile</a></li>
+        </ul>
+    </aside>
 
-<div class="tools-list">
-    <div>
-        <a href="base64.php" class="btn">Base 64</a>
-        <span class="fa fa-star star"></span>
-    </div>
-    <div>
-        <a href="hashing.php" class="btn">Hashing</a>
-        <span class="fa fa-star star"></span>
-    </div>
-    <div>
-        <a href="caseconvertor.php" class="btn">Case Convertor</a>
-        <span class="fa fa-star star"></span>
-    </div>
-    <div>
-        <a href="differencechecker.php" class="btn">Difference Checker</a>
-        <span class="fa fa-star star"></span>
-    </div>
-    <div>
-        <a href="duplicates.php" class="btn">Duplicate Checker</a>
-        <span class="fa fa-star star"></span>
-    </div>
-    <div>
-        <a href="JWT.php" class="btn">JWT Decode</a>
-        <span class="fa fa-star star"></span>
-    </div>
-    <div>
-        <a href="paragraphtooneline.php" class="btn">Paragraph to One Line Convertor</a>
-        <span class="fa fa-star star"></span>
+    <!-- Main welcome section -->
+    <div class="welcome-section">
+        <h1 class="welcome-title">Welcome back, <?php echo htmlspecialchars($username ?? 'User'); ?>!</h1>
+
+        <!-- Tool cards section-->
+        <div class="tool-cards">
+            <a href="base64.php" class="tool-card">
+                <i class="fa-solid fa-unlock-keyhole"></i>
+                <h3>Base 64 Encrypt/ Decrypt</h3>
+                <p>Quickly encode or decode text using Base64 encoding.</p>
+            </a>
+            <a href="JWT.php" class="tool-card">
+                <i class="fa-solid fa-key"></i>
+                <h3>JWT Decode</h3>
+                <p>Decode JSON Web Tokens to view payload data.</p>
+            </a>
+            <a href="paragraphtooneline.php" class="tool-card">
+                <i class="fa-solid fa-i-cursor"></i>
+                <h3>Paragraph to One Line Converter</h3>
+                <p>Convert multi-line paragraphs into a single line.</p>
+            </a>
+            <a href="caseconverter.php" class="tool-card">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <h3>Case Converter</h3>
+                <p>Convert text between uppercase, lowercase, and more.</p>
+            </a>
+            <a href="duplicates.php" class="tool-card">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>Duplicate Finder and Remover</h3>
+                <p>Find, highlight, and remove duplicate lines or entries.</p>
+            </a>
+            <a href="differencechecker.php" class="tool-card">
+                <i class="fa-solid fa-check-double"></i>
+                <h3>Difference Checker</h3>
+                <p>Compare two texts and highlight differences.</p>
+            </a>
+            <a href="Json.php" class="tool-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>JSON Tools</h3>
+                <p>Validate, format, and edit JSON data easily.</p>
+            </a>
+        </div>
     </div>
 </div>
-
-<script>
-    // Adding an event listener for all the stars
-    document.querySelectorAll('.star').forEach((star, index) => {
-        // if the user has favorited the tool when the page loads
-        if (localStorage.getItem(`tool_${index+1}_favorite`) === 'true') {
-            star.classList.add('checked');  // fill the star in
-        }
-
-        // click event to toggle the favorite status
-        star.addEventListener('click', function() {
-            // toggles filled/empty star class
-            star.classList.toggle('checked');
-
-            // local storage to remember the favorite status
-            localStorage.setItem(`tool_${index+1}_favorite`, star.classList.contains('checked') ? 'true' : 'false');
-            
-            // AJAX request to update the favorite status in the database
-            var toolId = index + 1; // tool ID matches the index (you can modify this logic)
-            var isFavorite = star.classList.contains('checked') ? 1 : 0;
-
-            // AJAX request to update the favorite status in the database
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'favorites.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log(xhr.responseText);  // success or failure handling
-                }
-            };
-            xhr.send('tool_id=' + toolId + '&is_favorite=' + isFavorite);
-        });
-    });
-</script>
 
 </body>
 </html>
