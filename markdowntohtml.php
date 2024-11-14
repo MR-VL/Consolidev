@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         global $connect;
-        $sql = "INSERT INTO mdtohtml (username, markdown, html) VALUES (:username, :markdown, :html)";
+    $sql = "INSERT INTO markdowntohtml (username, markdown, html,date) 
+    VALUES (:username, :markdown, :html, CURRENT_TIMESTAMP)";
     
         // Prepare the statement
         $stmt = $connect->prepare($sql);
@@ -43,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':markdown', $markdown);
         $stmt->bindParam(':html', $html);
+        $stmt->execute();
     } catch (exception $e) {
         $display = "Error: " . $e->getMessage();
     }
