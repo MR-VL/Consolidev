@@ -104,24 +104,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> ConsoliDev | Duplicates </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
+    <title>ConsoliDev | Duplicates </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css"/>
-    <style>
-        /* Basic styling for the two columns */
-        .container {
-            display: flex;
-            max-width: 80vw;
-            margin: auto;
-            gap: 20px;
-        }
-
-        .leftHalf, .rightHalf {
-            width: 50%; /* Split the width equally */
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/duplicates.css"/>
+    <script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
+<?php include('header.php'); ?>
+<main class="content-wrapper">
+
+<div class="title-container">
+    <i class="fa-solid fa-magnifying-glass title-icon"></i>
+	<h1 class="page-title">Duplicate Finder/Remover</h1>
+<div>
 
 <div class="container">
     <!-- Left Side: Duplicate Finder -->
@@ -131,20 +128,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="finderInput">Enter a string to find duplicates:</label><br>
             <textarea id="finderInput" name="finderInput" rows="5" cols="50" required
                       placeholder="Enter text or items separated by your chosen delimiter"></textarea><br/><br>
-
-            <label>Delimiter:</label>
+            <label style="padding-right:5px;">Delimiter:</label>
             <input type="radio" name="delimiter" value="character" checked> Character
             <input type="radio" name="delimiter" value="comma"> Comma<br><br>
-
             <input type="submit" name="find_duplicates" value="Find Duplicates">
         </form>
-        <h2>Duplicate Finder Results</h2>
+        <div class="result-section">
+        <h2>Duplicate Finder Results:</h2>
         <?php
         // Display the output if it was set by the Finder
         if (isset($_POST['find_duplicates']) && !empty($output)) {
             echo $output;
         }
         ?>
+        </div>
     </div>
 
     <!-- Right Side: Duplicate Remover -->
@@ -154,22 +151,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="removerInput">Enter a string to remove duplicates:</label><br>
             <textarea id="removerInput" name="removerInput" rows="5" cols="50" required
                       placeholder="Enter text or items separated by your chosen delimiter"></textarea><br/><br>
-
-            <label>Delimiter:</label>
+            <label style="padding-right:5px;">Delimiter:</label>
             <input type="radio" name="delimiter" value="character" checked> Character
             <input type="radio" name="delimiter" value="comma"> Comma<br><br>
-
             <input type="submit" name="remove_duplicates" value="Remove Duplicates">
         </form>
-        <h2>Duplicate Remover Results</h2>
+
+        <div class="result-section">
+        <h2>Duplicate Remover Results:</h2>
         <?php
         // Display the output if it was set by the Remover
         if (isset($_POST['remove_duplicates']) && !empty($output)) {
             echo $output;
         }
         ?>
+        </div>
     </div>
 </div>
+</main>
+
+<footer>
+    <p>&copy; <span id="2024"></span> consoliDev. All rights Reserved.</p>
+</footer>
 
 </body>
 </html>
