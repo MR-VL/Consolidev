@@ -51,7 +51,7 @@ if (!isset($_SESSION['username'])) {
 			<a href="paragraphtooneline.php" class="tool-card">
 				<i class="fa-solid fa-i-cursor"></i>
 				<h3>Paragraph to One Line Converter</h3>
-				<p>convert multi-line paragraphs into a single line.</p>
+				<p>Convert multi-line paragraphs into a single line.</p>
 			</a>
 			<a href="caseconverter.php" class="tool-card">
 				<i class="fa-solid fa-arrows-rotate"></i>
@@ -60,13 +60,13 @@ if (!isset($_SESSION['username'])) {
 			</a>
 			<a href="duplicates.php" class="tool-card">
 				<i class="fa-solid fa-magnifying-glass"></i>
-				<h3>Duplicate Finder</h3>
-				<p>Find and highlight duplicate lines or entries.</p>
+				<h3>Duplicate Finder and Remover</h3>
+				<p>Find, highlight, and remove duplicate lines or entries.</p>
 			</a>
 			<a href="differencechecker.php" class="tool-card">
 				<i class="fa-solid fa-check-double"></i>
 				<h3>Difference Checker</h3>
-				<p>compare two texts and highlight differences.</p>
+				<p>Compare two texts and highlight differences.</p>
 			</a>
 			<a href="Json.php" class="tool-card">
 				<i class="fa-solid fa-code"></i>

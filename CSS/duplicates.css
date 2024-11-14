@@ -1,0 +1,91 @@
+.content-wrapper {
+  min-height: calc(100vh-80px);
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.title-icon {
+  font-size: 4rem;
+  color: var(--color-blue);
+  margin-right: 1rem;
+  margin-top: 2rem;
+}
+
+.page-title {
+  font-family: "TT Chocolates", sans-serif;
+  font-size: 2.5rem;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 80vw;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.form {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+input[type="submit"] {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--color-gold);
+}
+
+.result-section {
+  word-wrap: break-word;
+  flex: 1;
+  padding-top: 10px;
+}
+
+label {
+  font-size: 16px;
+  margin-left: 10px;
+  font-family: "DM Sans", sans-serif;
+  color: var(--color-black);
+}
+
+.form label {
+  font-size: 18px;
+  font-family: "DM Sans", sans-serif;
+  color: var(--color-black);
+}
+
+input[type="radio"] {
+  margin-right: 3px;
+}
+
+.leftHalf,
+.rightHalf {
+  width: 50%; /* Split the width equally */
+}
