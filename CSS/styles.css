@@ -156,6 +156,12 @@ footer {
 	color: var(--color-white);
 	padding: 1.5rem;
 	margin-top: 3rem;
+	width: 100vw;
+	left: 0;
+	position: relative;
+	text-align: center;
+	margin-top: 3rem;
+	bottom: 0;
 }
 
 footer a {
