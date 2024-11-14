@@ -101,7 +101,7 @@ $username = $_SESSION['username'];
             </div>
             <div>
                 <a href="caseconvertor.php" class="btn">Case Converter</a>
-                <span class="fa fa-star star" value="CaseConvertor"></span>
+                <span class="fa fa-star star" value="CaseConverter"></span>
             </div>
             <div>
                 <a href="differencechecker.php" class="btn">Difference Checker</a>
@@ -129,7 +129,7 @@ $username = $_SESSION['username'];
             </div>
             <div>
                 <a href="paragraphtooneline.php" class="btn">Paragraph to One Line Converter</a>
-                <span class="fa fa-star star" value="ParagraphtoOneLineConvertor"></span>
+                <span class="fa fa-star star" value="ParagraphtoOneLineConverter"></span>
             </div>
             <div>
                 <a href="timestampconverter.php" class="btn">Time Stamp Converter</a>
