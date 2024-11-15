@@ -1,0 +1,70 @@
+.form-title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+
+.form-title .icon {
+	font-size: 4rem;
+	color: var(--color-blue);
+	margin-right: 0.5rem;
+	margin-top: 2rem;
+}
+
+.form-title h1 {
+	font-family: 'TT Chocolates', sans-serif;
+	font-size: 2rem;
+	color: var(--color-black);
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 80vw;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.button {
+	border: none;
+	color: var(--color-white);
+	background-color: var(--color-blue);
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 2rem;
+	border-radius: 4px;
+	padding: 10px 20px;
+	min-width: 100px;
+	display: inline-block;
+}
+
+.button:hover {
+	background-color: var(--color-gold);
+}
+
+textarea#entry {
+	width: 80vw;
+	height: 200px;
+}
+
+
+textarea#result {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+	white-space: nowrap;
+	margin-top: 1rem;
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #f8f8f8;
+	font-size: 16px;
+	color: var(--color-black);
+	font-family: 'DM Mono', monospace;
+}

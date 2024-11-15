@@ -74,10 +74,17 @@ if (!isset($_SESSION['username'])) {
                 <h3>JSON Tools</h3>
                 <p>Validate, format, and edit JSON data easily.</p>
             </a>
+			<a href="hashing.php" class="tool-card">
+				<i class="fa-solid fa-hashtag"></i>
+				<h3>Hashing Tools</h3>
+				<p>Hash data using multiple algorithms for secure processing.</p>
+			</a>
         </div>
     </div>
 
 </div>
-
+<footer>
+    <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
 </body>
 </html>

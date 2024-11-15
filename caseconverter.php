@@ -72,25 +72,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | Case Converter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
-    <style>
-        .container {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            max-width: 80vw;
-        }
-        .button {
-            border:none;
-            color: #38b6ff;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+	<link rel="stylesheet" href="CSS/caseconverter.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<?php include 'header.php'; ?>
+
 <!-- Form for text conversion -->
-<form method="POST" action="">
+<div class="form-title">
+	<i class="fa-solid fa-arrows-rotate icon"></i>
+	<h1>Case Converter</h1>
+</div>
+
+<div class="container">
+<form method="POST" action="" class="case-converter-form">
     <!-- The drop down list for the case -->
     <label for ="case">Choose a case:</label>
 
@@ -106,11 +102,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <textarea id="entry" name="entry" placeholder="Enter your text here" required></textarea>
 
     <!-- The button to submit the text to be converted -->
-    <button type="submit" class="button">Submit</button>
+    <button type="submit" class="btn">Submit</button>
 </form>
 
-<!-- Text box for the result -->
-<textarea id="result" name="result"><?php if(isset($display)) echo htmlspecialchars($display); ?></textarea>
+<div class="result-container">
 
+	<!-- Text box for the result -->
+	<label for ="result">Result:</label>
+	<textarea id="result" name="result"><?php if(isset($display)) echo htmlspecialchars($display); ?></textarea>
+</div>
+</div>
+
+<footer>
+	<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
 </body>
 </html>

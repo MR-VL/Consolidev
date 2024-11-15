@@ -28,33 +28,51 @@ try {
     <title>Consolidev | Hashing History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/hashinghistory.css">
 
 </head>
 <body>
-<div class="form" style="word-wrap: break-word; margin-top:50vh;">
 
-    <div style="display: inline-flex; width: 100%">
+<?php include 'header.php'; ?>
+
+<div class="history-container">
+	<a href="hashing.php">
+		<button class="btn">Go back</button>
+        <br>
+    </a>
+    <div class="table-title" style="display: inline-flex; width: 100%">
         <h2 style="max-width: 40%">Your Queries</h2>
-        <a href="hashing.php">
-            <button class="btn">Go back</button>
-            <br>
-        </a>
+
     </div>
 
-    <table border="1" style="width: 100%; text-align: center; border-collapse: collapse;">
-        <tr>
-            <th style="padding: 10px;">Type</th>
-            <th style="padding: 10px;">Original</th>
-            <th style="padding: 10px;">Opposite</th>
-        </tr>
-        <?php
-        foreach ($userHistory as $row) {
-            echo "<tr><td style='padding: 10px;'>{$row['algorithm']}</td><td style='padding: 10px;'>{$row['original']}</td><td style='padding: 10px;max-width: 20vw; word-wrap: break-word'>{$row['opposite']}</td></tr>";
-        }
-        ?>
+    <table class="history-table">
+        <thead>
+			<tr>
+				<th>Type</th>
+				<th>Original</th>
+				<th>Opposite</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if (!empty($userHistory)) : ?>
+				<?php foreach ($userHistory as $row) : ?>
+					<tr>
+						<td><?= htmlspecialchars($row['algorithm']) ?></td>
+						<td><?= htmlspecialchars($row['original']) ?></td>
+						<td><?= htmlspecialchars($row['opposite']) ?></td>
+					</tr>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="3">No history entries found.</td>
+				</tr>
+			<?php endif; ?>
+		</tbody>
     </table>
-
-
 </div>
+<footer>
+	<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
 </body>
+
 </html>

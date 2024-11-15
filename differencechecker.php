@@ -90,72 +90,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, intitial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1 {
-            text-align: center;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 80vw;
-            margin: auto;
-        }
-
-        .form-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        textarea {
-            width: 48%;
-            height: 200px;
-        }
-
-        .button {
-            background-color: #38b6ff;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .button:hover {
-            background-color: #2a90cc;
-        }
-
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-
-        .result {
-            font-size: 18px;
-            color: #ff5733;
-            width: 48%;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
-    </style>
+	<link rel="stylesheet" href="CSS/differencechecker.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Difference Checker</h1>
+
+<?php include 'header.php'; ?>
+
+<div class="form-title">
+	<i class="fa-solid fa-check-double icon"></i>
+	<h1>Difference Checker</h2>
+</div>
+
 <div class="container">
     <!-- Form for text comparison -->
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
@@ -188,6 +134,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </div>
+
+<footer>
+    <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>

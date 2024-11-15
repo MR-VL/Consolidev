@@ -62,19 +62,24 @@
 			<div class="tool-card">
 				<i class="fa-solid fa-check-double"></i>
 				<h3>Difference Checker</h3>
-				<p>compare two texts and highlight differences.</p>
+				<p>Compare two texts and highlight differences.</p>
 			</div>
 			<div class="tool-card">
 				<i class="fa-solid fa-code"></i>
 				<h3>JSON Tools</h3>
 				<p>Validate, format, and edit JSON data easily.</p>
 			</div>
+			<div class="tool-card">
+				<i class="fa-solid fa-hashtag"></i>
+				<h3>Hashing Tools</h3>
+				<p>Hash data using multiple algorithms for secure processing.</p>
+			</div>
 		</div>
 	</section>
 </main>
 
 <footer>
-    <p>&copy; <span id="2024"></span> consoliDev. All rights Reserved.</p>
+    <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
 </footer>
 
 </body>
