@@ -1,0 +1,75 @@
+.form-title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+
+.form-title .icon {
+	font-size: 4rem;
+	color: var(--color-blue);
+	margin-right: 0.5rem;
+	margin-top: 2rem;
+}
+
+.form-title h1 {
+	font-family: 'TT Chocolates', sans-serif;
+	font-size: 2rem;
+	color: var(--color-black);
+	margin: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 80vw;
+    margin: auto;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+textarea {
+    width: 48%;
+    height: 200px;
+}
+
+.button {
+	background-color: var(--color-blue);
+    color: var(--color-white);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+	transition: background-color 0.3s ease;
+	margin-top: 2rem;
+}
+
+.button:hover {
+    background-color: var(--color-gold);
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.result {
+    font-size: 18px;
+    color: #ff5733;
+    width: 48%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+label {
+	font-family: 'DM Sans', sans-serif;
+	color: var(--color-gold);
+	font-weight: bold;
+}
