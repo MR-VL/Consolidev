@@ -30,13 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($inputDate && $inputTime && $fromTimezone && $toTimezone) {
         $dateTimeString = "$inputDate $inputTime";
-
         try {
             $date = new DateTime($dateTimeString, new DateTimeZone($fromTimezone));
             $date->setTimezone(new DateTimeZone($toTimezone));
 
-            $output .= "<h3>Converted Date and Time:</h3>";
-            $output .= "<p>" . $date->format('Y-m-d H:i:s') . " ($toTimezone)</p>";
+            $output .= "<h2>Converted Date and Time:</h2>";
+            $output .= "<p>" . $date->format('m-d-Y H:i:s') . " ($toTimezone)</p>";
         } catch (Exception $e) {
             $output .= "<p>Error: " . $e->getMessage() . "</p>";
         }
@@ -52,29 +51,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>ConsoliDev | Timestamp Converter</title>
-    <meta name="viewport" content="width=device-width, charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <style>
-        .container { max-width: 50vw; margin: auto; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1>Timestamp Converter</h1>
+    <link rel="stylesheet" href="CSS/timestampconverter.css" />
+    <script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
 
+</head>
+
+<body>
+<?php include('header.php'); ?>
+
+<main class="content-wrapper">
+
+<div class="title-container">
+    <i class="fa-solid fa-clock title-icon"></i>
+	<h1 class="page-title">Timestamp Converter</h1>
+<div>
+
+
+<div class="container">
     <!-- Date and Time Conversion Form -->
     <form action="timestampconverter.php" method="post">
-        <label for="dateInput">Enter Date (YYYY-MM-DD):</label><br>
+
+        <!--Date-->
+        <label for="dateInput">Enter Date (MM/DD/YYYY):</label><br>
         <input type="date" id="dateInput" name="dateInput" required><br><br>
 
+        <!--Time-->
         <label for="timeInput">Enter Time (HH:mm):</label><br>
         <input type="time" id="timeInput" name="timeInput" required><br><br>
 
+        <!--From Timezone-->
         <label for="fromTimezone">From Timezone:</label><br>
         <select id="fromTimezone" name="fromTimezone" class="timezone-select" required>
             <?php
@@ -85,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ?>
         </select><br><br>
 
+        <!--To Timezone-->
         <label for="toTimezone">To Timezone:</label><br>
         <select id="toTimezone" name="toTimezone" class="timezone-select" required>
             <?php
@@ -98,20 +113,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Convert Time">
     </form>
 
-    <h2>Conversion Results</h2>
-    <?php echo $output; ?>
-</div>
+    <div class="result-section">
+            <?php echo $output; ?>
+    </div>
+    </div>
 
-<!-- jQuery and Select2 JavaScript (for searchable dropdown) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.timezone-select').select2({
-            placeholder: 'Select a timezone',
-            allowClear: true
+    <!-- Include jQuery and Select2 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Apply Select2 to each timezone dropdown
+            $('.timezone-select').select2({
+                placeholder: 'Select a timezone',
+                allowClear: true
+            });
         });
-    });
-</script>
+    </script>
+</div>
+<main>
+
+<footer>
+    <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+</footer>
 </body>
 </html>

@@ -6,7 +6,7 @@ include 'header.php';
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
 } else {
-    $username = $_SESSION['username'];
+	$username = $_SESSION['username'];
 }
 
 ?>
@@ -16,9 +16,9 @@ if (!isset($_SESSION['username'])) {
 <head>
     <title>Consolidev | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="stylesheet" href="CSS/Main.css">
-    <script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/Main.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -78,6 +78,11 @@ if (!isset($_SESSION['username'])) {
 				<i class="fa-solid fa-hashtag"></i>
 				<h3>Hashing Tools</h3>
 				<p>Hash data using multiple algorithms for secure processing.</p>
+			</a>
+			<a href="timestampconverter.php" class="tool-card">
+				<i class="fa-solid fa-clock"></i>
+				<h3>Timestamp Converter</h3>
+				<p>Quickly and easily convert date and time.</p>
 			</a>
         </div>
     </div>

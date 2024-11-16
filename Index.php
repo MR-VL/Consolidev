@@ -47,7 +47,7 @@
 			<div class="tool-card">
 				<i class="fa-solid fa-i-cursor"></i>
 				<h3>Paragraph to One Line Converter</h3>
-				<p>convert multi-line paragraphs into a single line.</p>
+				<p>Convert multi-line paragraphs into a single line.</p>
 			</div>
 			<div class="tool-card">
 				<i class="fa-solid fa-arrows-rotate"></i>
@@ -73,6 +73,11 @@
 				<i class="fa-solid fa-hashtag"></i>
 				<h3>Hashing Tools</h3>
 				<p>Hash data using multiple algorithms for secure processing.</p>
+			</div>
+			<div class="tool-card">
+				<i class="fa-solid fa-clock"></i>
+				<h3>Timestamp Converter</h3>
+				<p>Quickly and easily convert date and time.</p>
 			</div>
 		</div>
 	</section>
