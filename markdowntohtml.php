@@ -58,96 +58,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markdown to HTML Converter</title>
-    <style>
-        .container {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .container > div {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-        textarea {
-            width: 100%;
-            max-width: 100%;
-        }
-        .raw-html {
-            white-space: pre-wrap;
-            background-color: #f4f4f4;
-        }
-        .tooltip {
-            display: inline-block;
-            position: relative;
-            cursor: pointer;
-            font-size: 14px;
-            color: #007bff;
-        }
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: #6c757d;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position above the text */
-            left: 50%;
-            margin-left: -100px; /* Center the tooltip */
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
+	<link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/markdowntohtml.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	<?php include 'header.php'; ?>
+	
+	<main>
+		<div class="tool-header">
+			<i class="fa-solid fa-code"></i>
+			<h1>Markdown to HTML Converter</h1>
+		</div>
 
-    <h1>Markdown to HTML Converter</h1>
-    <form action="" method="post">
-        <label for="markdown">Markdown Input:</label>
-        <textarea id="markdown" name="markdown" rows="10" cols="50" placeholder="Enter Markdown here..."><?php echo isset($markdown) ? $markdown : ''; ?></textarea><br>
-        <input type="submit" value="Convert">
-    </form>
+		<form action="" method="post" class="markdown-form">
+			<label for="markdown">Markdown Input:</label>
+			<textarea id="markdown" name="markdown" rows="10" cols="50" placeholder="Enter Markdown here..."><?php echo isset($markdown) ? $markdown : ''; ?></textarea>
+			<input type="submit" value="Convert" class="button">
 
-    <div class="tooltip">
-        <span class="tooltiptext">
-            Markdown Syntax:
-            <ul>
-                <li># Header 1</li>
-                <li>## Header 2</li>
-                <li>**Bold text**</li>
-                <li>*Italic text*</li>
-                <li>- List item</li>
-                <li>1. Ordered list item</li>
-            </ul>
-        </span>
-        <strong>How to...</strong>
-    </div>
+		<div class="tooltip">
+			<span class="tooltiptext">
+				Markdown Syntax:
+				<ul>
+					<li># Header 1</li>
+					<li>## Header 2</li>
+					<li>**Bold text**</li>
+					<li>*Italic text*</li>
+					<li>- List item</li>
+					<li>1. Ordered list item</li>
+				</ul>
+			</span>
+			<strong>How to...</strong>
+		</div>
+		</form>
 
-    <?php if ($html): ?>
-        <div class="container">
-            <div>
-                <h2>Markdown</h2>
-                <!-- displays original Markdown input (escaped if necessary) -->
-                <textarea rows="10" readonly><?php echo isset($markdown) ? $markdown : ''; ?></textarea>
-            </div>
-            <div>
-                <h2>HTML Source Code</h2>
-                <!-- HTML as raw source code -->
-                <textarea class="raw-html" rows="10" readonly><?php echo htmlspecialchars($html); ?></textarea>
-            </div>
-            <div>
-                <h2>Rendered HTML Output</h2>
-                <!-- renders the converted HTML -->
-                <div><?php echo $html; ?></div>
-            </div>
-        </div>
-    <?php endif; ?>
+		<?php if ($html): ?>
+			<div class="container">
+				<div>
+					<h2>Markdown</h2>
+					<!-- displays original Markdown input (escaped if necessary) -->
+					<textarea rows="10" readonly><?php echo isset($markdown) ? $markdown : ''; ?></textarea>
+				</div>
+				<div>
+					<h2>HTML Source Code</h2>
+					<!-- HTML as raw source code -->
+					<textarea class="raw-html" rows="10" readonly><?php echo htmlspecialchars($html); ?></textarea>
+				</div>
+				<div>
+					<h2>Rendered HTML Output</h2>
+					<!-- renders the converted HTML -->
+					<div><?php echo $html; ?></div>
+				</div>
+			</div>
+		<?php endif; ?>
+	</main>
+	
+	<footer>
+		<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+	</footer>
 </body>
 </html>

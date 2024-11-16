@@ -70,7 +70,7 @@ if (!isset($_SESSION['username'])) {
                 <p>Compare two texts and highlight differences.</p>
             </a>
             <a href="Json.php" class="tool-card">
-                <i class="fa-solid fa-code"></i>
+                <i class="fa-solid fa-terminal"></i>
                 <h3>JSON Tools</h3>
                 <p>Validate, format, and edit JSON data easily.</p>
             </a>
@@ -78,6 +78,11 @@ if (!isset($_SESSION['username'])) {
 				<i class="fa-solid fa-hashtag"></i>
 				<h3>Hashing Tools</h3>
 				<p>Hash data using multiple algorithms for secure processing.</p>
+			</a>
+			<a href="markdowntohtml.php" class="tool-card">
+				<i class="fa-solid fa-code"></i>
+				<h3>Markdown to HTML</h3>
+				<p>Convert Markdown text into clean, structured HTML.</p>
 			</a>
         </div>
     </div>
