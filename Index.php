@@ -75,7 +75,7 @@
 				<p>Hash data using multiple algorithms for secure processing.</p>
 			</div>
 			<div class="tool-card">
-				<i class="fa-regular fa-clock"></i>
+				<i class="fa-solid fa-clock"></i>
 				<h3>Timestamp Converter</h3>
 				<p>Quickly and easily convert date and time.</p>
 			</div>

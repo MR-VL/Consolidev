@@ -65,9 +65,11 @@ input[type="submit"]:hover {
 
 .result-section {
   word-wrap: break-word;
+  max-width: 100%;
   flex: 1;
   padding-top: 10px;
   margin-top: 20px;
+  padding-bottom: 10px;
 }
 
 label {
@@ -81,8 +83,4 @@ label {
   font-size: 18px;
   font-family: "DM Sans", sans-serif;
   color: var(--color-black);
-}
-
-.conversion-results {
-  margin-top: 10px;
 }

@@ -171,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </main>
 
 <footer>
-    <p>&copy; <span id="2024"></span> consoliDev. All rights Reserved.</p>
+    <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
 </footer>
 
 </body>

@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $date = new DateTime($dateTimeString, new DateTimeZone($fromTimezone));
             $date->setTimezone(new DateTimeZone($toTimezone));
 
-            $output .= "<h3>Converted Date and Time:</h3>";
+            $output .= "<h2>Converted Date and Time:</h2>";
             $output .= "<p>" . $date->format('m-d-Y H:i:s') . " ($toTimezone)</p>";
         } catch (Exception $e) {
             $output .= "<p>Error: " . $e->getMessage() . "</p>";
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <main class="content-wrapper">
 
 <div class="title-container">
-    <i class="fa-regular fa-clock title-icon"></i>
+    <i class="fa-solid fa-clock title-icon"></i>
 	<h1 class="page-title">Timestamp Converter</h1>
 <div>
 
@@ -114,10 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <div class="result-section">
-        <h2>Conversion Results</h2>
-        <div class="conversion-results">
             <?php echo $output; ?>
-        </div>
+    </div>
     </div>
 
     <!-- Include jQuery and Select2 JavaScript -->
@@ -136,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <main>
 
 <footer>
-    <p>&copy; <span id="2024"></span> consoliDev. All rights Reserved.</p>
+    <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
 </footer>
 </body>
 </html>
