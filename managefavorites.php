@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$username = $_SESSION['username'];
-	$favorites = isset($_POST['favorites']) ? jason_decode($_POST['favorites'], true) : [];
+	$favorites = isset($_POST['favorites']) ? json_decode($_POST['favorites'], true) : [];
 	
 	
 	$tools = [
@@ -63,6 +63,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<link rel="stylesheet" href="CSS/styles.css">
 	<link rel="stylesheet" href="CSS/managefavorites.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const stars = document.querySelectorAll(".star");
+
+                stars.forEach(star => {
+                    star.addEventListener("click", function () {
+                        star.classList.toggle("checked");
+
+                        // Update hidden input with selected tools
+                        let favorites = Array.from(document.querySelectorAll(".star.checked"))
+                            .map(star => star.getAttribute("value"))
+                            .join(",");
+                        document.getElementById("favorites").value = JSON.stringify(favorites);
+                    });
+                });
+            });
+        </script>
 </head>
 <body>
 	<?php include 'header.php'; ?>
@@ -123,34 +140,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					<h3>Difference Checker</h3>
 				</div>
 			</div>
-		</form>
+		
 
             <!-- Hidden input for starred tools -->
             <input type="hidden" name="favorites" id="favorites" value="">
 			<div class="button-container">
 				<button type="submit" class="btn">Update Favorites</button>
 			</div>
+		</form>
         
 	</main>
 	<footer>
 		<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
 	</footer>
-    <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const stars = document.querySelectorAll(".star");
 
-                stars.forEach(star => {
-                    star.addEventListener("click", function () {
-                        star.classList.toggle("checked");
-
-                        // Update hidden input with selected tools
-                        let favorites = Array.from(document.querySelectorAll(".star.checked"))
-                            .map(star => star.getAttribute("value"))
-                            .join(",");
-                        document.getElementById("favorites").value = JSON.stringify(favorites);
-                    });
-                });
-            });
-        </script>
 </body>
 </html>
