@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 14, 2024 at 11:19 PM
+-- Generation Time: Nov 16, 2024 at 09:37 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -240,6 +240,35 @@ CREATE TABLE IF NOT EXISTS `timestampconverter` (
   PRIMARY KEY (`TransactionID`),
   KEY `Username` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tools`
+--
+
+DROP TABLE IF EXISTS `tools`;
+CREATE TABLE IF NOT EXISTS `tools` (
+  `toolname` varchar(40) NOT NULL,
+  `toolurl` varchar(40) NOT NULL,
+  PRIMARY KEY (`toolname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tools`
+--
+
+INSERT INTO `tools` (`toolname`, `toolurl`) VALUES
+('Base64', 'base64.php'),
+('CaseConverter', 'caseconverter.php'),
+('DifferenceChecker', 'differencechecker.php'),
+('DuplicateChecker', 'duplicates.php'),
+('Hashing', 'hashing.php'),
+('JSONValidator', 'Json.php'),
+('JWTDecode', 'JWT.php'),
+('MarkdownToHtmlConverter', 'markdowntohtml.php'),
+('ParagraphtoOneLineConverter', 'paragraphtooneline.php'),
+('TimeStampConverter', 'timestampconverter.php');
 
 -- --------------------------------------------------------
 
