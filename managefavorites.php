@@ -132,7 +132,7 @@ $username = $_SESSION['username'];
                 <span class="fa fa-star star" value="ParagraphtoOneLineConverter"></span>
             </div>
             <div>
-                <a href="timestampconverter.php" class="btn">Time Stamp Converter</a>
+                <a href="timestampconverter.php" class="btn">Timestamp Converter</a>
                 <span class="fa fa-star star" value="TimeStampConverter"></span>
             </div>
 
