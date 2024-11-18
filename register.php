@@ -17,6 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<script>alert("Error: Maximum size for field input is 20 characters")</script>';
     }
 
+    if(strlen($password) < 8 ){
+        $valid = false;
+        echo '<script>alert("Error: Password must be at least 8 characters long")</script>';
+    }
 
     if (!empty($Fname) && !empty($Lname) && !empty($username) && !empty($password) && $valid) {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
