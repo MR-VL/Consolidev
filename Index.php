@@ -65,7 +65,7 @@
 				<p>Compare two texts and highlight differences.</p>
 			</div>
 			<div class="tool-card">
-				<i class="fa-solid fa-code"></i>
+				<i class="fa-solid fa-terminal"></i>
 				<h3>JSON Tools</h3>
 				<p>Validate, format, and edit JSON data easily.</p>
 			</div>
@@ -74,6 +74,11 @@
 				<h3>Hashing Tools</h3>
 				<p>Hash data using multiple algorithms for secure processing.</p>
 			</div>
+            <div class="tool-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Markdown to HTML</h3>
+                <p>Convert Markdown text into clean, structured HTML.</p>
+            </div>
 			<div class="tool-card">
 				<i class="fa-solid fa-clock"></i>
 				<h3>Timestamp Converter</h3>
