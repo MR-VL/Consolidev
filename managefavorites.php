@@ -43,12 +43,14 @@ $username = $_SESSION['username'];
 
     <form method="post" action="updatefavorites.php">
         <div class="tools-list">
-            <div class="tool-card">
 
+
+            <div class="tool-card">
                 <span class="fa fa-star star" value="Base64"></span>
                 <i class="fa-solid fa-unlock-keyhole tool-icon"></i>
                 <h3>Base 64</h3>
             </div>
+
             <div class="tool-card">
                 <span class="fa fa-star star" value="JWTDecoder"></span>
                 <i class="fa-solid fa-key tool-icon"></i>
