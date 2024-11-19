@@ -21,15 +21,28 @@ $username = $_SESSION['username'];
         document.addEventListener("DOMContentLoaded", function () {
             const stars = document.querySelectorAll(".star");
 
+            // Automatically mark the first and last stars as checked
+            if (stars.length > 0) {
+                stars[0].classList.add("checked");
+                stars[stars.length - 1].classList.add("checked");
+            }
+
+            // Update hidden input with selected tools
+            let favorites = Array.from(document.querySelectorAll(".star.checked"))
+                .map(star => star.getAttribute("value"))
+                .join(",");
+            document.getElementById("favorites").value = JSON.stringify(favorites);
+
+            // Handle manual clicking of stars
             stars.forEach(star => {
                 star.addEventListener("click", function () {
                     star.classList.toggle("checked");
 
                     // Update hidden input with selected tools
-                    let favorites = Array.from(document.querySelectorAll(".star.checked"))
+                    let updatedFavorites = Array.from(document.querySelectorAll(".star.checked"))
                         .map(star => star.getAttribute("value"))
                         .join(",");
-                    document.getElementById("favorites").value = JSON.stringify(favorites);
+                    document.getElementById("favorites").value = JSON.stringify(updatedFavorites);
                 });
             });
         });
@@ -44,6 +57,11 @@ $username = $_SESSION['username'];
     <form method="post" action="updatefavorites.php">
         <div class="tools-list">
 
+            <div class="tool-card" style="pointer-events: none; border: solid 2px #c7aa17;">
+                <span class="fa fa-star star" value="Base64"></span>
+                <i class="fa-solid fa-check tool-icon"></i>
+                <h3>Select Your Tools</h3>
+            </div>
             <div class="tool-card">
                 <span class="fa fa-star star" value="Base64"></span>
                 <i class="fa-solid fa-unlock-keyhole tool-icon"></i>
@@ -93,6 +111,11 @@ $username = $_SESSION['username'];
                 <span class="fa fa-star star" value="TimeStampConverter"></span>
                 <i class="fa-solid fa-clock tool-icon"></i>
                 <h3>Time Stamp Converter</h3>
+            </div>
+            <div class="tool-card" style="pointer-events: none;  border: solid 2px #c7aa17;">
+                <span class="fa fa-star star" value="TimeStampConverter"></span>
+                <i class="fa-solid fa-check tool-icon"></i>
+                <h3>Select Your Tools</h3>
             </div>
 
         </div>
