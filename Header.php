@@ -17,7 +17,7 @@
 		<div class="dropdown-container">
 			<img src="pics/consoliDev logo no text.png" alt="consoliDev logo" class="dropdown-icon" id="dropdownToggle">
 			<div class="dropdown-menu" id="dropdownMenu">
-				<a href="index.php">Home</a>
+				<a href="Main.php">Home</a>
 				<a href="base64.php">Base 64 Encrypt/Decrypt</a>
 				<a href="caseconverter.php">Case Converter</a>
 				<a href="differencechecker.php">Difference Checker</a>
