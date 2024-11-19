@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="form-title">
 	<i class="fa-solid fa-check-double icon"></i>
-	<h1>Difference Checker</h2>
+	<h1>Difference Checker</h1>
 </div>
 
 <div class="container">
