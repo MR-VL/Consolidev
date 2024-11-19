@@ -162,20 +162,6 @@ CREATE TABLE IF NOT EXISTS `json` (
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `jsontocsv`
---
-
-DROP TABLE IF EXISTS `jsontocsv`;
-CREATE TABLE IF NOT EXISTS `jsontocsv` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
