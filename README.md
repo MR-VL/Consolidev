@@ -13,6 +13,7 @@ Access a wide array of essential developer tools including:
  - JWT Decode<br>
  - Paragraph to One Line Converter<br>
  - Markdown to HTML Convertor<br>
+ - API Request Builder<br>
  - Case Converter<br>
  - Duplicate Finder<br>
  - Difference Checker<br>
