@@ -31,6 +31,7 @@ try {
 	<link rel="stylesheet" href="CSS/jwtHistory.css">
 
 </head>
+<main>
 <body>
 
 <?php include 'header.php'; ?>
@@ -66,6 +67,7 @@ try {
 		</tbody>
     </table>
 </div>
+</main>
 
 <footer>
 	<p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
