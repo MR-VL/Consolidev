@@ -9,7 +9,7 @@ if (isset($_GET['logout'])) {
 
 if (isset($_SESSION['username'])) {
 	$username = $_SESSION['username'];
-	
+	global $connect;
 	$favorites = [];
 	
 	$sql = "SELECT * FROM favorites WHERE username = :username";
@@ -40,10 +40,9 @@ if (isset($_SESSION['username'])) {
 					echo "Error: SQL query is emtpy!<br>";
 					continue;
 				}
+
 				
-				echo "Debut: SQL = $toolsSql for tool = $toolKey<br>";
-				
-				$toolStmt = $connect->prepare($toolSql);
+				$toolStmt = $connect->prepare($toolsSql);
 								
 				$toolStmt->execute(['toolname' => $toolKey]);
 				
@@ -51,8 +50,6 @@ if (isset($_SESSION['username'])) {
 				
 				if ($tool) {
 					$favorites[] = array('name' => $toolName, 'url' => $tool['toolurl']);
-				} else {
-					echo "Debug: No tool found for $toolKey<br>";
 				}
 			}
 		}
@@ -76,7 +73,7 @@ if (isset($_SESSION['username'])) {
 			<?php
 			if (count($favorites) > 0) {
 				foreach ($favorites as $favorite) {
-					echo '<a href="' . htmlspecialchars($favorite['url']) . '" class="favorite-link">' . htmlspecialchars($favorite['name']) . '</a>';
+					echo '<a style="max-width:10vw" href="' . htmlspecialchars($favorite['url']) . '" class="favorite-link">' . htmlspecialchars($favorite['name']) . '</a>';
 				}
 			} else {
 				echo '<p>No favorite tools found</p>';
@@ -84,14 +81,15 @@ if (isset($_SESSION['username'])) {
 			?>
 			
 		</nav>
-		<div class="logo-link">
-			<a href="main.php">
-				<img src="pics/consoliDev logo no text.png" alt="consoliDev logo" class="dropdown-icon">
-			</a>
-		</div>
-		<div class="hamburger-container">
-			
+
+		<div class="hamburger-container" style="display: inline-flex">
+            <div class="logo-link" style="margin-right: 5px">
+                <a href="main.php">
+                    <img src="pics/consoliDev logo no text.png" alt="consoliDev logo" class="dropdown-icon">
+                </a>
+            </div>
 			<i class="fa-solid fa-bars" id="hamburgerButton"></i>
+
 		</div>
 									
 			<div class="dropdown-menu" id="dropdownMenu">
