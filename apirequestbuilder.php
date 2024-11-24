@@ -76,23 +76,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         return $headers;
-    }   
+    }
 
     try {
         global $connect;
         $sql = "INSERT INTO api_requests (username, endpoint, method, headers, body, date)
-            VALUES(:username, :endpoint, :method, :headers, :body, CURRENT_TIMESTAMP)";
+        VALUES(:username, :endpoint, :method, :headers, :body, CURRENT_TIMESTAMP)";
 
         $stmt = $connect->prepare($sql);
 
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":endpoint", $endpoint);
         $stmt->bindParam(":method", $method);
-        $stmt->bindParam(":headers", $headers);
-        $stmt->bindParam(":body", $body);
+
+        // Convert the headers array to a JSON string
+        $headersString = json_encode($headers);
+        $stmt->bindParam(":headers", $headersString);
+
+        // Ensure body is a string
+        if (is_array($body)) {
+            $bodyString = json_encode($body);
+        } else {
+            $bodyString = $body;
+        }
+        $stmt->bindParam(":body", $bodyString);
 
         $stmt->execute();
-        } catch (exception $e) {
+    } catch (Exception $e) {
         $display = "Error: " . $e->getMessage();
     }
 }
