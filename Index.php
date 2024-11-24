@@ -9,6 +9,7 @@
 	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <!--Main Content-->
 <main>
 	<!-- Hero Section -->
