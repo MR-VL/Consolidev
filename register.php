@@ -39,8 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
             if ($stmt->execute()) {
-                echo "<h1>Thank you for registering!</h1>";
-                ob_end_flush();
+                // Redirect to login.php after successful registration
+                echo "<h1>Account successfully registerd.</h1>\n";
+                echo "<h2>You will be redirected back to Login in 2 seconds</h2>";
+                echo "<hp>If you are not redirected <a href='Login.php'>Click here</a></hp>";
+                header('Refresh: 2; URL=Login.php');
+				exit;
             } else {
                 echo "<h1>Registration failed. Please try again later...</h1>";
                 ob_end_flush();
