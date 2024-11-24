@@ -153,7 +153,7 @@ img {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	backgroun-color: var(--color-white);
+	background-color: var(--color-white);
 	cursor: pointer;
 }
 
