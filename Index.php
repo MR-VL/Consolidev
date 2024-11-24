@@ -9,15 +9,12 @@
 	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<!--Include Header-->
-<?php include 'header.php'; ?>
-
 <!--Main Content-->
 <main>
 	<!-- Hero Section -->
-	<section class="hero">
+	<section class="hero" style="margin-top:-40px;">
 		<div class="hero-content">
+			<img src="pics/consoliDev logo no text.png" alt="consoliDev logo" class="dropdown-icon" style="width: 95px; height: 95px; margin-bottom: 55px;">
 			<h1>Welcome to consoliDev</h1>
 			<p>Your ultimate dev toolkit. Log in or register to get started.</p>
 			<div class ="buttons">
@@ -40,24 +37,9 @@
 				<p>Quickly encode or decode text using Base64 encoding.</p>
 			</div>
 			<div class="tool-card">
-				<i class="fa-solid fa-key"></i>
-				<h3>JWT Decode</h3>
-				<p>Decode JSON Web Tokens to view payload data.</p>
-			</div>
-			<div class="tool-card">
-				<i class="fa-solid fa-i-cursor"></i>
-				<h3>Paragraph to One Line Converter</h3>
-				<p>Convert multi-line paragraphs into a single line.</p>
-			</div>
-			<div class="tool-card">
 				<i class="fa-solid fa-arrows-rotate"></i>
 				<h3>Case Converter</h3>
 				<p>Convert text between uppercase, lowercase, and more.</p>
-			</div>
-			<div class="tool-card">
-				<i class="fa-solid fa-magnifying-glass"></i>
-				<h3>Duplicate Finder</h3>
-				<p>Find and highlight duplicate lines or entries.</p>
 			</div>
 			<div class="tool-card">
 				<i class="fa-solid fa-check-double"></i>
@@ -65,20 +47,35 @@
 				<p>Compare two texts and highlight differences.</p>
 			</div>
 			<div class="tool-card">
-				<i class="fa-solid fa-terminal"></i>
-				<h3>JSON Tools</h3>
-				<p>Validate, format, and edit JSON data easily.</p>
+				<i class="fa-solid fa-magnifying-glass"></i>
+				<h3>Duplicate Finder</h3>
+				<p>Find and highlight duplicate lines or entries.</p>
 			</div>
 			<div class="tool-card">
 				<i class="fa-solid fa-hashtag"></i>
 				<h3>Hashing Tools</h3>
 				<p>Hash data using multiple algorithms for secure processing.</p>
 			</div>
-            <div class="tool-card">
+			<div class="tool-card">
+				<i class="fa-solid fa-terminal"></i>
+				<h3>JSON Tools</h3>
+				<p>Validate, format, and edit JSON data easily.</p>
+			</div>
+			<div class="tool-card">
+				<i class="fa-solid fa-key"></i>
+				<h3>JWT Decode</h3>
+				<p>Decode JSON Web Tokens to view payload data.</p>
+			</div>
+			<div class="tool-card">
                 <i class="fa-solid fa-code"></i>
                 <h3>Markdown to HTML</h3>
                 <p>Convert Markdown text into clean, structured HTML.</p>
             </div>
+			<div class="tool-card">
+				<i class="fa-solid fa-i-cursor"></i>
+				<h3>Paragraph to One Line Converter</h3>
+				<p>Convert multi-line paragraphs into a single line.</p>
+			</div>
 			<div class="tool-card">
 				<i class="fa-solid fa-clock"></i>
 				<h3>Timestamp Converter</h3>
