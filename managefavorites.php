@@ -125,8 +125,17 @@ $username = $_SESSION['username'];
         <div class="button-container">
             <button type="submit" class="btn">Update Favorites</button>
         </div>
-    </form>
 
+    </form>
+    <div class="button-container">
+        <a href="Main.php">
+            <button type="submit" class="btn">Cancel</button>
+            <?php
+                ob_end_flush();
+            ?>
+        </a>
+
+    </div>
 </main>
 <footer>
     <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>

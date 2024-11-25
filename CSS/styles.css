@@ -153,7 +153,7 @@ img {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	backgroun-color: var(--color-white);
+	background-color: var(--color-white);
 	cursor: pointer;
 }
 
@@ -198,6 +198,7 @@ footer a:hover {
 	align-items: center;
 	padding: 0.5rem 1rem;
 	z-index: 1000;
+	width: 100%;
 }
 
 /* Favorites Bar */
@@ -219,8 +220,17 @@ footer a:hover {
 }
 
 /* Dropdown Menu */
-.dropdown-container {
-	position: relative;
+.logo-link {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-grow: 1;
+}
+
+.hamburgerContainer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 
 .dropdown-icon {
@@ -233,6 +243,14 @@ footer a:hover {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+#hamburgerButton {
+	font-size: 30px;
+	color: var(--color-white);
+	cursor: pointer;
+	display: block;
+	z-index: 1100;
+}
+
 .dropdown-menu {
 	display: none;
 	position: absolute;
@@ -242,7 +260,7 @@ footer a:hover {
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	border-radius: 4px;
 	overflow: hidden;
-	z-index: 10001;
+	z-index: 1001;
 }
 
 .dropdown-menu.show {
@@ -259,4 +277,20 @@ footer a:hover {
 
 .dropdown-menu a:hover {
 	background-color: #e0e0e0;
+}
+
+.dropdown-menu a.highlight-link {
+	background-color: var(--color-gold);
+	color: var(--color-white);
+	transition: background-color 0.3 ease, color 0.3s ease;
+	display: block;
+	padding: 0.75rem 1rem;
+	text-decoration: none;
+	font-weight: bold;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.dropdown-menu a.highlight-link:hover {
+	background-color: var(--color-blue);
+	color: var(--color-white);
 }
