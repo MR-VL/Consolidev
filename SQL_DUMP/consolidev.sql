@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 16, 2024 at 09:37 PM
+-- Generation Time: Nov 25, 2024 at 02:33 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -24,17 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_requests`
+-- Table structure for table `apirequests`
 --
 
-DROP TABLE IF EXISTS `api_requests`;
-CREATE TABLE IF NOT EXISTS `api_requests` (
+DROP TABLE IF EXISTS `apirequests`;
+CREATE TABLE IF NOT EXISTS `apirequests` (
   `TransactionID` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `date` date NOT NULL,
-  `url` varchar(100) NOT NULL,
+  `endpoint` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `method` enum('GET','POST','PUT','DELETE') NOT NULL,
-  `data` text,
+  `headers` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `body` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -106,6 +107,21 @@ CREATE TABLE IF NOT EXISTS `duplicatefinder` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `duplicateremover`
+--
+
+DROP TABLE IF EXISTS `duplicateremover`;
+CREATE TABLE IF NOT EXISTS `duplicateremover` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `favorites`
 --
 
@@ -162,6 +178,20 @@ CREATE TABLE IF NOT EXISTS `json` (
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jsontocsv`
+--
+
+DROP TABLE IF EXISTS `jsontocsv`;
+CREATE TABLE IF NOT EXISTS `jsontocsv` (
+  `TransactionID` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 

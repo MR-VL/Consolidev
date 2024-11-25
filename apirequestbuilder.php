@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         global $connect;
-        $sql = "INSERT INTO api_requests (username, endpoint, method, headers, body, date)
+        $sql = "INSERT INTO apirequests (username, endpoint, method, headers, body, date)
         VALUES(:username, :endpoint, :method, :headers, :body, CURRENT_TIMESTAMP)";
 
         $stmt = $connect->prepare($sql);
@@ -88,6 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":endpoint", $endpoint);
         $stmt->bindParam(":method", $method);
+        $stmt->bindParam(":headers", $headers);
+        $stmt->bindParam(":body", $body);
+
 
         // Convert the headers array to a JSON string
         $headersString = json_encode($headers);
