@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 26, 2024 at 11:35 PM
+-- Generation Time: Nov 16, 2024 at 09:37 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `api_requests` (
   `body` text,
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -162,6 +162,7 @@ CREATE TABLE IF NOT EXISTS `json` (
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 -- --------------------------------------------------------
 
