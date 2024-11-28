@@ -64,7 +64,7 @@ $username = $_SESSION['username'];
             </div>
             <div class="tool-card">
                 <span class="fa fa-star star" value="APIRequestBuilder"></span>
-                <i class="fa-solid fa-code-pull-request"></i>
+                <i class="fa-solid fa-code-pull-request tool-icon"></i>
                 <h3>API Request Builder</h3>
 
             </div>
@@ -99,7 +99,7 @@ $username = $_SESSION['username'];
                 <h3>JSON Tools</h3>
             </div>
             <div class="tool-card">
-                <span class="fa fa-star star" value="JWTDecoder"></span>
+                <span class="fa fa-star star" value="JWTDecode"></span>
                 <i class="fa-solid fa-key tool-icon"></i>
                 <h3>JWT Decode</h3>
             </div>

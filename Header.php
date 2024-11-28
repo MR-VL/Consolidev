@@ -19,13 +19,14 @@ if (isset($_SESSION['username'])) {
 	
 	if ($favoriteRow) {
 		$tools = [
+            'APIRequestBuilder' => 'API Request Builder',
 			'Base64' => 'Base 64 Encrypt/Decrypt',
 			'CaseConverter' => 'Case Converter',
 			'DuplicateChecker' => 'Duplicate Finder',
 			'DifferenceChecker' => 'Difference Checker',
 			'Hashing' => 'Hashing Tools',
 			'JSONValidator' => 'JSON Tools',
-			'JWTDecoder' => 'JWT Decode',
+			'JWTDecode' => 'JWT Decode',
 			'MarkdownToHtmlConverter' => 'Markdown to HTML',
 			'TimeStampConverter' => 'Timestamp Converter',
 			'ParagraphtoOneLineConverter' => 'Paragraph to One Line',
@@ -94,6 +95,7 @@ if (isset($_SESSION['username'])) {
 									
 			<div class="dropdown-menu" id="dropdownMenu">
 				<a href="Main.php" class="highlight-link">Home</a>
+                <a href="apirequestbuilder.php">API Request Builder</a>
 				<a href="base64.php">Base 64 Encrypt/Decrypt</a>
 				<a href="caseconverter.php">Case Converter</a>
 				<a href="differencechecker.php">Difference Checker</a>
