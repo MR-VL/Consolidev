@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 16, 2024 at 09:37 PM
+-- Generation Time: Nov 28, 2024 at 01:41 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `api_requests` (
   `body` text,
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -112,6 +112,7 @@ CREATE TABLE IF NOT EXISTS `duplicatefinder` (
 
 DROP TABLE IF EXISTS `favorites`;
 CREATE TABLE IF NOT EXISTS `favorites` (
+  `APIRequestBuilder` tinyint(1) NOT NULL,
   `username` varchar(20) NOT NULL,
   `Base64` tinyint(1) NOT NULL,
   `CaseConverter` tinyint(1) NOT NULL,
@@ -119,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   `DuplicateChecker` tinyint(1) NOT NULL,
   `Hashing` tinyint(1) NOT NULL,
   `JSONValidator` tinyint(1) NOT NULL,
-  `JWTDecoder` tinyint(1) NOT NULL,
+  `JWTDecode` tinyint(1) NOT NULL,
   `MarkdownToHtmlConverter` tinyint(1) NOT NULL,
   `ParagraphtoOneLineConverter` tinyint(1) NOT NULL,
   `TimeStampConverter` tinyint(1) NOT NULL,
@@ -162,7 +163,6 @@ CREATE TABLE IF NOT EXISTS `json` (
   PRIMARY KEY (`TransactionID`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 -- --------------------------------------------------------
 
@@ -246,6 +246,7 @@ CREATE TABLE IF NOT EXISTS `tools` (
 --
 
 INSERT INTO `tools` (`toolname`, `toolurl`) VALUES
+('APIRequestBuilder', 'apirequestbuilder.php'),
 ('Base64', 'base64.php'),
 ('CaseConverter', 'caseconverter.php'),
 ('DifferenceChecker', 'differencechecker.php'),

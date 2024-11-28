@@ -32,6 +32,11 @@
 	<section class="tools">
 		<h2> Explore Our Tools</h2>
 		<div class="tool-cards">
+            <div class="tool-card">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <h3>API Request Builder</h3>
+                <p>Easily build and test API requests</p>
+            </div>
 			<div class="tool-card">
 				<i class="fa-solid fa-unlock-keyhole"></i>
 				<h3>Base 64 Encrypt/Decrypt</h3>
