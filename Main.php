@@ -39,7 +39,7 @@ if (!isset($_SESSION['username'])) {
 
        
         <div class="tool-cards">
-            <a href="apirequestbuilder.php.php" class="tool-card">
+            <a href="apirequestbuilder.php" class="tool-card">
                 <i class="fa-solid fa-code-pull-request"></i>
                 <h3>API Request Builder</h3>
                 <p>Easily build and test API requests</p>

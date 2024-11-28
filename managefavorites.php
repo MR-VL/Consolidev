@@ -58,9 +58,15 @@ $username = $_SESSION['username'];
         <div class="tools-list">
 
             <div class="tool-card" style="pointer-events: none; border: solid 2px #c7aa17;">
-                <span class="fa fa-star star" value="Base64"></span>
+                <span class="fa fa-star star" value="APIRequestBuilder"></span>
                 <i class="fa-solid fa-check tool-icon"></i>
                 <h3>Select Your Tools</h3>
+            </div>
+            <div class="tool-card">
+                <span class="fa fa-star star" value="APIRequestBuilder"></span>
+                <i class="fa-solid fa-code-pull-request"></i>
+                <h3>API Request Builder</h3>
+
             </div>
             <div class="tool-card">
                 <span class="fa fa-star star" value="Base64"></span>

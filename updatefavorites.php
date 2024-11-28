@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     global $connect;
     // Define all possible tools that can be favorited
     $allTools = [
+        'APIRequestBuilder',
         'Base64',
         'CaseConverter',
         'DifferenceChecker',
