@@ -39,6 +39,11 @@ if (!isset($_SESSION['username'])) {
 
        
         <div class="tool-cards">
+            <a href="apirequestbuilder.php.php" class="tool-card">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <h3>API Request Builder</h3>
+                <p>Easily build and test API requests</p>
+            </a>
             <a href="base64.php" class="tool-card">
                 <i class="fa-solid fa-unlock-keyhole"></i>
                 <h3>Base 64 Encrypt/ Decrypt</h3>
