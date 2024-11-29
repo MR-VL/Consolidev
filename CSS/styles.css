@@ -204,19 +204,47 @@ footer a:hover {
 /* Favorites Bar */
 .favorites-bar {
 	display: flex;
+	align-items: center;
 	gap: 1rem;
+	padding: 0.5rem 1rem;
+	background-color: var(--color-blue);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	overflow-x: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-gold) var(--color-blue);
 }
 
 .favorite-link {
+	display: inline-block;
+	font-family: 'DM Sans', sans-serif;
+	font-size: 0.9rem;
 	color: var(--color-white);
 	text-decoration: none;
-	padding: 0.5rem 0.75rem;
-	border-radius: 4px;
-	transition: background-color 0.2s ease;
+	padding: 0.5rem 1rem;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 6px;
+	transition: transform 0.2s ease, background-color 0.2s ease;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .favorite-link:hover {
 	background-color: var(--color-gold);
+	color: var(--color-white);
+	transform: scale(1.05);
+}
+
+.favorite-link:active {
+	background-color: #e0af00;
+}
+
+.favorites-bar p {
+	color: var(--color-white);
+	font-family: 'DM Sans', sans-serif;
+	font-size: 0.9rem;
+	padding: 0.5rem;
+	opacity: 0.8;
 }
 
 /* Dropdown Menu */
