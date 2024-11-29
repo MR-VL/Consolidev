@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($bodyInput) {
         $decodedBody = json_decode($bodyInput, true);
         if (json_last_error() === JSON_ERROR_NONE) {
-            $body = json_encode($decodedBody); // Ensure body is a valid JSON string
+            $body = json_encode($decodedBody); // ensures body is a valid JSON string
         } else {
-            $body = $bodyInput; // Use as-is for plain text or form data
+            $body = $bodyInput;
         }
     }
 
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // SSL verification
-    curl_setopt($curl, CURLOPT_CAINFO, __DIR__ . '/Libraries/cacert.pem'); // Adjust path if needed
+    curl_setopt($curl, CURLOPT_CAINFO, __DIR__ . '/Libraries/cacert.pem');
 
     $response = curl_exec($curl);
 
@@ -66,25 +66,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         curl_close($curl);
         exit();
     } else {
-        // Decode the response
+        // decodes the response
         $decodedResponse = json_decode($response, true);
     
-        // Check if the response is valid JSON
+        // validates JSON
         if (json_last_error() === JSON_ERROR_NONE) {
-            // Convert the JSON response to a string and remove escaped slashes
+            // converts JSON response to string, removes escaped slashes
             $jsonString = json_encode($decodedResponse, JSON_PRETTY_PRINT);
     
-            // Replace escaped slashes (\/) with normal slashes (/)
+            // replaces escaped slashes (\/) with normal slashes (/)
             $jsonString = str_replace('\/', '/', $jsonString);
-    
-            // Output the cleaned-up JSON
-            echo '<pre>' . $jsonString . '</pre>';
+            $response = '<pre>Response: ' . htmlspecialchars($jsonString) . '</pre>';
         } else {
-            // If the response is not valid JSON, just print it as-is
-            echo 'Response: ' . $response;
+            $response = '<p>Response: ' . htmlspecialchars($response) . '</p>'; // as-is if not JSON
         }
     }
-    
     
 
     curl_close($curl);
@@ -126,10 +122,23 @@ function parseHeaders($input) {
 }
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Consolidev | API Request Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="CSS/styles.css">
+	<link rel="stylesheet" href="CSS/apirequestbuilder.css">
+	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
+</head>
     <body>
+    <?php include 'header.php'; ?>
+    <div class="tool-header">
+        <i class="fa-solid fa-code-pull-request tool-icon"></i>
         <h1>API Request Builder</h1>
-        <form method="POST" action="apirequestbuilder.php">
+
+    </div>
+        <form method="post" action="" class="api-request">
             <label for="endpoint">API Endpoint:</label>
             <input type="text" name="endpoint" required><br>
             
@@ -149,5 +158,18 @@ function parseHeaders($input) {
 
             <input type="submit" value="Send Request">
         </form>
+
+        <div id="response">
+            <?php
+            if (!empty($response)) {
+                echo $response;
+            }
+            ?>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="2024"></span> consoliDev. All Rights Reserved.</p>
+    </footer>
     </body>
 </html>
