@@ -14,6 +14,7 @@ Access a wide array of essential developer tools including:
  - Paragraph to One Line Converter<br>
  - Markdown to HTML Convertor<br>
  - Case Converter<br>
+ - API Request Builder<br>
  - Duplicate Finder<br>
  - Difference Checker<br>
  - String/Pattern Matching<br>
