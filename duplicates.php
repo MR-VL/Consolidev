@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve the input data based on the button pressed
     $finderInput = filter_input(INPUT_POST, "finderInput", FILTER_SANITIZE_SPECIAL_CHARS);
     $removerInput = filter_input(INPUT_POST, "removerInput", FILTER_SANITIZE_SPECIAL_CHARS);
-    $delimiter = isset($_POST['delimiter']) ? $_POST['delimiter'] : 'character'; // Get the chosen delimiter
+    $delimiter = isset($_POST['delimiter']) ? $_POST['delimiter'] : 'whitespace'; // Get the chosen delimiter
 
     // Initialize a variable to hold output messages
     $output = "";
