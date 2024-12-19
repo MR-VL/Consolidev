@@ -58,7 +58,10 @@ Click on the star icon next to any tool to add it to your favorites.<br>- Access
 
 ### Admin Portal
 - Accessible by administrators to manage user accounts and view comprehensive usage analytics.
- 
+
+ # Demonstration 
+
+[![Watch Demonstration Video](https://img.youtube.com/vi/S9aMG4It3TA/0.jpg)](https://www.youtube.com/watch?v=S9aMG4It3TA)
  <hr/>
  
  
