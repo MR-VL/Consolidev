@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="form hash-history">
 
-        <a href="hashingHistory.php">
+        <a href="hashinghistory.php">
             <button class="history-btn" style="width:auto">View History</button>
         </a>
         <?php

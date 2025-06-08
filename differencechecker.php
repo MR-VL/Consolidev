@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $highlightedDiffs = $dmp->diff_prettyHtml($diffs);
 
         try {
-            //Database connection
+            //database connection
             global $connect;
 
             $sql = "INSERT INTO differencechecker (username, date, differencesFound)

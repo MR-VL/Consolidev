@@ -134,7 +134,7 @@ $username = $_SESSION['username'];
 
     </form>
     <div class="button-container">
-        <a href="Main.php">
+        <a href="main.php">
             <button type="submit" class="btn">Cancel</button>
             <?php
                 ob_end_flush();

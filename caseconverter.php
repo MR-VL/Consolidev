@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             try{
-                // Database interaction
+                // database interaction
                 global $connect;
 
                 $sql = "INSERT INTO caseconverter (username,date)

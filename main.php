@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
     <title>Consolidev | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link rel="stylesheet" href="CSS/styles.css">
-	<link rel="stylesheet" href="CSS/Main.css">
+	<link rel="stylesheet" href="CSS/main.css">
 	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -29,7 +29,7 @@ if (!isset($_SESSION['username'])) {
         <img src="pics/consoliDev logo no bg.png" alt="consoliDev Logo" class="logo">
         <ul class="sidebar-links">
             <li><a href="manageFavorites.php">Manage Favorites</a></li>
-            <li><a href="profile.php">Manage Profile</a></li>
+            <li><a href="manageProfile.php">Manage Profile</a></li>
         </ul>
     </aside>
 
@@ -74,7 +74,7 @@ if (!isset($_SESSION['username'])) {
                 <h3>JSON Tools</h3>
                 <p>Validate, format, and edit JSON data easily.</p>
             </a>
-            <a href="JWT.php" class="tool-card">
+            <a href="jwt.php" class="tool-card">
                 <i class="fa-solid fa-key"></i>
                 <h3>JWT Decode</h3>
                 <p>Decode JSON Web Tokens to view payload data.</p>

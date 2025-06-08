@@ -94,7 +94,7 @@ if (isset($_SESSION['username'])) {
 		</div>
 									
 			<div class="dropdown-menu" id="dropdownMenu">
-				<a href="Main.php" class="highlight-link">Home</a>
+				<a href="main.php" class="highlight-link">Home</a>
                 <a href="apirequestbuilder.php">API Request Builder</a>
 				<a href="base64.php">Base 64 Encrypt/Decrypt</a>
 				<a href="caseconverter.php">Case Converter</a>
@@ -102,7 +102,7 @@ if (isset($_SESSION['username'])) {
 				<a href="duplicates.php">Duplicate Finder</a>
 				<a href="hashing.php">Hashing Tools</a>
 				<a href="Json.php">JSON Tools</a>
-				<a href="JWT.php">JWT Decode</a>
+				<a href="jwt.php">JWT Decode</a>
 				<a href="markdowntohtml.php">Markdown to HTML</a>
 				<a href="paragraphtooneline.php">Paragraph to One Line</a>
 				<a href="timestampconverter.php">Timestamp Converter</a>

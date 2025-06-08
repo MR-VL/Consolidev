@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Consolidev | JWT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="CSS/styles.css">
-	<link rel="stylesheet" href="CSS/JWT.css">
+	<link rel="stylesheet" href="CSS/jwt.css">
 	<script src="https://kit.fontawesome.com/d0af7889fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <main class="main-container">
 
     <div class="form-container">
-        <form action="JWT.php" method="post">
+        <form action="jwt.php" method="post">
 			<i class="fa-solid fa-key title-icon"></i>
             <h1 class-"page-title">Decode JWT tokens</h1>
             <label for="input" class="input-label">Enter JWT token:</label>

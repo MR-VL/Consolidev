@@ -40,7 +40,7 @@ try {
 <div class="history-container" style="word-wrap: break-word">
 
 
-    <a href="JWT.php">
+    <a href="jwt.php">
         <button class="btn">Go back</button>
         <br>
     </a>

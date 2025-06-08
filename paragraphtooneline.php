@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newStr = trim(str_replace(array("\r\n", "\n", "\r"), ' ', $input));
 
     try {
-        // Database interaction
+        // database interaction
         global $connect;
 
         $sql = "INSERT INTO paragraphtoone (username, date) VALUES(:username, CURRENT_TIMESTAMP)";

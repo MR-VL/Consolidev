@@ -1,6 +1,6 @@
 <?php
 
-// Mock the Database class for testing purposes
+// Mock the database class for testing purposes
 class Database
 {
     private $host;
@@ -41,7 +41,7 @@ function testassert($condition, $message, $expectedToFail = false)
 // Test cases
 function testDatabaseConnectionSuccess()
 {
-    echo "<h3>Running Database Connection Test</h3>\n";
+    echo "<h3>Running database Connection Test</h3>\n";
 
     // Use mock environment variables
     putenv("DB_HOST=localhost");
@@ -49,7 +49,7 @@ function testDatabaseConnectionSuccess()
     putenv("DB_PASSWORD=");
     putenv("DB_NAME=consolidev");
 
-    $database = new Database(
+    $database = new database(
         getenv('DB_HOST'),
         getenv('DB_NAME'),
         getenv('DB_USER'),
@@ -58,7 +58,7 @@ function testDatabaseConnectionSuccess()
 
     try {
         $connection = $database->getConnection();
-        testassert($connection !== null, "Database connection should work.");
+        testassert($connection !== null, "database connection should work.");
     } catch (PDOException $e) {
         testassert(false, "Unexpected exception: " . $e->getMessage());
     }

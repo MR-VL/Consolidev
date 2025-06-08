@@ -65,9 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         echo "<h1>Favorites successfully updated.</h1>\n";
         echo "<h2>You will be redirected back to main in 2 seconds</h2>";
-        echo "<hp>If you are not redirected <a href='Main.php'>Click here</a></hp>";
+        echo "<hp>If you are not redirected <a href='main.php'>Click here</a></hp>";
 
-        header('Refresh: 2; URL=Main.php');
+        header('Refresh: 2; URL=main.php');
     } catch (PDOException $e) {
         echo "Error updating favorites: " . $e->getMessage();
     }
