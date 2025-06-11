@@ -264,15 +264,16 @@ INSERT INTO `tools` (`toolname`, `toolurl`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Fname` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Lname` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `DateJoined` date NOT NULL,
-  PRIMARY KEY (`username`)
+CREATE TABLE `user` (
+    `username` varchar(20) NOT NULL,
+    `Fname` varchar(15) NOT NULL,
+    `Lname` varchar(15) NOT NULL,
+    `password` varchar(60) NOT NULL,
+    `DateJoined` date NOT NULL,
+    `Premium Status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0: Free plan\r\n1: Premium plan\r\n',
+    `Account Status` int(1) NOT NULL DEFAULT 3 COMMENT '1: Enabled\r\n2: Disabled\r\n3: Restricted\r\n4: Minor\r\n5: Trial'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
