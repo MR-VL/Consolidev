@@ -24,15 +24,19 @@ if (!isset($_SESSION['username'])) {
 
 <div class="landing-container">
 
- 
+
     <aside class="sidebar">
         <img src="pics/consoliDev logo no bg.png" alt="consoliDev Logo" class="logo">
         <ul class="sidebar-links">
             <li><a href="manageFavorites.php">Manage Favorites</a></li>
             <li><a href="manageProfile.php">Manage Profile</a></li>
+
+            <?php if ($username === 'admin'): ?>
+                <li><a href="adminPortal.php">Admin Portal</a></li>
+            <?php endif; ?>
+
         </ul>
     </aside>
-
   
     <div class="welcome-section">
         <h1 class="welcome-title">Welcome back, <?php echo htmlspecialchars($username ?? 'User'); ?>!</h1>
