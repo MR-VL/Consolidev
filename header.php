@@ -3,7 +3,7 @@ require_once "init.php";
 
 if (isset($_GET['logout'])) {
 	session_destroy();
-	header("Location: index.php");
+	header("Location: Index.php");
 	exit();
 }
 
