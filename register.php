@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Lname = filter_input(INPUT_POST, "Lname", FILTER_SANITIZE_SPECIAL_CHARS);
     $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+    $IPAddress = $_SERVER['REMOTE_ADDR'];
 
 
     $valid = true;
@@ -27,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         global $connect;
-        $sql = "INSERT INTO user (Fname, Lname, username, password, DateJoined)
-                VALUES(:Fname, :Lname, :username, :password, CURRENT_TIMESTAMP)";
+        $sql = "INSERT INTO user (Fname, Lname, username, password, DateJoined, IPAddress)
+                VALUES(:Fname, :Lname, :username, :password, CURRENT_TIMESTAMP, :IPAddress)";
 
         $stmt = $connect->prepare($sql);
 
@@ -36,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':Lname', $Lname);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $passwordHash);
+        $stmt->bindParam(':IPAddress', $IPAddress);
 
         try {
             if ($stmt->execute()) {
