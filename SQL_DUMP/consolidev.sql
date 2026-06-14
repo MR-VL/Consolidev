@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 28, 2024 at 01:41 AM
--- Server version: 8.3.0
--- PHP Version: 8.2.18
+-- Host: localhost
+-- Generation Time: Jun 14, 2026 at 02:20 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- database: `consolidev`
+-- Database: `consolidev`
 --
 
 -- --------------------------------------------------------
@@ -27,18 +27,28 @@ SET time_zone = "+00:00";
 -- Table structure for table `api_requests`
 --
 
-DROP TABLE IF EXISTS `api_requests`;
-CREATE TABLE IF NOT EXISTS `api_requests` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `url` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `method` enum('GET','POST','PUT','DELETE') NOT NULL,
-  `headers` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `body` text,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `api_requests` (
+                                `TransactionID` int(11) NOT NULL,
+                                `username` varchar(20) NOT NULL,
+                                `date` date NOT NULL,
+                                `url` varchar(2048) NOT NULL,
+                                `method` enum('GET','POST','PUT','DELETE') NOT NULL,
+                                `headers` text DEFAULT NULL,
+                                `body` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `audit_log`
+--
+
+CREATE TABLE `audit_log` (
+                             `username` varchar(20) NOT NULL,
+                             `date` datetime NOT NULL,
+                             `error_message` longtext NOT NULL,
+                             `IPAddress` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -46,16 +56,13 @@ CREATE TABLE IF NOT EXISTS `api_requests` (
 -- Table structure for table `base64`
 --
 
-DROP TABLE IF EXISTS `base64`;
-CREATE TABLE IF NOT EXISTS `base64` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `type` varchar(6) NOT NULL,
-  `original` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `opposite` text NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `base64` (
+                          `TransactionID` int(11) NOT NULL,
+                          `username` varchar(20) NOT NULL,
+                          `date` date NOT NULL,
+                          `type` varchar(6) NOT NULL,
+                          `original` text NOT NULL,
+                          `opposite` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -64,13 +71,10 @@ CREATE TABLE IF NOT EXISTS `base64` (
 -- Table structure for table `caseconverter`
 --
 
-DROP TABLE IF EXISTS `caseconverter`;
-CREATE TABLE IF NOT EXISTS `caseconverter` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `caseconverter` (
+                                 `TransactionID` int(11) NOT NULL,
+                                 `username` varchar(20) NOT NULL,
+                                 `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -79,14 +83,11 @@ CREATE TABLE IF NOT EXISTS `caseconverter` (
 -- Table structure for table `differencechecker`
 --
 
-DROP TABLE IF EXISTS `differencechecker`;
-CREATE TABLE IF NOT EXISTS `differencechecker` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `differencesFound` int DEFAULT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `differencechecker` (
+                                     `TransactionID` int(11) NOT NULL,
+                                     `username` varchar(20) NOT NULL,
+                                     `date` date NOT NULL,
+                                     `differencesFound` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -95,13 +96,10 @@ CREATE TABLE IF NOT EXISTS `differencechecker` (
 -- Table structure for table `duplicatefinder`
 --
 
-DROP TABLE IF EXISTS `duplicatefinder`;
-CREATE TABLE IF NOT EXISTS `duplicatefinder` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `duplicatefinder` (
+                                   `TransactionID` int(11) NOT NULL,
+                                   `username` varchar(20) NOT NULL,
+                                   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -110,22 +108,19 @@ CREATE TABLE IF NOT EXISTS `duplicatefinder` (
 -- Table structure for table `favorites`
 --
 
-DROP TABLE IF EXISTS `favorites`;
-CREATE TABLE IF NOT EXISTS `favorites` (
-  `APIRequestBuilder` tinyint(1) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `Base64` tinyint(1) NOT NULL,
-  `CaseConverter` tinyint(1) NOT NULL,
-  `DifferenceChecker` tinyint(1) NOT NULL,
-  `DuplicateChecker` tinyint(1) NOT NULL,
-  `Hashing` tinyint(1) NOT NULL,
-  `JSONValidator` tinyint(1) NOT NULL,
-  `JWTDecode` tinyint(1) NOT NULL,
-  `MarkdownToHtmlConverter` tinyint(1) NOT NULL,
-  `ParagraphtoOneLineConverter` tinyint(1) NOT NULL,
-  `TimeStampConverter` tinyint(1) NOT NULL,
-  PRIMARY KEY (`username`),
-  KEY `username` (`username`)
+CREATE TABLE `favorites` (
+                             `APIRequestBuilder` tinyint(1) NOT NULL,
+                             `username` varchar(20) NOT NULL,
+                             `Base64` tinyint(1) NOT NULL,
+                             `CaseConverter` tinyint(1) NOT NULL,
+                             `DifferenceChecker` tinyint(1) NOT NULL,
+                             `DuplicateChecker` tinyint(1) NOT NULL,
+                             `Hashing` tinyint(1) NOT NULL,
+                             `JSONValidator` tinyint(1) NOT NULL,
+                             `JWTDecode` tinyint(1) NOT NULL,
+                             `MarkdownToHtmlConverter` tinyint(1) NOT NULL,
+                             `ParagraphtoOneLineConverter` tinyint(1) NOT NULL,
+                             `TimeStampConverter` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -134,16 +129,13 @@ CREATE TABLE IF NOT EXISTS `favorites` (
 -- Table structure for table `hashing`
 --
 
-DROP TABLE IF EXISTS `hashing`;
-CREATE TABLE IF NOT EXISTS `hashing` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `algorithm` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `original` text NOT NULL,
-  `opposite` text NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `hashing` (
+                           `TransactionID` int(11) NOT NULL,
+                           `username` varchar(20) NOT NULL,
+                           `date` date NOT NULL,
+                           `algorithm` varchar(10) NOT NULL,
+                           `original` text NOT NULL,
+                           `opposite` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -152,16 +144,13 @@ CREATE TABLE IF NOT EXISTS `hashing` (
 -- Table structure for table `json`
 --
 
-DROP TABLE IF EXISTS `json`;
-CREATE TABLE IF NOT EXISTS `json` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `Input` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `errorCount` int NOT NULL,
-  `errors` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `json` (
+                        `TransactionID` int(11) NOT NULL,
+                        `username` varchar(20) NOT NULL,
+                        `date` date NOT NULL,
+                        `Input` text NOT NULL,
+                        `errorCount` int(11) NOT NULL,
+                        `errors` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -170,15 +159,12 @@ CREATE TABLE IF NOT EXISTS `json` (
 -- Table structure for table `jwt`
 --
 
-DROP TABLE IF EXISTS `jwt`;
-CREATE TABLE IF NOT EXISTS `jwt` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `encoded` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `decoded` json NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `jwt` (
+                       `TransactionID` int(11) NOT NULL,
+                       `username` varchar(20) NOT NULL,
+                       `date` date NOT NULL,
+                       `encoded` text NOT NULL,
+                       `decoded` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`decoded`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -187,15 +173,12 @@ CREATE TABLE IF NOT EXISTS `jwt` (
 -- Table structure for table `markdowntohtml`
 --
 
-DROP TABLE IF EXISTS `markdowntohtml`;
-CREATE TABLE IF NOT EXISTS `markdowntohtml` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `markdown` text NOT NULL,
-  `html` text NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `username` (`username`)
+CREATE TABLE `markdowntohtml` (
+                                  `TransactionID` int(11) NOT NULL,
+                                  `username` varchar(20) NOT NULL,
+                                  `date` date NOT NULL,
+                                  `markdown` text NOT NULL,
+                                  `html` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -204,13 +187,10 @@ CREATE TABLE IF NOT EXISTS `markdowntohtml` (
 -- Table structure for table `paragraphtoone`
 --
 
-DROP TABLE IF EXISTS `paragraphtoone`;
-CREATE TABLE IF NOT EXISTS `paragraphtoone` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL,
-  `Date` date NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `Username` (`Username`)
+CREATE TABLE `paragraphtoone` (
+                                  `TransactionID` int(11) NOT NULL,
+                                  `Username` varchar(20) NOT NULL,
+                                  `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -219,13 +199,10 @@ CREATE TABLE IF NOT EXISTS `paragraphtoone` (
 -- Table structure for table `timestampconverter`
 --
 
-DROP TABLE IF EXISTS `timestampconverter`;
-CREATE TABLE IF NOT EXISTS `timestampconverter` (
-  `TransactionID` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL,
-  `Date` date NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  KEY `Username` (`Username`)
+CREATE TABLE `timestampconverter` (
+                                      `TransactionID` int(11) NOT NULL,
+                                      `Username` varchar(20) NOT NULL,
+                                      `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -234,11 +211,9 @@ CREATE TABLE IF NOT EXISTS `timestampconverter` (
 -- Table structure for table `tools`
 --
 
-DROP TABLE IF EXISTS `tools`;
-CREATE TABLE IF NOT EXISTS `tools` (
-  `toolname` varchar(40) NOT NULL,
-  `toolurl` varchar(40) NOT NULL,
-  PRIMARY KEY (`toolname`)
+CREATE TABLE `tools` (
+                         `toolname` varchar(40) NOT NULL,
+                         `toolurl` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -246,17 +221,17 @@ CREATE TABLE IF NOT EXISTS `tools` (
 --
 
 INSERT INTO `tools` (`toolname`, `toolurl`) VALUES
-('APIRequestBuilder', 'apirequestbuilder.php'),
-('Base64', 'base64.php'),
-('CaseConverter', 'caseconverter.php'),
-('DifferenceChecker', 'differencechecker.php'),
-('DuplicateChecker', 'duplicates.php'),
-('Hashing', 'hashing.php'),
-('JSONValidator', 'Json.php'),
-('JWTDecode', 'jwt.php'),
-('MarkdownToHtmlConverter', 'markdowntohtml.php'),
-('ParagraphtoOneLineConverter', 'paragraphtooneline.php'),
-('TimeStampConverter', 'timestampconverter.php');
+                                                ('APIRequestBuilder', 'apirequestbuilder.php'),
+                                                ('Base64', 'base64.php'),
+                                                ('CaseConverter', 'caseconverter.php'),
+                                                ('DifferenceChecker', 'differencechecker.php'),
+                                                ('DuplicateChecker', 'duplicates.php'),
+                                                ('Hashing', 'hashing.php'),
+                                                ('JSONValidator', 'Json.php'),
+                                                ('JWTDecode', 'jwt.php'),
+                                                ('MarkdownToHtmlConverter', 'markdowntohtml.php'),
+                                                ('ParagraphtoOneLineConverter', 'paragraphtooneline.php'),
+                                                ('TimeStampConverter', 'timestampconverter.php');
 
 -- --------------------------------------------------------
 
@@ -264,15 +239,194 @@ INSERT INTO `tools` (`toolname`, `toolurl`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Fname` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Lname` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `DateJoined` date NOT NULL,
-  PRIMARY KEY (`username`)
+CREATE TABLE `user` (
+                        `username` varchar(20) NOT NULL,
+                        `Fname` varchar(15) NOT NULL,
+                        `Lname` varchar(15) NOT NULL,
+                        `password` varchar(60) NOT NULL,
+                        `DateJoined` date NOT NULL,
+                        `IPAddress` varchar(45) NOT NULL,
+                        `Role` enum('Admin','User','Diamond','Moderator') NOT NULL DEFAULT 'User',
+                        `Class` enum('Base','Diamond','Lifetime','') NOT NULL DEFAULT 'Base'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `Fname`, `Lname`, `password`, `DateJoined`, `IPAddress`, `Role`, `Class`) VALUES
+                                                                                                              ('admin', 'admin', 'admin', '$2y$10$AqfWnn2KCCLGz41UxwRDEeTuVoYkfztlHz/praIUo9TKWfX7JMvmG', '2026-06-11', '', 'User', 'Base');
+
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `api_requests`
+--
+ALTER TABLE `api_requests`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `base64`
+--
+ALTER TABLE `base64`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `caseconverter`
+--
+ALTER TABLE `caseconverter`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `differencechecker`
+--
+ALTER TABLE `differencechecker`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `duplicatefinder`
+--
+ALTER TABLE `duplicatefinder`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `favorites`
+--
+ALTER TABLE `favorites`
+    ADD PRIMARY KEY (`username`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `hashing`
+--
+ALTER TABLE `hashing`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `json`
+--
+ALTER TABLE `json`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `jwt`
+--
+ALTER TABLE `jwt`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `markdowntohtml`
+--
+ALTER TABLE `markdowntohtml`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `paragraphtoone`
+--
+ALTER TABLE `paragraphtoone`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `Username` (`Username`);
+
+--
+-- Indexes for table `timestampconverter`
+--
+ALTER TABLE `timestampconverter`
+    ADD PRIMARY KEY (`TransactionID`),
+  ADD KEY `Username` (`Username`);
+
+--
+-- Indexes for table `tools`
+--
+ALTER TABLE `tools`
+    ADD PRIMARY KEY (`toolname`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+    ADD PRIMARY KEY (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `api_requests`
+--
+ALTER TABLE `api_requests`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `base64`
+--
+ALTER TABLE `base64`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `caseconverter`
+--
+ALTER TABLE `caseconverter`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `differencechecker`
+--
+ALTER TABLE `differencechecker`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `duplicatefinder`
+--
+ALTER TABLE `duplicatefinder`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hashing`
+--
+ALTER TABLE `hashing`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `json`
+--
+ALTER TABLE `json`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jwt`
+--
+ALTER TABLE `jwt`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `markdowntohtml`
+--
+ALTER TABLE `markdowntohtml`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `paragraphtoone`
+--
+ALTER TABLE `paragraphtoone`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `timestampconverter`
+--
+ALTER TABLE `timestampconverter`
+    MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
